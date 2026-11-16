@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gerenciar Projetos | Anne Vitoris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo do meu portfólio">
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="quemsoueu.html">Quem sou eu</a></li>
+        <li><a href="projetos.html">Portfólio</a></li>
+      </ul>
+
+      <a href="login.html" class="login" aria-label="Ir para a página de login">
+        <i data-lucide="lock"></i>
+      </a>
+    </nav>
+  </header>
+
+  <main class="painel-pagina">
+    <p id="verificando" class="estado-vazio" role="status">Verificando acesso...</p>
+
+    <div id="painel" hidden>
+      <div class="painel-topo">
+        <h1>Gerenciar Projetos</h1>
+        <button type="button" id="botao-sair" class="botao botao-contorno botao-pequeno">Sair</button>
+      </div>
+
+      <p id="mensagem" role="status" hidden></p>
+
+      <section class="painel-bloco" aria-labelledby="titulo-form">
+        <h2 id="titulo-form">Adicionar projeto</h2>
+
+        <form id="form-projeto" novalidate>
+          <input type="hidden" id="projeto-id">
+
+          <div class="campo">
+            <label for="projeto-titulo">Título</label>
+            <input type="text" id="projeto-titulo" maxlength="100" required>
+          </div>
+
+          <div class="campo">
+            <label for="projeto-imagem">Imagem de apresentação</label>
+            <input type="file" id="projeto-imagem" accept="image/png, image/jpeg, image/webp">
+            <p class="campo-dica">JPG, PNG ou WebP, até 5 MB. Ao editar, deixe vazio para manter a imagem atual.</p>
+          </div>
+
+          <div class="previa" id="previa" hidden>
+            <img id="previa-img" alt="Pré-visualização da imagem do projeto">
+          </div>
+
+          <div class="campo">
+            <label for="projeto-descricao">Descrição curta</label>
+            <textarea id="projeto-descricao" rows="3" maxlength="500"></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="projeto-link">Link do projeto publicado</label>
+            <input type="url" id="projeto-link" placeholder="https://" required>
+          </div>
+
+          <div class="form-acoes">
+            <button type="submit" id="botao-salvar" class="botao">Adicionar projeto</button>
+            <button type="button" id="botao-cancelar" class="botao botao-contorno" hidden>Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="painel-bloco" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Projetos cadastrados</h2>
+        <p id="lista-estado" class="estado-vazio" role="status">Carregando projetos...</p>
+        <ul id="lista-projetos" class="lista-projetos"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

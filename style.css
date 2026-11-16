@@ -1,0 +1,938 @@
+/* ---------- Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222222;
+}
+
+/* ---------- Menu ---------- */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 40px;
+  display: block;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.links a,
+.login {
+  color: #222222;
+  text-decoration: none;
+}
+
+.links a:hover,
+.login:hover {
+  color: #6c4cf1;
+}
+
+.login svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* ---------- Hero (celular primeiro) ---------- */
+.hero {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+.hero-foto {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero-apresentacao {
+  color: #6c4cf1;
+  font-weight: bold;
+}
+
+.hero-texto h1 {
+  font-size: 2.5rem;
+  margin: 4px 0 16px;
+}
+
+.hero-descricao {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.habilidades {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.habilidades li {
+  background: #f0ecff;
+  color: #4a33b8;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.botao {
+  display: inline-block;
+  background: #6c4cf1;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.botao:hover {
+  background: #573ad0;
+}
+
+/* ---------- Computador (a partir de 768px) ---------- */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    text-align: left;
+    gap: 56px;
+    padding: 80px 24px;
+  }
+
+  .hero-foto {
+    width: 300px;
+    height: 300px;
+  }
+
+  .habilidades {
+    justify-content: flex-start;
+  }
+}
+/* ---------- Página de login ---------- */
+.login-pagina {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.login-caixa {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.login-caixa h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.login-aviso {
+  font-size: 0.9rem;
+  color: #555555;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #bbbbbb;
+  border-radius: 8px;
+}
+
+.campo input:focus {
+  outline: 3px solid #cfc4ff;
+  border-color: #6c4cf1;
+}
+
+.mensagem-erro {
+  background: #fdecec;
+  color: #a12020;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.mensagem-erro[hidden] {
+  display: none;
+}
+
+.botao-cheio {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+/* ---------- Ajustes gerais ---------- */
+[hidden] {
+  display: none !important;
+}
+
+button {
+  font-family: inherit;
+}
+
+button.botao {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.botao-contorno {
+  background: transparent;
+  color: #6c4cf1;
+  border: 2px solid #6c4cf1;
+}
+
+button.botao-contorno:hover {
+  background: #f0ecff;
+}
+
+button.botao-perigo {
+  background: #ffffff;
+  color: #a12020;
+  border: 2px solid #e3b4b4;
+}
+
+button.botao-perigo:hover {
+  background: #fdecec;
+}
+
+.botao-pequeno {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.mensagem-ok {
+  background: #e8f6ec;
+  color: #1c6b34;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.estado-vazio {
+  color: #555555;
+  padding: 16px 0;
+}
+
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #bbbbbb;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.campo textarea:focus {
+  outline: 3px solid #cfc4ff;
+  border-color: #6c4cf1;
+}
+
+.campo-dica {
+  font-size: 0.85rem;
+  color: #666666;
+  margin-top: 6px;
+}
+
+/* ---------- Painel administrativo ---------- */
+.painel-pagina,
+.projetos-pagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.painel-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.painel-topo h1 {
+  font-size: 1.8rem;
+}
+
+.painel-bloco {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.painel-bloco h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.previa {
+  margin-bottom: 16px;
+}
+
+.previa img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.form-acoes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lista-projetos {
+  list-style: none;
+}
+
+.item-projeto {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  border-top: 1px solid #eeeeee;
+}
+
+.item-miniatura {
+  width: 80px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f0ecff;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-info span {
+  font-size: 0.85rem;
+  color: #666666;
+}
+
+.item-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- Página pública de projetos ---------- */
+.projetos-topo {
+  margin-bottom: 32px;
+}
+
+.projetos-topo h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.projetos-topo p {
+  color: #555555;
+  line-height: 1.6;
+}
+
+.grade-projetos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card-projeto {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.card-projeto img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: #f0ecff;
+}
+
+.card-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  flex: 1;
+}
+
+.card-corpo h2 {
+  font-size: 1.2rem;
+}
+
+.card-corpo p {
+  color: #555555;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-corpo .botao {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+/* =========================================================
+   IDENTIDADE VISUAL
+   Para mudar uma cor do site inteiro, altere só aqui.
+   ========================================================= */
+:root {
+  --azul: #00527c;          /* cor da marca */
+  --azul-escuro: #003d5c;   /* hover de botões */
+  --azul-claro: #e3eef4;    /* etiquetas e fundos suaves */
+  --azul-foco: #9cc3d8;     /* contorno de foco */
+
+  --fundo: #f4f6f8;         /* branco suave, baixo contraste */
+  --superficie: #ffffff;    /* cards, menu e formulários */
+  --texto: #1c2b36;
+  --texto-suave: #52626e;
+  --borda: #dce3e9;
+
+  --erro-fundo: #fdecec;
+  --erro-texto: #a12020;
+  --erro-borda: #e3b4b4;
+  --ok-fundo: #e8f6ec;
+  --ok-texto: #1c6b34;
+
+  --raio: 10px;
+  --largura: 1000px;
+}
+
+/* ---------- Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  color: var(--azul);
+  line-height: 1.2;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--azul-foco);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Menu ---------- */
+header {
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borda);
+}
+
+nav {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo img {
+  height: 40px;
+  display: block;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.links a,
+.login {
+  color: var(--texto);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.links a:hover,
+.login:hover {
+  color: var(--azul);
+}
+
+.links a[aria-current="page"] {
+  color: var(--azul);
+  border-bottom-color: var(--azul);
+}
+
+.login svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-block;
+  background: var(--azul);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 2px solid var(--azul);
+  cursor: pointer;
+}
+
+.botao:hover {
+  background: var(--azul-escuro);
+  border-color: var(--azul-escuro);
+}
+
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botao-contorno {
+  background: transparent;
+  color: var(--azul);
+}
+
+.botao-contorno:hover {
+  background: var(--azul-claro);
+  border-color: var(--azul);
+}
+
+.botao-perigo {
+  background: var(--superficie);
+  color: var(--erro-texto);
+  border-color: var(--erro-borda);
+}
+
+.botao-perigo:hover {
+  background: var(--erro-fundo);
+  border-color: var(--erro-borda);
+}
+
+.botao-pequeno {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.botao-cheio {
+  width: 100%;
+}
+
+/* ---------- Mensagens ---------- */
+.mensagem-erro,
+.mensagem-ok {
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.mensagem-erro {
+  background: var(--erro-fundo);
+  color: var(--erro-texto);
+}
+
+.mensagem-ok {
+  background: var(--ok-fundo);
+  color: var(--ok-texto);
+}
+
+.estado-vazio {
+  color: var(--texto-suave);
+  padding: 16px 0;
+}
+
+/* ---------- Hero (celular primeiro) ---------- */
+.hero {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+.hero-foto {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid var(--superficie);
+  box-shadow: 0 0 0 4px var(--azul);
+}
+
+.hero-apresentacao {
+  color: var(--azul);
+  font-weight: bold;
+}
+
+.hero-texto h1 {
+  font-size: 2.5rem;
+  margin: 4px 0 16px;
+}
+
+.hero-descricao {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+
+.habilidades {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.habilidades li {
+  background: var(--azul-claro);
+  color: var(--azul);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ---------- Formulários (login e painel) ---------- */
+.login-pagina {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.login-caixa {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.login-caixa h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.login-aviso {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid #b9c4cc;
+  border-radius: 8px;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  border-color: var(--azul);
+}
+
+.campo-dica {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin-top: 6px;
+}
+
+/* ---------- Painel administrativo ---------- */
+.painel-pagina,
+.projetos-pagina {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.painel-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.painel-topo h1 {
+  font-size: 1.8rem;
+}
+
+.painel-bloco {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.painel-bloco h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.previa {
+  margin-bottom: 16px;
+}
+
+.previa img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+}
+
+.form-acoes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lista-projetos {
+  list-style: none;
+}
+
+.item-projeto {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  border-top: 1px solid var(--borda);
+}
+
+.item-miniatura {
+  width: 80px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--azul-claro);
+}
+
+.item-info {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-info span {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.item-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- Página pública de projetos ---------- */
+.projetos-topo {
+  margin-bottom: 32px;
+}
+
+.projetos-topo h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.projetos-topo p {
+  color: var(--texto-suave);
+  line-height: 1.6;
+}
+
+.grade-projetos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card-projeto {
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-projeto img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: var(--azul-claro);
+}
+
+.card-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  flex: 1;
+}
+
+.card-corpo h2 {
+  font-size: 1.2rem;
+}
+
+.card-corpo p {
+  color: var(--texto-suave);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-corpo .botao {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 480px) {
+  nav {
+    padding: 12px 16px;
+  }
+
+  .links {
+    gap: 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Computador (a partir de 768px) ---------- */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    text-align: left;
+    gap: 56px;
+    padding: 80px 24px;
+  }
+
+  .hero-foto {
+    width: 300px;
+    height: 300px;
+  }
+
+  .habilidades {
+    justify-content: flex-start;
+  }
+}

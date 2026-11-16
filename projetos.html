@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projetos e sites desenvolvidos por Anne Vitoris.">
+  <title>Portfólio | Anne Vitoris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo do meu portfólio">
+      </a>
+
+      <ul class="links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="quemsoueu.html">Quem sou eu</a></li>
+        <li><a href="projetos.html">Portfólio</a></li>
+      </ul>
+
+      <a href="login.html" class="login" aria-label="Ir para a página de login">
+        <i data-lucide="lock"></i>
+      </a>
+    </nav>
+  </header>
+
+  <main class="projetos-pagina">
+    <section class="projetos-topo">
+      <h1>Meus projetos</h1>
+      <p>Sites e trabalhos que desenvolvi ao longo da minha jornada.</p>
+    </section>
+
+    <p id="estado" class="estado-vazio" role="status">Carregando projetos...</p>
+    <ul id="grade-projetos" class="grade-projetos"></ul>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="projetos.js"></script>
+</body>
+</html>
