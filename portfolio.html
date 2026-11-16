@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Conheça os projetos e sites desenvolvidos por Anne Vitoria.">
+
+  <title>Meu Portfólio | Anne Vitoria</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <header>
+    <nav>
+
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Logo do meu portfólio">
+      </a>
+
+      <ul class="links">
+        <li>
+          <a href="index.html">Início</a>
+        </li>
+
+        <li>
+          <a href="quemsoueu.html">Quem sou eu</a>
+        </li>
+
+        <li>
+          <a href="portfolio.html" aria-current="page">Portfólio</a>
+        </li>
+      </ul>
+
+      <a href="login.html" class="login" aria-label="Acessar painel administrativo">
+        <i data-lucide="lock"></i>
+      </a>
+
+    </nav>
+  </header>
+
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="projetos-pagina">
+
+    <section class="projetos-topo">
+
+      <h1>Meus projetos</h1>
+
+      <p>
+        Conheça alguns dos projetos que desenvolvi durante minha
+        jornada na programação e no desenvolvimento web.
+      </p>
+
+    </section>
+
+
+    <!-- MENSAGEM DE CARREGAMENTO OU ERRO -->
+    <p
+      id="estado"
+      class="estado-vazio"
+      role="status"
+      aria-live="polite"
+    >
+      Carregando projetos...
+    </p>
+
+
+    <!-- PROJETOS VINDOS DO BANCO DE DADOS -->
+    <ul
+      id="grade-projetos"
+      class="grade-projetos"
+      aria-label="Lista de projetos"
+    ></ul>
+
+  </main>
+
+
+  <!-- BIBLIOTECAS -->
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
+  <!-- CONFIGURAÇÃO DO SUPABASE -->
+  <script src="config.js"></script>
+
+
+  <!-- CARREGAMENTO DOS PROJETOS -->
+  <script>
+
+    const gradeProjetos = document.getElementById("grade-projetos");
+    const estado = document.getElementById("estado");
+
+
+    // Cria o card de cada projeto
+    function criarCard(projeto) {
+
+      const item = document.createElement("li");
+      item.className = "card-projeto";
+
+
+      // Imagem
+      const imagem = document.createElement("img");
+
+      imagem.src = urlImagem(projeto.imagem_path);
+
+      imagem.alt = "Imagem do projeto " + projeto.titulo;
+
+      imagem.loading = "lazy";
+
+
+      // Corpo do card
+      const corpo = document.createElement("div");
+
+      corpo.className = "card-corpo";
+
+
+      // Título
+      const titulo = document.createElement("h2");
+
+      titulo.textContent = projeto.titulo;
+
+
+      // Descrição
+      const descricao = document.createElement("p");
+
+      descricao.textContent = projeto.descricao || "Projeto desenvolvido por Anne Vitoria.";
+
+
+      // Botão para acessar o projeto
+      const botao = document.createElement("a");
+
+      botao.className = "botao";
+
+      botao.textContent = "Ver projeto";
+
+      botao.href = projeto.link;
+
+      botao.target = "_blank";
+
+      botao.rel = "noopener noreferrer";
+
+
+      // Montagem do card
+      corpo.append(titulo, descricao, botao);
+
+      item.append(imagem, corpo);
+
+      return item;
+    }
+
+
+    // Busca os projetos cadastrados no Supabase
+    async function carregarProjetos() {
+
+      estado.hidden = false;
+
+      estado.textContent = "Carregando projetos...";
+
+      gradeProjetos.replaceChildren();
+
+
+      try {
+
+        const { data, error } = await db
+
+          .from("projetos")
+
+          .select("*")
+
+          .order("criado_em", { ascending: false });
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        // Verifica se existem projetos
+        if (!data || data.length === 0) {
+
+          estado.textContent = "Nenhum projeto cadastrado ainda.";
+
+          return;
+        }
+
+
+        // Exibe os projetos
+        data.forEach(function(projeto) {
+
+          const card = criarCard(projeto);
+
+          gradeProjetos.appendChild(card);
+
+        });
+
+
+        estado.hidden = true;
+
+      }
+
+      catch (erro) {
+
+        console.error("Erro ao carregar projetos:", erro);
+
+        estado.textContent =
+          "Não foi possível carregar os projetos. Tente novamente mais tarde.";
+
+      }
+
+    }
+
+
+    // Inicia o carregamento
+    carregarProjetos();
+
+  </script>
+
+</body>
+</html>
