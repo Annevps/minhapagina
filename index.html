@@ -6,39 +6,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Anne Vitoria | Portfólio</title>
+  <title>Anne Vitória | Desenvolvedora em Formação</title>
 
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Conheça Anne Vitória, desenvolvedora em formação, apaixonada por tecnologia, programação, hardware e software.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#0b1018">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="home.css">
 </head>
 
-<body>
+<body class="home-page">
 
-  <header>
-    <nav>
+  <!-- CABEÇALHO -->
+  <header class="home-header">
+    <nav class="home-nav" aria-label="Navegação principal">
 
-      <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo do meu portfólio">
+      <a href="index.html" class="home-logo" aria-label="Página inicial de Anne Vitória">
+        <img src="logo.png" alt="Logo AV">
+        <span>Anne Vitória</span>
       </a>
 
-      <ul class="links">
-        <li>
-          <a href="index.html">Início</a>
-        </li>
-
-        <li>
-          <a href="quemsoueu.html">Quem sou eu</a>
-        </li>
-
-        <li>
-          <a href="portfolio.html">Portfólio</a>
-        </li>
-
-        <li>
-          <a href="contato.html">Contato</a>
-        </li>
+      <ul class="home-links">
+        <li><a href="index.html" class="active" aria-current="page">Início</a></li>
+        <li><a href="portfolio.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="quemsoueu.html">Sobre</a></li>
       </ul>
 
-      <a href="login.html" class="login" aria-label="Ir para a página de login">
+      <a href="login.html" class="home-login" aria-label="Acessar painel administrativo">
         <i data-lucide="lock"></i>
       </a>
 
@@ -48,34 +48,321 @@
 
   <main>
 
-    <section class="hero">
+    <!-- HERO -->
+    <section class="home-hero">
 
-      <img
-        src="foto.jpg"
-        alt="Foto de Anne Vitoria"
-        class="hero-foto"
-      >
+      <div class="hero-container">
 
-      <div class="hero-texto">
+        <div class="hero-content">
 
-        <p class="hero-apresentacao">Olá, eu sou</p>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-icon">&lt;/&gt;</span>
+            <span>DESENVOLVEDORA EM FORMAÇÃO</span>
+            <span class="eyebrow-line"></span>
+          </div>
 
-        <h1>Anne Vitoris</h1>
+          <h1>
+            Anne Vitória<span class="blue-dot">.</span>
+          </h1>
 
-        <p class="hero-descricao">
-          Tenho 16 anos e estudo no EMTI. Estou aprendendo a criar sites
-          e a transformar ideias em projetos.
-        </p>
+          <h2 class="hero-title">
+            Programando ideias,<br>
+            criando <span>soluções.</span>
+          </h2>
 
-        <ul class="habilidades">
-          <li>Excel</li>
-          <li>Programação web</li>
-          <li>Comunicação efetiva</li>
-        </ul>
+          <p class="hero-description">
+            Sou estudante de tecnologia e estou construindo meu caminho
+            na programação. Tenho interesse em desenvolvimento web,
+            hardware e software, sempre buscando aprender e transformar
+            ideias em projetos.
+          </p>
 
-        <a href="portfolio.html" class="botao">
-          Ver meu portfólio
-        </a>
+          <div class="hero-buttons">
+            <a href="portfolio.html" class="home-button primary-button">
+              Ver meus projetos
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+
+            <a href="contato.html" class="home-button secondary-button">
+              Entrar em contato
+              <i data-lucide="mail"></i>
+            </a>
+          </div>
+
+          <div class="hero-social">
+            <a href="https://github.com/Annevps"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="GitHub">
+              <i data-lucide="github"></i>
+            </a>
+
+            <!-- Substitua pelo endereço do seu LinkedIn -->
+            <a href="https://www.linkedin.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+
+            <!-- Substitua pelo endereço do seu Instagram -->
+            <a href="https://www.instagram.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Instagram">
+              <i data-lucide="instagram"></i>
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="hero-image-area">
+
+          <div class="hero-decoration hero-decoration-one"></div>
+          <div class="hero-decoration hero-decoration-two"></div>
+
+          <div class="hero-image-frame">
+            <img
+              src="foto.jpg"
+              alt="Fotografia de Anne Vitória, desenvolvedora em formação"
+              class="hero-photo"
+              fetchpriority="high"
+            >
+          </div>
+
+          <div class="hero-image-shadow"></div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-bottom-line"></div>
+
+    </section>
+
+
+    <!-- ATUALIDADES -->
+    <section class="news-section" aria-labelledby="news-title">
+
+      <div class="news-container">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="section-eyebrow">TECNOLOGIA, CONHECIMENTO E INOVAÇÃO</span>
+
+            <h2 id="news-title">
+              Atualidades em <span>Tecnologia</span>
+            </h2>
+
+            <p>
+              Um pouco do que acontece no universo da tecnologia
+              e das ideias que estão transformando o mundo.
+            </p>
+          </div>
+
+          <span class="section-decoration"></span>
+
+        </div>
+
+
+        <div class="news-grid">
+
+          <!-- CONTEÚDO 01 -->
+          <article class="news-card">
+
+            <div class="news-image">
+              <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85"
+                alt="Representação visual de inteligência artificial e tecnologia"
+                loading="lazy"
+              >
+              <span class="news-number">01</span>
+            </div>
+
+            <div class="news-content">
+              <span class="news-category">INTELIGÊNCIA ARTIFICIAL</span>
+
+              <h3>Inteligência artificial no dia a dia das pessoas</h3>
+
+              <p>
+                A inteligência artificial está cada vez mais presente em
+                atividades que fazem parte da nossa rotina. Ela pode ajudar
+                nos estudos, organizar informações, responder perguntas e
+                facilitar tarefas de trabalho. Além disso, ferramentas
+                inteligentes estão sendo utilizadas em diferentes áreas,
+                tornando alguns processos mais rápidos e acessíveis.
+                Acredito que entender como essa tecnologia funciona é
+                importante para utilizá-la com responsabilidade, criatividade
+                e senso crítico, aproveitando suas possibilidades sem deixar
+                de lado o conhecimento humano.
+              </p>
+
+              <a href="contato.html" class="news-link">
+                Conversar sobre o assunto
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- CONTEÚDO 02 -->
+          <article class="news-card">
+
+            <div class="news-image">
+              <img
+                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85"
+                alt="Celular e elementos relacionados à segurança digital"
+                loading="lazy"
+              >
+              <span class="news-number">02</span>
+            </div>
+
+            <div class="news-content">
+              <span class="news-category">SEGURANÇA DIGITAL</span>
+
+              <h3>Segurança digital e golpes pelo WhatsApp</h3>
+
+              <p>
+                Com o aumento do uso da internet, proteger informações
+                pessoais se tornou uma necessidade. Golpes digitais podem
+                chegar por mensagens, links suspeitos e perfis falsos,
+                inclusive em aplicativos de conversa. Por isso, é importante
+                conferir a identidade de quem envia uma mensagem, evitar
+                compartilhar códigos de acesso e utilizar senhas diferentes
+                e seguras. Também vale ativar a verificação em duas etapas
+                sempre que possível. Pequenos cuidados ajudam a preservar
+                nossa privacidade e tornam o uso da tecnologia mais seguro.
+              </p>
+
+              <a href="contato.html" class="news-link">
+                Conversar sobre o assunto
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- CONTEÚDO 03 -->
+          <article class="news-card">
+
+            <div class="news-image">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
+                alt="Estação de trabalho com computador utilizado para programação"
+                loading="lazy"
+              >
+              <span class="news-number">03</span>
+            </div>
+
+            <div class="news-content">
+              <span class="news-category">MERCADO DE TRABALHO</span>
+
+              <h3>Carreiras de tecnologia que estão crescendo</h3>
+
+              <p>
+                A área de tecnologia oferece diferentes caminhos para quem
+                gosta de aprender, resolver problemas e criar soluções.
+                Desenvolvimento de software, análise de dados, segurança
+                digital e inteligência artificial são exemplos de campos
+                que despertam cada vez mais interesse. Para acompanhar essas
+                mudanças, é importante desenvolver conhecimentos técnicos,
+                praticar a programação e aprender a trabalhar em equipe.
+                Estou construindo minha trajetória nesse universo e acredito
+                que a curiosidade e a dedicação são fundamentais para
+                aproveitar as oportunidades que surgem na área.
+              </p>
+
+              <a href="contato.html" class="news-link">
+                Conversar sobre o assunto
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- CONTEÚDO 04 -->
+          <article class="news-card news-card-wide">
+
+            <div class="news-image">
+              <img
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85"
+                alt="Paisagem rural e área agrícola"
+                loading="lazy"
+              >
+              <span class="news-number">04</span>
+            </div>
+
+            <div class="news-content">
+              <span class="news-category">TECNOLOGIA E DESENVOLVIMENTO REGIONAL</span>
+
+              <h3>Tecnologia no campo e no agronegócio do Vale do Mucuri</h3>
+
+              <p>
+                A tecnologia também tem um papel importante no desenvolvimento
+                das regiões rurais. No Vale do Mucuri, soluções digitais podem
+                contribuir para melhorar atividades do campo, facilitar o
+                acompanhamento das plantações e apoiar decisões dos produtores.
+                Sensores, sistemas de monitoramento, aplicativos e ferramentas
+                de gestão são exemplos de recursos que podem tornar o trabalho
+                mais organizado e eficiente. A aproximação entre inovação e
+                agricultura mostra que a tecnologia não está presente apenas
+                nas grandes cidades: ela também pode gerar oportunidades,
+                conhecimento e desenvolvimento para a nossa região.
+              </p>
+
+              <a href="contato.html" class="news-link">
+                Conversar sobre o assunto
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            </div>
+
+          </article>
+
+
+          <!-- CONTEÚDO 05 -->
+          <article class="news-card news-card-wide">
+
+            <div class="news-image">
+              <img
+                src="https://images.unsplash.com/photo-1605600659873-d808a13e4d9a?auto=format&fit=crop&w=1200&q=85"
+                alt="Equipamentos eletrônicos e componentes para reciclagem"
+                loading="lazy"
+              >
+              <span class="news-number">05</span>
+            </div>
+
+            <div class="news-content">
+              <span class="news-category">TECNOLOGIA SUSTENTÁVEL</span>
+
+              <h3>Sustentabilidade e lixo eletrônico</h3>
+
+              <p>
+                O avanço da tecnologia também traz uma responsabilidade:
+                pensar no destino dos equipamentos que deixam de ser utilizados.
+                Celulares, computadores, baterias e outros componentes não devem
+                ser descartados junto ao lixo comum, pois podem conter materiais
+                que prejudicam o meio ambiente. O descarte em pontos de coleta
+                apropriados permite que parte desses materiais seja encaminhada
+                para reciclagem. Além disso, cuidar dos equipamentos, realizar
+                manutenção e prolongar sua vida útil são atitudes que ajudam
+                a construir uma relação mais consciente e sustentável com a
+                tecnologia.
+              </p>
+
+              <a href="contato.html" class="news-link">
+                Conversar sobre o assunto
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            </div>
+
+          </article>
+
+        </div>
 
       </div>
 
@@ -84,10 +371,79 @@
   </main>
 
 
+  <!-- RODAPÉ -->
+  <footer class="home-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="logo.png" alt="Logo AV">
+          <span>Anne Vitória</span>
+        </a>
+
+        <p>
+          Desenvolvedora em formação.<br>
+          Aprendendo, criando e evoluindo com tecnologia.
+        </p>
+      </div>
+
+
+      <div class="footer-navigation">
+        <span class="footer-label">NAVEGUE</span>
+
+        <a href="index.html">Início</a>
+        <a href="portfolio.html">Projetos</a>
+        <a href="quemsoueu.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+
+      <div class="footer-social">
+        <span class="footer-label">REDES SOCIAIS</span>
+
+        <a href="https://github.com/Annevps"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i data-lucide="github"></i>
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i data-lucide="linkedin"></i>
+          LinkedIn
+        </a>
+
+        <a href="https://www.instagram.com/"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i data-lucide="instagram"></i>
+          Instagram
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+      <p>© <span id="current-year">2026</span> Anne Vitória. Todos os direitos reservados.</p>
+      <span>Feito com dedicação e tecnologia.</span>
+    </div>
+
+  </footer>
+
+
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 
   <script>
-    lucide.createIcons();
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
   </script>
 
 </body>
