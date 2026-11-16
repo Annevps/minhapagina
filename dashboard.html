@@ -1,16 +1,161 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Gerenciar Projetos | Anne Vitoris</title>
+
+  <title>Painel Administrativo | Anne Vitoria</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ---------- Mensagens recebidas ---------- */
+
+    .mensagens-topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mensagens-contador {
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+    }
+
+    .lista-mensagens {
+      list-style: none;
+    }
+
+    .item-mensagem {
+      border-top: 1px solid var(--borda);
+      padding: 18px 0;
+    }
+
+    .mensagem-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .mensagem-identificacao {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 180px;
+      flex: 1;
+    }
+
+    .mensagem-identificacao strong {
+      color: var(--azul);
+    }
+
+    .mensagem-identificacao span {
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .mensagem-status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: var(--azul-claro);
+      color: var(--azul);
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .mensagem-status.novo {
+      background: #fff1d6;
+      color: #855400;
+    }
+
+    .mensagem-status.andamento {
+      background: #e3eef4;
+      color: #00527c;
+    }
+
+    .mensagem-status.respondido {
+      background: #e8f6ec;
+      color: #1c6b34;
+    }
+
+    .mensagem-detalhes {
+      margin-top: 14px;
+      padding: 16px;
+      background: var(--fundo);
+      border-radius: 8px;
+    }
+
+    .mensagem-detalhes p {
+      margin-bottom: 10px;
+      overflow-wrap: anywhere;
+    }
+
+    .mensagem-detalhes p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mensagem-texto {
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .mensagem-acoes {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mensagem-acoes select {
+      min-width: 160px;
+      padding: 9px 10px;
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      background: var(--superficie);
+      color: var(--texto);
+      font: inherit;
+    }
+
+    .mensagem-acoes select:focus {
+      outline: 3px solid var(--azul-foco);
+    }
+
+    .mensagem-nova {
+      border-left: 4px solid #d99b22;
+      padding-left: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .mensagem-acoes {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .mensagem-acoes button,
+      .mensagem-acoes select {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
+  <!-- CABEÇALHO -->
   <header>
     <nav>
+
       <a href="index.html" class="logo">
         <img src="logo.png" alt="Logo do meu portfólio">
       </a>
@@ -19,40 +164,74 @@
         <li><a href="index.html">Início</a></li>
         <li><a href="quemsoueu.html">Quem sou eu</a></li>
         <li><a href="projetos.html">Portfólio</a></li>
+        <li><a href="contato.html">Contato</a></li>
       </ul>
 
       <a href="login.html" class="login" aria-label="Ir para a página de login">
         <i data-lucide="lock"></i>
       </a>
+
     </nav>
   </header>
 
+
+  <!-- PAINEL -->
   <main class="painel-pagina">
-    <p id="verificando" class="estado-vazio" role="status">Verificando acesso...</p>
+
+    <p id="verificando" class="estado-vazio" role="status">
+      Verificando acesso...
+    </p>
+
 
     <div id="painel" hidden>
+
       <div class="painel-topo">
-        <h1>Gerenciar Projetos</h1>
-        <button type="button" id="botao-sair" class="botao botao-contorno botao-pequeno">Sair</button>
+        <h1>Gerenciar Projetos e Contatos</h1>
+
+        <button
+          type="button"
+          id="botao-sair"
+          class="botao botao-contorno botao-pequeno"
+        >
+          Sair
+        </button>
       </div>
+
 
       <p id="mensagem" role="status" hidden></p>
 
+
+      <!-- CADASTRAR PROJETOS -->
       <section class="painel-bloco" aria-labelledby="titulo-form">
+
         <h2 id="titulo-form">Adicionar projeto</h2>
 
         <form id="form-projeto" novalidate>
+
           <input type="hidden" id="projeto-id">
 
           <div class="campo">
             <label for="projeto-titulo">Título</label>
-            <input type="text" id="projeto-titulo" maxlength="100" required>
+            <input
+              type="text"
+              id="projeto-titulo"
+              maxlength="100"
+              required
+            >
           </div>
 
           <div class="campo">
             <label for="projeto-imagem">Imagem de apresentação</label>
-            <input type="file" id="projeto-imagem" accept="image/png, image/jpeg, image/webp">
-            <p class="campo-dica">JPG, PNG ou WebP, até 5 MB. Ao editar, deixe vazio para manter a imagem atual.</p>
+
+            <input
+              type="file"
+              id="projeto-imagem"
+              accept="image/png, image/jpeg, image/webp"
+            >
+
+            <p class="campo-dica">
+              JPG, PNG ou WebP, até 5 MB. Ao editar, deixe vazio para manter a imagem atual.
+            </p>
           </div>
 
           <div class="previa" id="previa" hidden>
@@ -61,33 +240,121 @@
 
           <div class="campo">
             <label for="projeto-descricao">Descrição curta</label>
-            <textarea id="projeto-descricao" rows="3" maxlength="500"></textarea>
+
+            <textarea
+              id="projeto-descricao"
+              rows="3"
+              maxlength="500"
+            ></textarea>
           </div>
 
           <div class="campo">
             <label for="projeto-link">Link do projeto publicado</label>
-            <input type="url" id="projeto-link" placeholder="https://" required>
+
+            <input
+              type="url"
+              id="projeto-link"
+              placeholder="https://"
+              required
+            >
           </div>
 
           <div class="form-acoes">
-            <button type="submit" id="botao-salvar" class="botao">Adicionar projeto</button>
-            <button type="button" id="botao-cancelar" class="botao botao-contorno" hidden>Cancelar edição</button>
+
+            <button
+              type="submit"
+              id="botao-salvar"
+              class="botao"
+            >
+              Adicionar projeto
+            </button>
+
+            <button
+              type="button"
+              id="botao-cancelar"
+              class="botao botao-contorno"
+              hidden
+            >
+              Cancelar edição
+            </button>
+
           </div>
+
         </form>
+
       </section>
 
+
+      <!-- LISTA DE PROJETOS -->
       <section class="painel-bloco" aria-labelledby="titulo-lista">
+
         <h2 id="titulo-lista">Projetos cadastrados</h2>
-        <p id="lista-estado" class="estado-vazio" role="status">Carregando projetos...</p>
+
+        <p id="lista-estado" class="estado-vazio" role="status">
+          Carregando projetos...
+        </p>
+
         <ul id="lista-projetos" class="lista-projetos"></ul>
+
       </section>
+
+
+      <!-- MENSAGENS DE CONTATO -->
+      <section class="painel-bloco" aria-labelledby="titulo-mensagens">
+
+        <div class="mensagens-topo">
+
+          <div>
+            <h2 id="titulo-mensagens">Mensagens recebidas</h2>
+
+            <p id="mensagens-contador" class="mensagens-contador">
+              Carregando mensagens...
+            </p>
+          </div>
+
+          <button
+            type="button"
+            id="botao-atualizar-mensagens"
+            class="botao botao-contorno botao-pequeno"
+          >
+            Atualizar mensagens
+          </button>
+
+        </div>
+
+
+        <p
+          id="mensagens-estado"
+          class="estado-vazio"
+          role="status"
+        >
+          Carregando mensagens...
+        </p>
+
+
+        <ul id="lista-mensagens" class="lista-mensagens"></ul>
+
+      </section>
+
     </div>
+
   </main>
 
+
+  <!-- BIBLIOTECA DE ÍCONES -->
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script>lucide.createIcons();</script>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+
+  <!-- SUPABASE -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
   <script src="config.js"></script>
+
   <script src="dashboard.js"></script>
+
 </body>
 </html>
