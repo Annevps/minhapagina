@@ -936,3 +936,65 @@ nav {
     justify-content: flex-start;
   }
 }
+
+/* =========================================================
+   PÁGINA PÚBLICA DE PROJETOS — IDENTIDADE AZUL AV
+========================================================= */
+.pagina-projetos {
+  background: radial-gradient(ellipse at 88% 0%, rgba(0,82,124,.07), transparent 34%), var(--fundo);
+}
+.pagina-projetos .projetos-pagina { max-width:1160px; padding:68px 28px 76px; }
+.pagina-projetos .projetos-topo { max-width:690px; margin:0 auto 30px; text-align:center; }
+.pagina-projetos .projetos-etiqueta {
+  display:inline-flex; align-items:center; gap:8px; padding:7px 13px; margin-bottom:15px;
+  color:var(--azul); background:var(--azul-claro); border:1px solid #d4e5ee;
+  border-radius:30px; font-size:.72rem; font-weight:800; letter-spacing:.07em;
+}
+.pagina-projetos .projetos-etiqueta svg { width:15px; height:15px; }
+.pagina-projetos .projetos-topo h1 {
+  margin-bottom:12px; color:var(--texto); font-size:clamp(2.35rem,5vw,3.5rem);
+  line-height:1.08; letter-spacing:-.055em;
+}
+.pagina-projetos .projetos-topo h1 span { color:var(--azul); }
+.pagina-projetos .projetos-topo p { max-width:590px; margin:0 auto; color:var(--texto-suave); font-size:1rem; line-height:1.75; }
+.pagina-projetos .projetos-filtros { display:flex; justify-content:center; flex-wrap:wrap; gap:9px; margin:0 auto 32px; }
+.pagina-projetos .filtro-projeto {
+  padding:10px 16px; color:var(--texto-suave); background:#fff; border:1px solid var(--borda);
+  border-radius:30px; font:inherit; font-size:.88rem; font-weight:650; cursor:pointer;
+  transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.pagina-projetos .filtro-projeto:hover { color:var(--azul); border-color:#a9c6d6; transform:translateY(-1px); }
+.pagina-projetos .filtro-projeto.ativo { color:#fff; background:var(--azul); border-color:var(--azul); box-shadow:0 5px 14px rgba(0,82,124,.16); }
+.pagina-projetos .grade-projetos { grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; gap:23px; }
+.pagina-projetos .card-projeto {
+  min-width:0; border:1px solid var(--borda); border-radius:15px;
+  box-shadow:0 7px 22px rgba(28,57,75,.055);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.pagina-projetos .card-projeto:hover { transform:translateY(-5px); border-color:#a9c6d6; box-shadow:0 16px 34px rgba(0,82,124,.12); }
+.pagina-projetos .card-projeto img { aspect-ratio:16/10; object-fit:cover; background:var(--azul-claro); }
+.pagina-projetos .card-corpo { gap:11px; padding:19px; }
+.pagina-projetos .projeto-categoria { width:fit-content; padding:5px 9px; color:var(--azul); background:var(--azul-claro); border-radius:20px; font-size:.7rem; font-weight:750; }
+.pagina-projetos .card-corpo h2 { color:var(--texto); font-size:1.16rem; line-height:1.35; }
+.pagina-projetos .card-corpo p { color:var(--texto-suave); font-size:.91rem; line-height:1.65; }
+.pagina-projetos .projeto-acoes { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:auto; padding-top:5px; }
+.pagina-projetos .projeto-acoes .botao { padding:10px 14px; font-size:.84rem; border-radius:8px; }
+.pagina-projetos .projeto-codigo { display:inline-flex; align-items:center; gap:6px; color:var(--azul); font-size:.84rem; font-weight:700; text-decoration:none; }
+.pagina-projetos .projeto-codigo:hover { text-decoration:underline; }
+.pagina-projetos .projeto-codigo svg { width:15px; height:15px; }
+.pagina-projetos .projetos-final { max-width:720px; margin:42px auto 0; color:var(--texto-suave); text-align:center; font-size:.94rem; line-height:1.7; }
+.pagina-projetos .estado-vazio { text-align:center; padding:28px 12px; }
+@media(max-width:900px) { .pagina-projetos .grade-projetos { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) {
+ .pagina-projetos .projetos-pagina { padding:48px 18px 58px; }
+ .pagina-projetos .projetos-topo { text-align:left; }
+ .pagina-projetos .projetos-topo p { margin:0; font-size:.94rem; }
+ .pagina-projetos .projetos-filtros { justify-content:flex-start; gap:7px; margin-bottom:24px; }
+ .pagina-projetos .filtro-projeto { padding:9px 12px; font-size:.8rem; }
+ .pagina-projetos .grade-projetos { grid-template-columns:1fr; gap:17px; }
+ .pagina-projetos .card-projeto img { aspect-ratio:16/9; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .pagina-projetos .card-projeto,.pagina-projetos .filtro-projeto { transition:none; }
+ .pagina-projetos .card-projeto:hover,.pagina-projetos .filtro-projeto:hover { transform:none; }
+}
