@@ -1,12 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projetos e sites desenvolvidos por Anne Vitoris.">
-  <title>Portfólio | Anne Vitoris</title>
+
+  <meta name="description" content="Projetos e sites desenvolvidos por Anne Vitória.">
+
+  <title>Portfólio | Anne Vitória</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="pagina-projetos">
 
   <header>
@@ -28,30 +33,90 @@
   </header>
 
   <main class="projetos-pagina">
+
     <section class="projetos-topo" aria-labelledby="titulo-projetos">
-      <span class="projetos-etiqueta"><i data-lucide="code-2"></i> MEU TRABALHO</span>
-      <h1 id="titulo-projetos">Meus <span>Projetos.</span></h1>
-      <p>Conheça projetos, experiências práticas e soluções que fazem parte da minha evolução na tecnologia.</p>
+
+      <span class="projetos-etiqueta">
+        <i data-lucide="code-2"></i>
+        MEU TRABALHO
+      </span>
+
+      <h1 id="titulo-projetos">
+        Meus <span>Projetos.</span>
+      </h1>
+
+      <p>
+        Conheça projetos, experiências práticas e soluções
+        que fazem parte da minha evolução na tecnologia.
+      </p>
+
     </section>
 
     <section class="projetos-filtros" aria-label="Filtrar projetos">
-      <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true">Todos</button>
-      <button class="filtro-projeto" type="button" data-filtro="Desenvolvimento Web" aria-pressed="false">Desenvolvimento Web</button>
-      <button class="filtro-projeto" type="button" data-filtro="Sistemas" aria-pressed="false">Sistemas</button>
-      <button class="filtro-projeto" type="button" data-filtro="Interfaces" aria-pressed="false">Interfaces</button>
-      <button class="filtro-projeto" type="button" data-filtro="Outros" aria-pressed="false">Outros</button>
+
+      <button class="filtro-projeto ativo"
+        type="button"
+        data-filtro="Todos"
+        aria-pressed="true">
+        Todos
+      </button>
+
+      <button class="filtro-projeto"
+        type="button"
+        data-filtro="Desenvolvimento Web"
+        aria-pressed="false">
+        Desenvolvimento Web
+      </button>
+
+      <button class="filtro-projeto"
+        type="button"
+        data-filtro="Sistemas"
+        aria-pressed="false">
+        Sistemas
+      </button>
+
+      <button class="filtro-projeto"
+        type="button"
+        data-filtro="Interfaces"
+        aria-pressed="false">
+        Interfaces
+      </button>
+
+      <button class="filtro-projeto"
+        type="button"
+        data-filtro="Outros"
+        aria-pressed="false">
+        Outros
+      </button>
+
     </section>
 
-    <p id="estado" class="estado-vazio" role="status" aria-live="polite">Carregando projetos...</p>
-    <ul id="grade-projetos" class="grade-projetos" aria-label="Lista de projetos"></ul>
+    <p id="estado"
+      class="estado-vazio"
+      role="status"
+      aria-live="polite">
+      Carregando projetos...
+    </p>
 
-    <p class="projetos-final">Cada projeto representa uma nova experiência e evolução na minha jornada como desenvolvedora.</p>
+    <ul id="grade-projetos"
+      class="grade-projetos"
+      aria-label="Lista de projetos">
+    </ul>
+
+    <p class="projetos-final">
+      Cada projeto representa uma nova experiência e evolução
+      na minha jornada como desenvolvedora.
+    </p>
+
   </main>
 
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
   <script src="config.js"></script>
   <script src="projetos.js"></script>
+
 </body>
 </html>
