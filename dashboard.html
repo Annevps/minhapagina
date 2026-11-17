@@ -249,6 +249,22 @@
           </div>
 
           <div class="campo">
+            <label for="projeto-categoria">Categoria do projeto</label>
+            <select id="projeto-categoria" required>
+              <option value="Desenvolvimento Web">Desenvolvimento Web</option>
+              <option value="Sistemas">Sistemas</option>
+              <option value="Interfaces">Interfaces</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="projeto-github">Link do código-fonte (opcional)</label>
+            <input type="url" id="projeto-github" placeholder="https://github.com/usuario/repositorio">
+            <p class="campo-dica">Deixe vazio se o repositório não for público.</p>
+          </div>
+
+          <div class="campo">
             <label for="projeto-link">Link do projeto publicado</label>
 
             <input
