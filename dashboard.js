@@ -330,6 +330,11 @@ formulario.addEventListener("submit", async function (evento) {
     return;
   }
 
+  if (github && !/^https?:\/\/.+/i.test(github)) {
+    mostrarMensagem("O link do GitHub precisa começar com http:// ou https://", "erro");
+    return;
+  }
+
   if (!/^https?:\/\/.+/i.test(link)) {
     mostrarMensagem(
       "O link precisa começar com http:// ou https://",
