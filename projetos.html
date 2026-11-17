@@ -7,7 +7,7 @@
   <title>Portfólio | Anne Vitoris</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="pagina-projetos">
 
   <header>
     <nav>
@@ -28,13 +28,24 @@
   </header>
 
   <main class="projetos-pagina">
-    <section class="projetos-topo">
-      <h1>Meus projetos</h1>
-      <p>Sites e trabalhos que desenvolvi ao longo da minha jornada.</p>
+    <section class="projetos-topo" aria-labelledby="titulo-projetos">
+      <span class="projetos-etiqueta"><i data-lucide="code-2"></i> MEU TRABALHO</span>
+      <h1 id="titulo-projetos">Meus <span>Projetos.</span></h1>
+      <p>Conheça projetos, experiências práticas e soluções que fazem parte da minha evolução na tecnologia.</p>
     </section>
 
-    <p id="estado" class="estado-vazio" role="status">Carregando projetos...</p>
-    <ul id="grade-projetos" class="grade-projetos"></ul>
+    <section class="projetos-filtros" aria-label="Filtrar projetos">
+      <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true">Todos</button>
+      <button class="filtro-projeto" type="button" data-filtro="Desenvolvimento Web" aria-pressed="false">Desenvolvimento Web</button>
+      <button class="filtro-projeto" type="button" data-filtro="Sistemas" aria-pressed="false">Sistemas</button>
+      <button class="filtro-projeto" type="button" data-filtro="Interfaces" aria-pressed="false">Interfaces</button>
+      <button class="filtro-projeto" type="button" data-filtro="Outros" aria-pressed="false">Outros</button>
+    </section>
+
+    <p id="estado" class="estado-vazio" role="status" aria-live="polite">Carregando projetos...</p>
+    <ul id="grade-projetos" class="grade-projetos" aria-label="Lista de projetos"></ul>
+
+    <p class="projetos-final">Cada projeto representa uma nova experiência e evolução na minha jornada como desenvolvedora.</p>
   </main>
 
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
