@@ -6,38 +6,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Conheça os projetos e sites desenvolvidos por Anne Vitoria.">
+  <meta name="description" content="Conheça os projetos de desenvolvimento web, sistemas e tecnologia desenvolvidos por Anne Vitória.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#f7f9fc">
 
-  <title>Meu Portfólio | Anne Vitoria</title>
+  <title>Projetos | Anne Vitória</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 
-<body>
+<body class="home-page pagina-projetos">
 
-  <!-- MENU -->
-  <header>
-    <nav>
+  <!-- CABEÇALHO IGUAL AO DA PÁGINA INICIAL -->
+  <header class="home-header">
+    <nav class="home-nav" aria-label="Navegação principal">
 
-      <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo do meu portfólio">
+      <a href="index.html" class="home-logo">
+        <img src="logo.png" alt="Logo AV">
+        <span>Anne Vitória</span>
       </a>
 
-      <ul class="links">
-        <li>
-          <a href="index.html">Início</a>
-        </li>
-
-        <li>
-          <a href="quemsoueu.html">Quem sou eu</a>
-        </li>
-
-        <li>
-          <a href="portfolio.html" aria-current="page">Portfólio</a>
-        </li>
+      <ul class="home-links">
+        <li><a href="index.html#habilidades">Habilidades</a></li>
+        <li><a href="portfolio.html" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="quemsoueu.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
       </ul>
 
-      <a href="login.html" class="login" aria-label="Acessar painel administrativo">
+      <a href="login.html" class="home-login" aria-label="Acessar painel administrativo">
         <i data-lucide="lock"></i>
       </a>
 
@@ -45,184 +47,160 @@
   </header>
 
 
-  <!-- CONTEÚDO PRINCIPAL -->
   <main class="projetos-pagina">
 
-    <section class="projetos-topo">
+    <!-- APRESENTAÇÃO -->
+    <section class="projetos-topo" aria-labelledby="titulo-projetos">
 
-      <h1>Meus projetos</h1>
+      <span class="projetos-etiqueta">
+        <i data-lucide="code-2"></i>
+        MEU PORTFÓLIO
+      </span>
+
+      <h1 id="titulo-projetos">
+        Meus <span>projetos.</span>
+      </h1>
 
       <p>
-        Conheça alguns dos projetos que desenvolvi durante minha
-        jornada na programação e no desenvolvimento web.
+        Conheça alguns dos projetos que desenvolvi durante minha jornada
+        na programação e no desenvolvimento web.
       </p>
+
+      <div class="projetos-divisor" aria-hidden="true">
+        <span></span>
+        <i data-lucide="sparkles"></i>
+        <span></span>
+      </div>
 
     </section>
 
 
-    <!-- MENSAGEM DE CARREGAMENTO OU ERRO -->
-    <p
-      id="estado"
-      class="estado-vazio"
-      role="status"
-      aria-live="polite"
-    >
-      Carregando projetos...
+    <!-- FILTROS -->
+    <section class="projetos-filtros" aria-label="Filtrar projetos">
+
+      <button class="filtro-projeto ativo" type="button"
+        data-filtro="Todos" aria-pressed="true">
+        <i data-lucide="layout-grid"></i>
+        Todos
+      </button>
+
+      <button class="filtro-projeto" type="button"
+        data-filtro="Desenvolvimento Web" aria-pressed="false">
+        <i data-lucide="monitor"></i>
+        Sites
+      </button>
+
+      <button class="filtro-projeto" type="button"
+        data-filtro="Sistemas" aria-pressed="false">
+        <i data-lucide="settings"></i>
+        Sistemas
+      </button>
+
+      <button class="filtro-projeto" type="button"
+        data-filtro="Interfaces" aria-pressed="false">
+        <i data-lucide="panels-top-left"></i>
+        Interfaces
+      </button>
+
+      <button class="filtro-projeto" type="button"
+        data-filtro="Outros" aria-pressed="false">
+        <i data-lucide="palette"></i>
+        Outros
+      </button>
+
+    </section>
+
+
+    <!-- CONTEÚDO DOS PROJETOS -->
+    <section class="projetos-layout" aria-label="Projetos publicados">
+
+      <div class="projetos-listagem">
+
+        <p id="estado" class="estado-vazio" role="status" aria-live="polite">
+          Carregando projetos...
+        </p>
+
+        <ul id="grade-projetos" class="grade-projetos"
+          aria-label="Lista de projetos">
+        </ul>
+
+      </div>
+
+
+      <!-- ILUSTRAÇÃO DECORATIVA -->
+      <aside class="projetos-visual" aria-label="Ilustração de tecnologia">
+
+        <div class="visual-orbita orbita-um"></div>
+        <div class="visual-orbita orbita-dois"></div>
+
+        <div class="visual-icone visual-laptop">
+          <i data-lucide="laptop"></i>
+        </div>
+
+        <div class="visual-tela">
+          <i data-lucide="code-2"></i>
+
+          <span>CRIANDO O PRÓXIMO PROJETO</span>
+
+          <div class="visual-linhas">
+            <b></b>
+            <b></b>
+            <b></b>
+          </div>
+        </div>
+
+        <div class="visual-icone visual-engrenagem">
+          <i data-lucide="settings"></i>
+        </div>
+
+        <div class="visual-icone visual-banco">
+          <i data-lucide="database"></i>
+        </div>
+
+        <p class="visual-legenda">
+          Ideias que ganham vida através da tecnologia.
+        </p>
+
+      </aside>
+
+    </section>
+
+
+    <!-- MENSAGEM FINAL -->
+    <p class="projetos-final">
+      <i data-lucide="rocket"></i>
+      Em breve, mais projetos por aqui!
     </p>
 
-
-    <!-- PROJETOS VINDOS DO BANCO DE DADOS -->
-    <ul
-      id="grade-projetos"
-      class="grade-projetos"
-      aria-label="Lista de projetos"
-    ></ul>
-
   </main>
+
+
+  <footer class="rodape-projetos">
+    <p>
+      © <span id="ano-atual"></span> Anne Vitória.
+      Desenvolvendo ideias com tecnologia.
+    </p>
+  </footer>
 
 
   <!-- BIBLIOTECAS -->
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 
-  <script>
-    lucide.createIcons();
-  </script>
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 
-  <!-- CONFIGURAÇÃO DO SUPABASE -->
+  <!-- CONFIGURAÇÃO DO BANCO -->
   <script src="config.js"></script>
 
-
   <!-- CARREGAMENTO DOS PROJETOS -->
+  <script src="projetos.js"></script>
+
   <script>
+    document.getElementById("ano-atual").textContent =
+      new Date().getFullYear();
 
-    const gradeProjetos = document.getElementById("grade-projetos");
-    const estado = document.getElementById("estado");
-
-
-    // Cria o card de cada projeto
-    function criarCard(projeto) {
-
-      const item = document.createElement("li");
-      item.className = "card-projeto";
-
-
-      // Imagem
-      const imagem = document.createElement("img");
-
-      imagem.src = urlImagem(projeto.imagem_path);
-
-      imagem.alt = "Imagem do projeto " + projeto.titulo;
-
-      imagem.loading = "lazy";
-
-
-      // Corpo do card
-      const corpo = document.createElement("div");
-
-      corpo.className = "card-corpo";
-
-
-      // Título
-      const titulo = document.createElement("h2");
-
-      titulo.textContent = projeto.titulo;
-
-
-      // Descrição
-      const descricao = document.createElement("p");
-
-      descricao.textContent = projeto.descricao || "Projeto desenvolvido por Anne Vitoria.";
-
-
-      // Botão para acessar o projeto
-      const botao = document.createElement("a");
-
-      botao.className = "botao";
-
-      botao.textContent = "Ver projeto";
-
-      botao.href = projeto.link;
-
-      botao.target = "_blank";
-
-      botao.rel = "noopener noreferrer";
-
-
-      // Montagem do card
-      corpo.append(titulo, descricao, botao);
-
-      item.append(imagem, corpo);
-
-      return item;
+    if (window.lucide) {
+      window.lucide.createIcons();
     }
-
-
-    // Busca os projetos cadastrados no Supabase
-    async function carregarProjetos() {
-
-      estado.hidden = false;
-
-      estado.textContent = "Carregando projetos...";
-
-      gradeProjetos.replaceChildren();
-
-
-      try {
-
-        const { data, error } = await db
-
-          .from("projetos")
-
-          .select("*")
-
-          .order("criado_em", { ascending: false });
-
-
-        if (error) {
-          throw error;
-        }
-
-
-        // Verifica se existem projetos
-        if (!data || data.length === 0) {
-
-          estado.textContent = "Nenhum projeto cadastrado ainda.";
-
-          return;
-        }
-
-
-        // Exibe os projetos
-        data.forEach(function(projeto) {
-
-          const card = criarCard(projeto);
-
-          gradeProjetos.appendChild(card);
-
-        });
-
-
-        estado.hidden = true;
-
-      }
-
-      catch (erro) {
-
-        console.error("Erro ao carregar projetos:", erro);
-
-        estado.textContent =
-          "Não foi possível carregar os projetos. Tente novamente mais tarde.";
-
-      }
-
-    }
-
-
-    // Inicia o carregamento
-    carregarProjetos();
-
   </script>
 
 </body>
