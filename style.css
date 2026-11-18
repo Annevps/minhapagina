@@ -1019,7 +1019,7 @@ nav {
 .pagina-projetos .projetos-divisor span:last-child { transform:rotate(180deg); }
 .pagina-projetos .projetos-divisor svg { width:20px; height:20px; }
 .pagina-projetos .projetos-filtros { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:0 auto 28px; }
-.pagina-projetos .filtro-projeto { display:inline-flex; align-items:center; gap:8px; padding:11px 17px; border:1px solid var(--borda); border-radius:30px; background:var(--superficie); color:var(--texto-suave); font:600 .9rem inherit; cursor:pointer; transition:.2s ease; }
+.pagina-projetos .filtro-projeto { display:inline-flex; align-items:center; gap:8px; padding:11px 17px; border:1px solid var(--borda); border-radius:30px; background:var(--superficie); color:var(--texto-suave); font-family:inherit; font-size:.9rem; font-weight:600; cursor:pointer; transition:.2s ease; }
 .pagina-projetos .filtro-projeto svg { width:17px; height:17px; }
 .pagina-projetos .filtro-projeto:hover { border-color:#9dbdce; color:var(--azul); transform:translateY(-2px); }
 .pagina-projetos .filtro-projeto.ativo { color:#fff; background:var(--azul); border-color:var(--azul); box-shadow:0 6px 16px rgba(0,82,124,.18); }
