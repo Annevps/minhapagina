@@ -17,6 +17,7 @@ const campoDescricao = document.getElementById("projeto-descricao");
 const campoLink = document.getElementById("projeto-link");
 const campoCategoria = document.getElementById("projeto-categoria");
 const campoGithub = document.getElementById("projeto-github");
+const campoDestaque = document.getElementById("projeto-destaque");
 const previa = document.getElementById("previa");
 const previaImg = document.getElementById("previa-img");
 const botaoSalvar = document.getElementById("botao-salvar");
@@ -254,6 +255,7 @@ function resetarFormulario() {
   formulario.reset();
 
   campoId.value = "";
+  campoDestaque.checked = false;
 
   tituloForm.textContent = "Adicionar projeto";
   botaoSalvar.textContent = "Adicionar projeto";
@@ -274,6 +276,7 @@ function editarProjeto(projeto) {
   campoLink.value = projeto.link;
   campoCategoria.value = projeto.categoria || "Outros";
   campoGithub.value = projeto.github_url || "";
+  campoDestaque.checked = projeto.destaque === true;
 
   campoImagem.value = "";
 
@@ -323,6 +326,7 @@ formulario.addEventListener("submit", async function (evento) {
   const link = campoLink.value.trim();
   const categoria = campoCategoria.value;
   const github = campoGithub.value.trim();
+  const destaque = campoDestaque.checked;
   const arquivo = campoImagem.files[0];
 
   if (titulo === "") {
@@ -386,7 +390,8 @@ formulario.addEventListener("submit", async function (evento) {
         descricao: descricao,
         link: link,
         categoria: categoria,
-        github_url: github || null
+        github_url: github || null,
+        destaque: destaque
       };
 
       if (novoCaminho) {
@@ -418,6 +423,7 @@ formulario.addEventListener("submit", async function (evento) {
           link: link,
           categoria: categoria,
           github_url: github || null,
+          destaque: destaque,
           imagem_path: novoCaminho
         });
 
