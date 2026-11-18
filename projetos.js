@@ -12,6 +12,28 @@ const botoesFiltro = document.querySelectorAll(".filtro-projeto");
 let projetosPublicos = [];
 let filtroAtual = "Todos";
 
+const observadorRevelacao = "IntersectionObserver" in window
+  ? new IntersectionObserver((entradas, observador) => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visivel");
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" })
+  : null;
+
+function animarEntrada(elemento) {
+  if (!elemento) return;
+  elemento.classList.add("portfolio-reveal");
+  if (observadorRevelacao) {
+    observadorRevelacao.observe(elemento);
+  } else {
+    elemento.classList.add("visivel");
+  }
+}
+
+
 function criarElemento(tag, classe, texto) {
   const elemento = document.createElement(tag);
   if (classe) elemento.className = classe;
@@ -87,6 +109,7 @@ function criarCardProjeto(projeto, destaque = false) {
   rodape.appendChild(acoes);
   conteudo.append(meta, titulo, descricao, rodape);
   card.append(imagemLink, conteudo);
+  animarEntrada(card);
   return card;
 }
 
