@@ -47,131 +47,63 @@
   </header>
 
 
-  <main class="projetos-pagina">
+  <main class="projetos-pagina portfolio-projetos">
+    <section class="portfolio-projetos-hero" aria-labelledby="titulo-projetos">
+      <div class="portfolio-projetos-hero-texto">
+        <span class="portfolio-kicker"><i data-lucide="layers"></i> PORTFÓLIO & EXPERIÊNCIA</span>
+        <h1 id="titulo-projetos">Projetos que transformam <span>ideias em soluções.</span></h1>
+        <p>Uma seleção de trabalhos, experiências e soluções desenvolvidas com tecnologia, criatividade e atenção aos detalhes.</p>
+      </div>
+      <div class="portfolio-projetos-resumo" aria-label="Sobre os projetos">
+        <span class="resumo-icone"><i data-lucide="code-2"></i></span>
+        <strong>Do conceito à execução</strong>
+        <span>Conheça um pouco do meu processo de criação.</span>
+      </div>
+    </section>
 
-    <!-- APRESENTAÇÃO -->
-    <section class="projetos-topo" aria-labelledby="titulo-projetos">
+    <section class="portfolio-destaques" aria-labelledby="titulo-destaques">
+      <div class="portfolio-section-heading">
+        <div>
+          <span class="portfolio-kicker">SELEÇÃO ESPECIAL</span>
+          <h2 id="titulo-destaques">Projetos em <span>destaque</span></h2>
+          <p>Trabalhos selecionados para apresentar um pouco do que sou capaz de desenvolver.</p>
+        </div>
+        <span class="portfolio-section-index">01 / DESTAQUES</span>
+      </div>
+      <p id="estado-destaques" class="portfolio-estado" role="status" aria-live="polite">Carregando projetos em destaque...</p>
+      <ul id="grade-destaques" class="portfolio-grade-destaques" aria-label="Projetos em destaque"></ul>
+    </section>
 
-      <span class="projetos-etiqueta">
-        <i data-lucide="code-2"></i>
-        MEU PORTFÓLIO
-      </span>
-
-      <h1 id="titulo-projetos">
-        Meus <span>projetos.</span>
-      </h1>
-
-      <p>
-        Conheça alguns dos projetos que desenvolvi durante minha jornada
-        na programação e no desenvolvimento web.
-      </p>
-
-      <div class="projetos-divisor" aria-hidden="true">
-        <span></span>
-        <i data-lucide="sparkles"></i>
-        <span></span>
+    <section class="portfolio-todos" aria-labelledby="titulo-todos-projetos">
+      <div class="portfolio-section-heading portfolio-todos-heading">
+        <div>
+          <span class="portfolio-kicker">EXPLORAR TRABALHOS</span>
+          <h2 id="titulo-todos-projetos">Todos os <span>projetos</span></h2>
+          <p>Explore os projetos por área de desenvolvimento.</p>
+        </div>
+        <span class="portfolio-section-index">02 / PROJETOS</span>
       </div>
 
-    </section>
-
-
-    <!-- FILTROS -->
-    <section class="projetos-filtros" aria-label="Filtrar projetos">
-
-      <button class="filtro-projeto ativo" type="button"
-        data-filtro="Todos" aria-pressed="true">
-        <i data-lucide="layout-grid"></i>
-        Todos
-      </button>
-
-      <button class="filtro-projeto" type="button"
-        data-filtro="Desenvolvimento Web" aria-pressed="false">
-        <i data-lucide="monitor"></i>
-        Sites
-      </button>
-
-      <button class="filtro-projeto" type="button"
-        data-filtro="Sistemas" aria-pressed="false">
-        <i data-lucide="settings"></i>
-        Sistemas
-      </button>
-
-      <button class="filtro-projeto" type="button"
-        data-filtro="Interfaces" aria-pressed="false">
-        <i data-lucide="panels-top-left"></i>
-        Interfaces
-      </button>
-
-      <button class="filtro-projeto" type="button"
-        data-filtro="Outros" aria-pressed="false">
-        <i data-lucide="palette"></i>
-        Outros
-      </button>
-
-    </section>
-
-
-    <!-- CONTEÚDO DOS PROJETOS -->
-    <section class="projetos-layout" aria-label="Projetos publicados">
-
-      <div class="projetos-listagem">
-
-        <p id="estado" class="estado-vazio" role="status" aria-live="polite">
-          Carregando projetos...
-        </p>
-
-        <ul id="grade-projetos" class="grade-projetos"
-          aria-label="Lista de projetos">
-        </ul>
-
+      <div class="portfolio-filtros" role="group" aria-label="Filtrar projetos">
+        <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true">Todos</button>
+        <button class="filtro-projeto" type="button" data-filtro="Desenvolvimento Web" aria-pressed="false">Desenvolvimento web</button>
+        <button class="filtro-projeto" type="button" data-filtro="Sistemas" aria-pressed="false">Sistemas</button>
+        <button class="filtro-projeto" type="button" data-filtro="Interfaces" aria-pressed="false">Interfaces</button>
+        <button class="filtro-projeto" type="button" data-filtro="Outros" aria-pressed="false">Outros</button>
       </div>
 
-
-      <!-- ILUSTRAÇÃO DECORATIVA -->
-      <aside class="projetos-visual" aria-label="Ilustração de tecnologia">
-
-        <div class="visual-orbita orbita-um"></div>
-        <div class="visual-orbita orbita-dois"></div>
-
-        <div class="visual-icone visual-laptop">
-          <i data-lucide="laptop"></i>
-        </div>
-
-        <div class="visual-tela">
-          <i data-lucide="code-2"></i>
-
-          <span>CRIANDO O PRÓXIMO PROJETO</span>
-
-          <div class="visual-linhas">
-            <b></b>
-            <b></b>
-            <b></b>
-          </div>
-        </div>
-
-        <div class="visual-icone visual-engrenagem">
-          <i data-lucide="settings"></i>
-        </div>
-
-        <div class="visual-icone visual-banco">
-          <i data-lucide="database"></i>
-        </div>
-
-        <p class="visual-legenda">
-          Ideias que ganham vida através da tecnologia.
-        </p>
-
-      </aside>
-
+      <p id="estado" class="portfolio-estado" role="status" aria-live="polite">Carregando projetos...</p>
+      <ul id="grade-projetos" class="portfolio-grade-projetos" aria-label="Todos os projetos"></ul>
     </section>
 
-
-    <!-- MENSAGEM FINAL -->
-    <p class="projetos-final">
-      <i data-lucide="rocket"></i>
-      Em breve, mais projetos por aqui!
-    </p>
-
+    <section class="portfolio-projetos-cta" aria-label="Contato">
+      <div>
+        <span class="portfolio-kicker">VAMOS CONVERSAR?</span>
+        <h2>Tem uma ideia em mente?</h2>
+        <p>Estou aberta a conhecer novas ideias, desafios e oportunidades.</p>
+      </div>
+      <a href="contato.html" class="portfolio-cta-link">Entre em contato <i data-lucide="arrow-up-right"></i></a>
+    </section>
   </main>
 
 
