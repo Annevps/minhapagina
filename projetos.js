@@ -7,10 +7,13 @@ const gradeDestaques = document.getElementById("grade-destaques");
 const estadoDestaques = document.getElementById("estado-destaques");
 const gradeProjetos = document.getElementById("grade-projetos");
 const estadoProjetos = document.getElementById("estado");
-const botoesFiltro = document.querySelectorAll(".filtro-projeto");
+const areaFiltros = document.getElementById("filtros-projetos");
+let botoesFiltro = [];
 
 let projetosPublicos = [];
 let filtroAtual = "Todos";
+
+const secaoDestaques = document.querySelector(".portfolio-destaques");
 
 const observadorRevelacao = "IntersectionObserver" in window
   ? new IntersectionObserver((entradas, observador) => {
@@ -124,12 +127,15 @@ function renderizarProjetos() {
   const destaques = filtrados.filter(projeto => projeto.destaque === true);
   const demais = filtrados.filter(projeto => projeto.destaque !== true);
 
+  if (secaoDestaques) secaoDestaques.hidden = destaques.length === 0 && filtroAtual === "Todos";
+
   gradeDestaques.replaceChildren();
   gradeProjetos.replaceChildren();
 
   if (destaques.length) {
     estadoDestaques.hidden = true;
     destaques.forEach(projeto => gradeDestaques.appendChild(criarCardProjeto(projeto, true)));
+    if (destaques.length === 1) gradeDestaques.firstElementChild.classList.add("portfolio-card-destaque-unico");
   } else {
     estadoDestaques.textContent = filtroAtual === "Todos"
       ? "Ainda não há projetos selecionados para destaque."
@@ -150,17 +156,30 @@ function renderizarProjetos() {
   if (window.lucide) window.lucide.createIcons();
 }
 
-botoesFiltro.forEach(botao => {
-  botao.addEventListener("click", () => {
-    filtroAtual = botao.dataset.filtro;
-    botoesFiltro.forEach(item => {
-      const ativo = item === botao;
-      item.classList.toggle("ativo", ativo);
-      item.setAttribute("aria-pressed", String(ativo));
+function criarFiltrosCategorias() {
+  const categorias = [...new Set(
+    projetosPublicos.map(projeto => (projeto.categoria || "Outros").trim()).filter(Boolean)
+  )].sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+  areaFiltros.replaceChildren();
+  ["Todos", ...categorias].forEach((categoria, indice) => {
+    const botao = criarElemento("button", "filtro-projeto" + (indice === 0 ? " ativo" : ""), categoria);
+    botao.type = "button";
+    botao.dataset.filtro = categoria;
+    botao.setAttribute("aria-pressed", String(indice === 0));
+    botao.addEventListener("click", () => {
+      filtroAtual = categoria;
+      botoesFiltro.forEach(item => {
+        const ativo = item === botao;
+        item.classList.toggle("ativo", ativo);
+        item.setAttribute("aria-pressed", String(ativo));
+      });
+      renderizarProjetos();
     });
-    renderizarProjetos();
+    areaFiltros.appendChild(botao);
   });
-});
+  botoesFiltro = [...areaFiltros.querySelectorAll(".filtro-projeto")];
+}
 
 async function carregarProjetosPublicos() {
   estadoDestaques.textContent = "Carregando projetos em destaque...";
@@ -177,6 +196,7 @@ async function carregarProjetosPublicos() {
     if (error) throw error;
 
     projetosPublicos = data || [];
+    criarFiltrosCategorias();
     renderizarProjetos();
   } catch (erro) {
     console.error("Erro ao carregar projetos:", erro);
