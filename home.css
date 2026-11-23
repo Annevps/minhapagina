@@ -1998,3 +1998,5 @@
  .home-page .news-section{padding:62px 0 68px}
  .home-page .home-footer .footer-container{padding:45px 0}
 }
+
+.home-page .footer-brand-mark{width:38px;height:38px;display:grid;place-items:center;flex:0 0 38px;border:1px solid rgba(0,82,124,.18);border-radius:11px;background:linear-gradient(145deg,#eaf3f8,#fff);color:#00527c;font:700 14px/1 "Space Grotesk",sans-serif;letter-spacing:-1px;box-shadow:0 4px 12px rgba(0,82,124,.07)}
