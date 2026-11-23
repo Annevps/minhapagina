@@ -51,23 +51,28 @@
     return a;
   }
 
-  function criarImagem(projeto) {
+  function criarImagem(projeto, prioridade = false) {
     const figura = elemento("div", "project-image-frame");
     const src = urlImagem(projeto.imagem_path);
     if (src) {
       const img = elemento("img");
-      img.src = src;
       img.alt = "Imagem do projeto " + (projeto.titulo || "");
-      img.loading = "lazy";
+      img.loading = prioridade ? "eager" : "lazy";
       img.decoding = "async";
+      img.setAttribute("fetchpriority", prioridade ? "high" : "auto");
+      img.addEventListener("load", () => figura.classList.add("image-loaded"), { once: true });
       img.addEventListener("error", () => {
         img.remove();
-        figura.classList.add("image-fallback");
+        figura.classList.remove("image-loading");
+        figura.classList.add("image-fallback", "image-loaded");
         figura.append(elemento("span", "image-fallback-mark", "AV"));
       }, { once: true });
+      figura.classList.add("image-loading");
       figura.appendChild(img);
+      img.src = src;
+      if (img.complete && img.naturalWidth > 0) figura.classList.add("image-loaded");
     } else {
-      figura.classList.add("image-fallback");
+      figura.classList.add("image-fallback", "image-loaded");
       figura.append(elemento("span", "image-fallback-mark", "AV"));
     }
     return figura;
@@ -112,10 +117,10 @@
     if (window.lucide) window.lucide.createIcons();
   }
 
-  function criarCard(projeto, destaque = false) {
+  function criarCard(projeto, destaque = false, prioridade = false) {
     const card = elemento("li", "portfolio-card");
     const capa = elemento("div", "portfolio-card-cover");
-    capa.appendChild(criarImagem(projeto));
+    capa.appendChild(criarImagem(projeto, prioridade));
     const selo = elemento("span", "portfolio-card-category", projeto.categoria || "Outros");
     capa.appendChild(selo);
     if (destaque) capa.appendChild(elemento("span", "portfolio-card-featured-label", "DESTAQUE"));
@@ -164,20 +169,56 @@
     });
   }
 
+  let observadorRevelacao = null;
+  function observarRevelacoes(raiz = document) {
+    const elementos = raiz.querySelectorAll(".scroll-reveal:not([data-reveal-bound])");
+    if (!("IntersectionObserver" in window)) {
+      elementos.forEach(item => item.classList.add("is-visible"));
+      return;
+    }
+    if (!observadorRevelacao) {
+      observadorRevelacao = new IntersectionObserver(entradas => {
+        entradas.forEach(entrada => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("is-visible");
+            observadorRevelacao.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -45px 0px" });
+    }
+    elementos.forEach(item => {
+      item.dataset.revealBound = "true";
+      observadorRevelacao.observe(item);
+    });
+  }
+
   function renderizarDestaques(lista) {
     const destaques = lista.filter(p => p.destaque === true).slice(0, 3);
     gradeDestaques.replaceChildren();
     estadoDestaques.hidden = destaques.length > 0;
     estadoDestaques.textContent = destaques.length ? "" : "Os projetos selecionados como destaque aparecerão aqui.";
-    destaques.forEach((projeto, indice) => { const card = criarCard(projeto, true); card.classList.add("reveal-card"); card.style.animationDelay = Math.min(indice * 90, 270) + "ms"; gradeDestaques.appendChild(card); });
+    destaques.forEach((projeto, indice) => {
+      const card = criarCard(projeto, true, indice < 3);
+      card.classList.add("scroll-reveal");
+      card.style.setProperty("--reveal-delay", Math.min(indice * 100, 300) + "ms");
+      gradeDestaques.appendChild(card);
+    });
     gradeDestaques.closest(".portfolio-featured-section").hidden = destaques.length === 0;
+    return destaques.length;
   }
 
   function renderizar() {
     const lista = listaFiltrada();
-    renderizarDestaques(lista);
+    const quantidadeDestaques = renderizarDestaques(lista);
     gradeProjetos.replaceChildren();
-    lista.forEach((projeto, indice) => { const card = criarCard(projeto); card.classList.add("reveal-card"); card.style.animationDelay = Math.min(indice * 75, 375) + "ms"; gradeProjetos.appendChild(card); });
+    lista.forEach((projeto, indice) => {
+      const card = criarCard(projeto, false, quantidadeDestaques === 0 && indice < 3);
+      card.classList.add("scroll-reveal");
+      card.style.setProperty("--reveal-delay", Math.min(indice * 85, 340) + "ms");
+      gradeProjetos.appendChild(card);
+    });
+    observarRevelacoes(gradeDestaques);
+    observarRevelacoes(gradeProjetos);
     const total = lista.length;
     contador.textContent = total + (total === 1 ? " projeto encontrado" : " projetos encontrados");
     estado.hidden = projetos.length > 0;
