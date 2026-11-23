@@ -3,6 +3,10 @@
   const mount = document.getElementById("site-header");
   if (!mount) return;
   const activePage = mount.dataset.page || "";
+  let currentTheme = "light";
+  try { currentTheme = localStorage.getItem("av-theme") === "dark" ? "dark" : "light"; } catch (_) {}
+  document.documentElement.dataset.theme = currentTheme;
+  document.body.dataset.theme = currentTheme;
   const links = [
     { id: "home", label: "Início", href: "index.html" },
     { id: "about", label: "Quem sou eu", href: "sobre.html" },
@@ -23,13 +27,35 @@
       <ul class="site-menu" id="site-menu">
         ${links.map(link => `<li><a href="${link.href}" ${link.id === activePage ? 'aria-current="page"' : ""}>${link.label}</a></li>`).join("")}
       </ul>
-      <a class="site-admin" href="login.html" aria-label="Acessar painel administrativo" title="Painel administrativo">
-        <i data-lucide="lock-keyhole" aria-hidden="true"></i>
-      </a>
+      <div class="site-actions">
+        <button class="site-theme-toggle" type="button" aria-label="Ativar tema escuro" title="Ativar tema escuro">
+          <i data-lucide="moon" aria-hidden="true"></i>
+        </button>
+        <a class="site-admin" href="login.html" aria-label="Acessar painel administrativo" title="Painel administrativo">
+          <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+        </a>
+      </div>
     </nav>`;
   mount.replaceWith(header);
   const toggle = header.querySelector(".site-menu-toggle");
   const menu = header.querySelector(".site-menu");
+  const themeToggle = header.querySelector(".site-theme-toggle");
+  const updateThemeButton = () => {
+    const dark = document.body.dataset.theme === "dark";
+    const icon = themeToggle.querySelector("i");
+    if (icon) icon.setAttribute("data-lucide", dark ? "sun" : "moon");
+    themeToggle.setAttribute("aria-label", dark ? "Ativar tema claro" : "Ativar tema escuro");
+    themeToggle.setAttribute("title", dark ? "Ativar tema claro" : "Ativar tema escuro");
+    if (window.lucide) window.lucide.createIcons();
+  };
+  updateThemeButton();
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    document.body.dataset.theme = nextTheme;
+    try { localStorage.setItem("av-theme", nextTheme); } catch (_) {}
+    updateThemeButton();
+  });
   toggle.addEventListener("click", () => {
     const opened = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!opened));
