@@ -19,32 +19,13 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="header.css">
 </head>
 
 <body class="home-page pagina-projetos">
 
   <!-- CABEÇALHO IGUAL AO DA PÁGINA INICIAL -->
-  <header class="home-header">
-    <nav class="home-nav" aria-label="Navegação principal">
-
-      <a href="index.html" class="home-logo">
-        <img src="logo.png" alt="Logo AV">
-        <span>Anne Vitória</span>
-      </a>
-
-      <ul class="home-links">
-        <li><a href="index.html#habilidades">Habilidades</a></li>
-        <li><a href="portfolio.html" class="active" aria-current="page">Projetos</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-
-      <a href="login.html" class="home-login" aria-label="Acessar painel administrativo">
-        <i data-lucide="lock"></i>
-      </a>
-
-    </nav>
-  </header>
+  <div id="site-header" data-page="portfolio"></div>
 
 
   <main class="projetos-pagina portfolio-projetos">
@@ -131,5 +112,6 @@
     }
   </script>
 
+  <script src="header.js"></script>
 </body>
 </html>
