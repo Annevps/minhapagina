@@ -217,8 +217,7 @@
       card.style.setProperty("--reveal-delay", Math.min(indice * 85, 340) + "ms");
       gradeProjetos.appendChild(card);
     });
-    observarRevelacoes(gradeDestaques);
-    observarRevelacoes(gradeProjetos);
+    observarRevelacoes(document);
     const total = lista.length;
     contador.textContent = total + (total === 1 ? " projeto encontrado" : " projetos encontrados");
     estado.hidden = projetos.length > 0;
