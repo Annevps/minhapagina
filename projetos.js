@@ -16,6 +16,71 @@
   let termo = "";
   let modo = "client";
   let botoesFiltro = [];
+  let motionReady = false;
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function prepararMovimento() {
+    if (reduceMotion) return;
+    document.body.classList.add("js-motion");
+    const observador = "IntersectionObserver" in window
+      ? new IntersectionObserver((entradas) => entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("is-visible");
+            observador.unobserve(entrada.target);
+          }
+        }), { threshold: 0.12 })
+      : null;
+    document.querySelectorAll(".portfolio-explorer,.portfolio-closing").forEach((secao) => {
+      if (observador) observador.observe(secao);
+      else secao.classList.add("is-visible");
+    });
+    const visual = $("portfolio-hero-visual");
+    const stack = $("hero-image-stack");
+    if (visual && stack && window.matchMedia("(pointer:fine)").matches) {
+      visual.addEventListener("pointermove", (evento) => {
+        const r = visual.getBoundingClientRect();
+        const x = (evento.clientX - r.left) / r.width - .5;
+        const y = (evento.clientY - r.top) / r.height - .5;
+        stack.style.transform = "rotateY(" + (x * 5).toFixed(2) + "deg) rotateX(" + (-y * 4).toFixed(2) + "deg)";
+      });
+      visual.addEventListener("pointerleave", () => { stack.style.transform = ""; });
+    }
+  }
+
+  function contarAte(elemento, valor) {
+    if (!elemento) return;
+    const alvo = Number(valor) || 0;
+    if (reduceMotion) { elemento.textContent = alvo; return; }
+    const inicio = performance.now();
+    const duracao = 850;
+    const animar = (agora) => {
+      const progresso = Math.min((agora - inicio) / duracao, 1);
+      const suavizado = 1 - Math.pow(1 - progresso, 3);
+      elemento.textContent = Math.round(alvo * suavizado);
+      if (progresso < 1) requestAnimationFrame(animar);
+    };
+    requestAnimationFrame(animar);
+  }
+
+  function renderizarColagemHero() {
+    const stack = $("hero-image-stack");
+    if (!stack) return;
+    const comImagem = projetos.filter(p => p.imagem_path && urlImagem(p.imagem_path)).slice(0, 3);
+    if (!comImagem.length) return;
+    stack.replaceChildren();
+    const classes = ["hero-shot hero-shot-back", "hero-shot hero-shot-main", "hero-shot hero-shot-front"];
+    comImagem.forEach((projeto, indice) => {
+      const quadro = elemento("div", classes[indice] || "hero-shot");
+      const imagem = elemento("img");
+      imagem.src = urlImagem(projeto.imagem_path);
+      imagem.alt = "Prévia real do projeto " + (projeto.titulo || "");
+      imagem.loading = "lazy";
+      imagem.decoding = "async";
+      imagem.addEventListener("error", () => quadro.remove(), { once: true });
+      quadro.append(imagem, elemento("span", "hero-shot-label", projeto.titulo || "Projeto"));
+      stack.appendChild(quadro);
+    });
+  }
 
   const normalizar = (valor) => String(valor || "")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
@@ -75,9 +140,9 @@
 
   function atualizarIndicadores() {
     const categorias = new Set(projetos.map(p => (p.categoria || "Outros").trim()).filter(Boolean));
-    $("stat-total").textContent = projetos.length;
-    $("stat-categorias").textContent = categorias.size;
-    $("stat-codigo").textContent = projetos.filter(p => urlSegura(p.github_url)).length;
+    contarAte($("stat-total"), projetos.length);
+    contarAte($("stat-categorias"), categorias.size);
+    contarAte($("stat-codigo"), projetos.filter(p => urlSegura(p.github_url)).length);
   }
 
   function abrirDetalhes(projeto) {
@@ -264,9 +329,11 @@
       if (error) throw error;
       projetos = data || [];
       atualizarIndicadores();
+      renderizarColagemHero();
       criarFiltros();
       configurarInteracoes();
       renderizar();
+      if (!motionReady) { prepararMovimento(); motionReady = true; }
     } catch (erro) {
       console.error("Erro ao carregar projetos:", erro);
       estado.textContent = "Não foi possível carregar os projetos. Verifique a conexão e tente novamente.";
