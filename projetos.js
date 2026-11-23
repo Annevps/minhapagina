@@ -1,10 +1,8 @@
 /* Portfólio público — mantém os campos e a integração existentes do Supabase. */
 (() => {
   const $ = (id) => document.getElementById(id);
-  const gradeDestaques = $("grade-destaques");
   const gradeProjetos = $("grade-projetos");
   const estado = $("estado");
-  const estadoDestaques = $("estado-destaques");
   const filtros = $("filtros-projetos");
   const pesquisa = $("pesquisa-projetos");
   const contador = $("contador-resultados");
@@ -16,36 +14,7 @@
   let termo = "";
   let modo = "client";
   let botoesFiltro = [];
-  let motionReady = false;
   const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function prepararMovimento() {
-    if (reduceMotion) return;
-    document.body.classList.add("js-motion");
-    const observador = "IntersectionObserver" in window
-      ? new IntersectionObserver((entradas) => entradas.forEach((entrada) => {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add("is-visible");
-            observador.unobserve(entrada.target);
-          }
-        }), { threshold: 0.12 })
-      : null;
-    document.querySelectorAll(".portfolio-explorer,.portfolio-closing").forEach((secao) => {
-      if (observador) observador.observe(secao);
-      else secao.classList.add("is-visible");
-    });
-    const visual = $("portfolio-hero-visual");
-    const stack = $("hero-image-stack");
-    if (visual && stack && window.matchMedia("(pointer:fine)").matches) {
-      visual.addEventListener("pointermove", (evento) => {
-        const r = visual.getBoundingClientRect();
-        const x = (evento.clientX - r.left) / r.width - .5;
-        const y = (evento.clientY - r.top) / r.height - .5;
-        stack.style.transform = "rotateY(" + (x * 5).toFixed(2) + "deg) rotateX(" + (-y * 4).toFixed(2) + "deg)";
-      });
-      visual.addEventListener("pointerleave", () => { stack.style.transform = ""; });
-    }
-  }
 
   function contarAte(elemento, valor) {
     if (!elemento) return;
@@ -60,26 +29,6 @@
       if (progresso < 1) requestAnimationFrame(animar);
     };
     requestAnimationFrame(animar);
-  }
-
-  function renderizarColagemHero() {
-    const stack = $("hero-image-stack");
-    if (!stack) return;
-    const comImagem = projetos.filter(p => p.imagem_path && urlImagem(p.imagem_path)).slice(0, 3);
-    if (!comImagem.length) return;
-    stack.replaceChildren();
-    const classes = ["hero-shot hero-shot-back", "hero-shot hero-shot-main", "hero-shot hero-shot-front"];
-    comImagem.forEach((projeto, indice) => {
-      const quadro = elemento("div", classes[indice] || "hero-shot");
-      const imagem = elemento("img");
-      imagem.src = urlImagem(projeto.imagem_path);
-      imagem.alt = "Prévia real do projeto " + (projeto.titulo || "");
-      imagem.loading = "lazy";
-      imagem.decoding = "async";
-      imagem.addEventListener("error", () => quadro.remove(), { once: true });
-      quadro.append(imagem, elemento("span", "hero-shot-label", projeto.titulo || "Projeto"));
-      stack.appendChild(quadro);
-    });
   }
 
   const normalizar = (valor) => String(valor || "")
@@ -187,12 +136,12 @@
 
     const corpo = elemento("div", "portfolio-card-body");
     const meta = elemento("div", "portfolio-card-meta");
-    meta.append(elemento("span", "portfolio-card-dot", "AV"), elemento("span", "portfolio-card-type", modo === "client" ? "PROJETO" : "DADOS DO CADASTRO"));
+    meta.append(elemento("span", "portfolio-card-dot", "AV"), elemento("span", "portfolio-card-type", modo === "client" ? "PROJETO" : "INFORMAÇÕES DO CADASTRO"));
 
     const titulo = elemento("h3", "", projeto.titulo || "Projeto sem título");
     const descricaoTexto = modo === "client"
       ? (projeto.descricao || "Descrição não informada no cadastro.")
-      : (urlSegura(projeto.github_url) ? "Este projeto possui um repositório de código cadastrado." : "Não há repositório de código cadastrado para este projeto.");
+      : (urlSegura(projeto.github_url) ? "Repositório de código disponível para consulta." : "O cadastro não possui link de repositório para este projeto.");
     const descricao = elemento("p", "portfolio-card-description", descricaoTexto);
 
     const tags = elemento("div", "portfolio-card-tags");
@@ -229,20 +178,20 @@
     });
   }
 
-  function renderizarDestaques(lista) {
-    const destaques = lista.filter(p => p.destaque === true).slice(0, 3);
-    gradeDestaques.replaceChildren();
-    estadoDestaques.hidden = destaques.length > 0;
-    estadoDestaques.textContent = destaques.length ? "" : "Os projetos selecionados como destaque aparecerão aqui.";
-    destaques.forEach(projeto => gradeDestaques.appendChild(criarCard(projeto, true)));
-    gradeDestaques.closest(".portfolio-featured-section").hidden = destaques.length === 0;
-  }
-
   function renderizar() {
     const lista = listaFiltrada();
-    renderizarDestaques(lista);
     gradeProjetos.replaceChildren();
-    lista.forEach(projeto => gradeProjetos.appendChild(criarCard(projeto)));
+    gradeProjetos.classList.remove("count-1","count-2");
+    if (lista.length === 1) gradeProjetos.classList.add("count-1");
+    if (lista.length === 2) gradeProjetos.classList.add("count-2");
+    lista.forEach((projeto, indice) => {
+      const card = criarCard(projeto, projeto.destaque === true);
+      if (!reduceMotion) {
+        card.classList.add("reveal-card");
+        card.style.animationDelay = Math.min(indice * 65, 260) + "ms";
+      }
+      gradeProjetos.appendChild(card);
+    });
     const total = lista.length;
     contador.textContent = total + (total === 1 ? " projeto encontrado" : " projetos encontrados");
     estado.hidden = projetos.length > 0;
@@ -278,7 +227,10 @@
     botoesFiltro = [...filtros.querySelectorAll(".filtro-projeto")];
   }
 
+  let interacoesConfiguradas = false;
   function configurarInteracoes() {
+    if (interacoesConfiguradas) return;
+    interacoesConfiguradas = true;
     pesquisa.addEventListener("input", () => {
       termo = pesquisa.value.trim();
       renderizar();
@@ -293,8 +245,8 @@
           item.setAttribute("aria-pressed", String(ativo));
         });
         $("mode-description").textContent = modo === "client"
-          ? "Entenda o que cada projeto apresenta, com base nas descrições cadastradas."
-          : "Consulte as categorias e os repositórios de código disponíveis.";
+          ? "Conheça a proposta e a descrição de cada projeto."
+          : "Consulte as categorias e os links de repositório cadastrados.";
         renderizar();
       });
     });
@@ -321,7 +273,6 @@
   async function carregar() {
     estado.hidden = false;
     estado.textContent = "Carregando projetos...";
-    estadoDestaques.textContent = "Carregando destaques...";
     try {
       const { data, error } = await db.from("projetos")
         .select("id,titulo,descricao,link,imagem_path,categoria,github_url,destaque,criado_em")
@@ -329,16 +280,13 @@
       if (error) throw error;
       projetos = data || [];
       atualizarIndicadores();
-      renderizarColagemHero();
       criarFiltros();
       configurarInteracoes();
       renderizar();
-      if (!motionReady) { prepararMovimento(); motionReady = true; }
     } catch (erro) {
       console.error("Erro ao carregar projetos:", erro);
       estado.textContent = "Não foi possível carregar os projetos. Verifique a conexão e tente novamente.";
       estado.hidden = false;
-      estadoDestaques.hidden = true;
       contador.textContent = "Falha ao carregar os projetos";
     }
   }
