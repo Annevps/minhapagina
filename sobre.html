@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça Anne Vitória, estudante de Tecnologia da Informação e desenvolvedora em formação em Carlos Chagas, MG.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#f7f9fc">
+  <title>Quem sou eu? | Anne Vitória</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+
+  <style>
+    /* Estilos exclusivos da página Quem sou eu */
+    .about-page { --about-blue:#00527c; --about-light:#1685b5; --about-pale:#eaf3f8; --about-bg:#f7f9fc; --about-ink:#1d2b36; --about-muted:#687985; --about-border:#e1e8ee; }
+    .about-page main { overflow:hidden; }
+    .about-page .about-hero { position:relative; padding:76px 0 70px; background:radial-gradient(ellipse at 84% 22%,rgba(0,82,124,.10),transparent 35%),linear-gradient(115deg,#fff 0%,#f8fafc 62%,#eef5f9 100%); }
+    .about-page .about-wrap { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
+    .about-page .about-layout { display:grid; grid-template-columns:minmax(0,1.12fr) minmax(330px,.88fr); align-items:start; gap:64px; }
+    .about-page .about-copy { min-width:0; }
+    .about-page .about-kicker { display:inline-flex; align-items:center; gap:10px; margin-bottom:18px; color:var(--about-blue); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+    .about-page .about-kicker::before { content:""; width:24px; height:2px; background:var(--about-light); }
+    .about-page .about-title { margin:0 0 22px; color:var(--about-ink); font-family:"Space Grotesk",sans-serif; font-size:clamp(42px,5.4vw,66px); line-height:1.04; letter-spacing:-2.8px; }
+    .about-page .about-title span { color:var(--about-blue); }
+    .about-page .about-intro { max-width:690px; color:#52636f; font-size:14px; line-height:1.95; }
+    .about-page .about-intro p { margin:0 0 14px; }
+    .about-page .about-intro strong { color:var(--about-blue); font-weight:700; }
+    .about-page .about-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; margin-top:29px; }
+    .about-page .about-card { min-height:205px; padding:20px 17px; border:1px solid var(--about-border); border-radius:13px; background:rgba(255,255,255,.88); box-shadow:0 8px 24px rgba(35,64,82,.035); transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease; }
+    .about-page .about-card:hover { transform:translateY(-4px); border-color:rgba(0,82,124,.32); box-shadow:0 14px 30px rgba(35,64,82,.075); }
+    .about-page .about-card-icon { width:39px; height:39px; display:grid; place-items:center; margin-bottom:16px; border-radius:10px; color:var(--about-blue); background:var(--about-pale); }
+    .about-page .about-card-icon svg { width:19px; height:19px; }
+    .about-page .about-card h2 { margin:0 0 8px; color:var(--about-ink); font-family:"Space Grotesk",sans-serif; font-size:15px; }
+    .about-page .about-card p { margin:0; color:var(--about-muted); font-size:11.5px; line-height:1.75; }
+    .about-page .about-quote { display:flex; gap:13px; align-items:flex-start; margin:25px 0 23px; padding:17px 19px; border-left:3px solid var(--about-blue); border-radius:0 10px 10px 0; background:#edf4f8; color:#425765; font-family:"Space Grotesk",sans-serif; font-size:15px; line-height:1.65; }
+    .about-page .about-quote svg { flex:0 0 auto; width:19px; margin-top:2px; color:var(--about-blue); }
+    .about-page .about-quote strong { color:var(--about-blue); }
+    .about-page .about-action { display:inline-flex; align-items:center; gap:10px; min-height:46px; padding:0 20px; border:1px solid var(--about-blue); border-radius:30px; background:var(--about-blue); color:#fff; font-size:12px; font-weight:700; transition:background .2s ease,transform .2s ease,box-shadow .2s ease; }
+    .about-page .about-action:hover { transform:translateY(-3px); background:#003e5e; box-shadow:0 9px 22px rgba(0,82,124,.17); }
+    .about-page .about-action svg { width:16px; height:16px; }
+    .about-page .about-visual { position:relative; min-height:620px; display:flex; align-items:center; justify-content:center; padding:24px 12px 48px; }
+    .about-page .visual-orbit { position:absolute; width:min(100%,470px); aspect-ratio:1; border:1px solid rgba(0,82,124,.15); border-radius:50%; transform:rotate(-17deg); }
+    .about-page .visual-orbit::before,.about-page .visual-orbit::after { content:""; position:absolute; border:1px solid rgba(0,82,124,.10); border-radius:50%; inset:26px; }
+    .about-page .visual-orbit::after { inset:58px; }
+    .about-page .photo-placeholder { position:relative; z-index:1; width:min(82%,350px); aspect-ratio:4/5; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; border:1px solid rgba(0,82,124,.22); border-radius:180px 180px 22px 22px; background:linear-gradient(145deg,#eaf3f8,#fff 65%,#e4eef4); box-shadow:0 25px 70px rgba(27,70,94,.13); text-align:center; }
+    .about-page .photo-placeholder::before { content:""; position:absolute; inset:12px; border:1px dashed rgba(0,82,124,.24); border-radius:170px 170px 15px 15px; pointer-events:none; }
+    .about-page .photo-monogram { display:grid; place-items:center; width:108px; height:108px; margin-bottom:19px; border:1px solid rgba(0,82,124,.2); border-radius:50%; background:rgba(255,255,255,.8); color:var(--about-blue); font-family:"Space Grotesk",sans-serif; font-size:35px; font-weight:700; letter-spacing:-2px; box-shadow:0 12px 30px rgba(0,82,124,.08); }
+    .about-page .photo-placeholder strong { color:#244252; font-family:"Space Grotesk",sans-serif; font-size:16px; }
+    .about-page .photo-placeholder span { max-width:220px; margin-top:7px; color:#71818c; font-size:11px; line-height:1.6; }
+    .about-page .photo-placeholder .photo-code { position:absolute; top:29px; right:25px; color:rgba(0,82,124,.42); font-family:monospace; font-size:13px; letter-spacing:3px; }
+    .about-page .visual-chip { position:absolute; z-index:2; display:flex; align-items:center; gap:9px; padding:12px 15px; border:1px solid rgba(0,82,124,.12); border-radius:12px; background:rgba(255,255,255,.94); color:#405563; box-shadow:0 12px 30px rgba(35,64,82,.09); font-size:11px; font-weight:700; }
+    .about-page .visual-chip svg { width:17px; height:17px; color:var(--about-blue); }
+    .about-page .chip-code { top:105px; left:0; }
+    .about-page .chip-tech { right:0; bottom:142px; }
+    .about-page .visual-caption { position:absolute; bottom:25px; left:50%; width:75%; display:flex; justify-content:space-between; gap:12px; color:#8a9aa4; font-size:9px; font-weight:700; letter-spacing:1.4px; transform:translateX(-50%); }
+    .about-page .skills-section { padding:68px 0 82px; background:#fff; }
+    .about-page .skills-heading { display:flex; align-items:end; justify-content:space-between; gap:25px; margin-bottom:25px; }
+    .about-page .skills-heading h2 { margin:0 0 7px; color:var(--about-ink); font-family:"Space Grotesk",sans-serif; font-size:clamp(28px,3.5vw,39px); letter-spacing:-1.2px; }
+    .about-page .skills-heading h2 span { color:var(--about-blue); }
+    .about-page .skills-heading p { margin:0; color:var(--about-muted); font-size:13px; }
+    .about-page .skills-count { color:#91a1ab; font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:1px; white-space:nowrap; }
+    .about-page .skills-panel { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:12px; padding:22px; border:1px solid var(--about-border); border-radius:15px; background:#f9fbfc; box-shadow:0 12px 35px rgba(35,64,82,.045); }
+    .about-page .skill-item { min-height:104px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:11px; padding:12px 6px; border:1px solid transparent; border-radius:11px; color:#52636f; font-size:11px; font-weight:700; text-align:center; transition:background .2s ease,border-color .2s ease,transform .2s ease; }
+    .about-page .skill-item:hover { transform:translateY(-3px); border-color:var(--about-border); background:#fff; }
+    .about-page .skill-icon { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:var(--about-pale); color:var(--about-blue); }
+    .about-page .skill-icon svg { width:21px; height:21px; }
+    .about-page .skill-icon .skill-letter { font-family:"Space Grotesk",sans-serif; font-size:13px; font-weight:700; }
+    .about-page .about-footer { padding:22px 24px; border-top:1px solid var(--about-border); background:#fff; color:#8796a0; text-align:center; font-size:11px; }
+    .about-page .about-footer p { margin:0; }
+    @media(max-width:1050px) {
+      .about-page .about-layout { grid-template-columns:minmax(0,1fr) minmax(270px,.75fr); gap:34px; }
+      .about-page .about-cards { grid-template-columns:1fr; }
+      .about-page .about-card { min-height:0; display:grid; grid-template-columns:40px 1fr; column-gap:13px; align-items:start; }
+      .about-page .about-card-icon { grid-row:span 2; margin:0; }
+      .about-page .about-card h2 { align-self:end; }
+      .about-page .about-card p { grid-column:2; }
+      .about-page .about-visual { min-height:570px; }
+      .about-page .skills-panel { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    }
+    @media(max-width:720px) {
+      .about-page .about-hero { padding:48px 0 55px; }
+      .about-page .about-wrap { width:min(100% - 36px,560px); }
+      .about-page .about-layout { grid-template-columns:1fr; gap:24px; }
+      .about-page .about-title { font-size:clamp(42px,12vw,58px); letter-spacing:-2px; }
+      .about-page .about-intro { font-size:13px; }
+      .about-page .about-cards { grid-template-columns:1fr; gap:11px; margin-top:23px; }
+      .about-page .about-card { padding:17px; }
+      .about-page .about-visual { order:2; min-height:440px; margin-top:0; }
+      .about-page .photo-placeholder { width:min(75%,300px); }
+      .about-page .chip-code { top:55px; left:0; }
+      .about-page .chip-tech { right:0; bottom:95px; }
+      .about-page .visual-caption { bottom:7px; width:86%; font-size:8px; }
+      .about-page .skills-section { padding:52px 0 60px; }
+      .about-page .skills-heading { align-items:flex-start; flex-direction:column; gap:9px; }
+      .about-page .skills-panel { grid-template-columns:repeat(2,minmax(0,1fr)); padding:12px; gap:5px; }
+      .about-page .skill-item { min-height:92px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .about-page *, .about-page *::before, .about-page *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="home-page about-page">
+  <header class="home-header">
+    <nav class="home-nav" aria-label="Navegação principal">
+      <a href="index.html" class="home-logo" aria-label="Anne Vitória - página inicial">
+        <span class="about-brand-mark" aria-hidden="true">AV</span>
+        <span>Anne Vitória</span>
+      </a>
+      <ul class="home-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html" class="active" aria-current="page">Quem sou eu</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <a href="login.html" class="home-login" aria-label="Acessar painel administrativo"><i data-lucide="lock"></i></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-wrap about-layout">
+        <div class="about-copy">
+          <span class="about-kicker">Sobre mim</span>
+          <h1 class="about-title" id="about-title">Quem sou <span>eu?</span></h1>
+
+          <div class="about-intro">
+            <p>Olá! Sou <strong>Anne Vitória</strong>, tenho 16 anos, moro em Carlos Chagas – MG e sou estudante de <strong>Tecnologia da Informação</strong> no Ensino Médio em Tempo Integral.</p>
+            <p>Minha jornada na programação começou pela curiosidade de entender como a tecnologia funciona. Hoje, transformo ideias em projetos, desenvolvendo páginas web e sistemas que unem funcionalidade, organização e criatividade.</p>
+            <p>Tenho conhecimentos em HTML, CSS e JavaScript, além de experiência com hardware, software e ferramentas como Excel e Word. Gosto de aprender novas tecnologias, explorar possibilidades e enfrentar desafios que me permitem evoluir como desenvolvedora.</p>
+            <p>Meu objetivo é aprofundar meus conhecimentos, desenvolver soluções cada vez mais completas e construir minha trajetória na área de desenvolvimento de software.</p>
+          </div>
+
+          <div class="about-cards">
+            <article class="about-card">
+              <span class="about-card-icon"><i data-lucide="code-2" aria-hidden="true"></i></span>
+              <h2>Minha jornada</h2>
+              <p>Minha jornada na programação começou pela curiosidade de entender como a tecnologia funciona. Hoje, transformo ideias em projetos, desenvolvendo páginas web e sistemas que unem funcionalidade, organização e criatividade.</p>
+            </article>
+            <article class="about-card">
+              <span class="about-card-icon"><i data-lucide="cpu" aria-hidden="true"></i></span>
+              <h2>Conhecimentos e experiências</h2>
+              <p>Tenho conhecimentos em HTML, CSS e JavaScript, além de experiência com hardware, software e ferramentas como Excel e Word. Gosto de aprender novas tecnologias, explorar possibilidades e enfrentar desafios que me permitem evoluir como desenvolvedora.</p>
+            </article>
+            <article class="about-card">
+              <span class="about-card-icon"><i data-lucide="target" aria-hidden="true"></i></span>
+              <h2>Meu objetivo</h2>
+              <p>Meu objetivo é aprofundar meus conhecimentos, desenvolver soluções cada vez mais completas e construir minha trajetória na área de desenvolvimento de software.</p>
+            </article>
+          </div>
+
+          <blockquote class="about-quote">
+            <i data-lucide="quote" aria-hidden="true"></i>
+            <span>Acredito que cada projeto é uma oportunidade de <strong>aprender</strong>, <strong>criar</strong> e <strong>ir além.</strong></span>
+          </blockquote>
+
+          <a class="about-action" href="portfolio.html">Conheça meu portfólio <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+
+        <aside class="about-visual" aria-label="Espaço reservado para a fotografia de Anne Vitória">
+          <div class="visual-orbit" aria-hidden="true"></div>
+          <div class="photo-placeholder">
+            <span class="photo-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="photo-monogram" aria-hidden="true">AV</span>
+            <strong>Sua foto em destaque</strong>
+            <span>Adicione aqui sua fotografia real para completar esta composição.</span>
+          </div>
+          <div class="visual-chip chip-code"><i data-lucide="code-2" aria-hidden="true"></i> Desenvolvimento web</div>
+          <div class="visual-chip chip-tech"><i data-lucide="monitor-cog" aria-hidden="true"></i> Tecnologia &amp; criatividade</div>
+          <div class="visual-caption"><span>ANNE VITÓRIA</span><span>APRENDER • CRIAR • EVOLUIR</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="skills-section" aria-labelledby="skills-title">
+      <div class="about-wrap">
+        <div class="skills-heading">
+          <div>
+            <span class="about-kicker">Conhecimentos e ferramentas</span>
+            <h2 id="skills-title">Minhas <span>Habilidades</span></h2>
+            <p>Tecnologias e ferramentas que utilizo e gosto de explorar.</p>
+          </div>
+          <span class="skills-count">08 CONHECIMENTOS</span>
+        </div>
+
+        <div class="skills-panel" aria-label="Habilidades e ferramentas">
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="code-2" aria-hidden="true"></i></span><span>HTML</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="palette" aria-hidden="true"></i></span><span>CSS</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="braces" aria-hidden="true"></i></span><span>JavaScript</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="file-text" aria-hidden="true"></i></span><span>Word</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="table-2" aria-hidden="true"></i></span><span>Excel</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span><span>Claude</span></div>
+          <div class="skill-item"><span class="skill-icon"><span class="skill-letter">GPT</span></span><span>GPT</span></div>
+          <div class="skill-item"><span class="skill-icon"><i data-lucide="github" aria-hidden="true"></i></span><span>GitHub</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="about-footer">
+    <p>© <span id="about-year">2026</span> Anne Vitória. Feito com dedicação e tecnologia.</p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+    document.getElementById("about-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
