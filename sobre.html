@@ -103,24 +103,11 @@
       .about-page *, .about-page *::before, .about-page *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     }
   </style>
+  <link rel="stylesheet" href="header.css">
 </head>
 
 <body class="home-page about-page">
-  <header class="home-header">
-    <nav class="home-nav" aria-label="Navegação principal">
-      <a href="index.html" class="home-logo" aria-label="Anne Vitória - página inicial">
-        <span class="about-brand-mark" aria-hidden="true">AV</span>
-        <span>Anne Vitória</span>
-      </a>
-      <ul class="home-links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html" class="active" aria-current="page">Quem sou eu</a></li>
-        <li><a href="portfolio.html">Portfólio</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-      <a href="login.html" class="home-login" aria-label="Acessar painel administrativo"><i data-lucide="lock"></i></a>
-    </nav>
-  </header>
+  <div id="site-header" data-page="about"></div>
 
   <main>
     <section class="about-hero" aria-labelledby="about-title">
@@ -211,5 +198,6 @@
     if (window.lucide) window.lucide.createIcons();
     document.getElementById("about-year").textContent = new Date().getFullYear();
   </script>
+  <script src="header.js"></script>
 </body>
 </html>
