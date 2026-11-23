@@ -19,90 +19,61 @@
   <div id="site-header" data-page="portfolio"></div>
 
   <main class="portfolio-page">
-    <section class="portfolio-hero" aria-labelledby="titulo-projetos">
-      <div class="portfolio-hero-copy">
-        <span class="portfolio-eyebrow hero-reveal"><span class="eyebrow-dot"></span> PORTFÓLIO</span>
-        <h1 id="titulo-projetos"><span class="hero-line">Projetos que</span><span class="hero-line">transformam ideias</span><span class="hero-line hero-line-accent">em soluções reais.</span></h1>
-        <p class="hero-support">Uma seleção de experiências, ideias e soluções desenvolvidas com tecnologia, criatividade e atenção aos detalhes.</p>
-        <a class="hero-cta" href="#titulo-todos-projetos">Explorar projetos <i data-lucide="arrow-down-right" aria-hidden="true"></i></a>
-        <section class="portfolio-overview" aria-label="Resumo do portfólio">
-          <article class="overview-item"><span class="overview-icon"><i data-lucide="layers" aria-hidden="true"></i></span><div><strong id="stat-total">—</strong><span>projetos</span></div></article>
-          <article class="overview-item"><span class="overview-icon"><i data-lucide="folder" aria-hidden="true"></i></span><div><strong id="stat-categorias">—</strong><span>categorias</span></div></article>
-          <article class="overview-item"><span class="overview-icon"><i data-lucide="github" aria-hidden="true"></i></span><div><strong id="stat-codigo">—</strong><span>códigos</span></div></article>
-        </section>
+    <section class="portfolio-intro" aria-labelledby="titulo-projetos">
+      <div class="intro-copy">
+        <span class="portfolio-eyebrow"><span class="eyebrow-dot"></span> PORTFÓLIO · DESENVOLVIMENTO</span>
+        <h1 id="titulo-projetos">Projetos que transformam ideias em <span>soluções.</span></h1>
+        <p>Explore projetos que desenvolvi, conheça suas funcionalidades e descubra como cada ideia se transforma em uma solução.</p>
       </div>
-      <div class="portfolio-hero-visual" id="portfolio-hero-visual" aria-label="Prévia de projetos cadastrados">
-        <div class="hero-visual-glow" aria-hidden="true"></div>
-        <div class="hero-image-stack" id="hero-image-stack">
-          <div class="hero-image-placeholder"><span>AV</span><small>Projetos em construção</small></div>
-        </div>
-        <span class="hero-floating-note"><i data-lucide="sparkles" aria-hidden="true"></i> Ideias em movimento</span>
+      <div class="portfolio-overview" aria-label="Resumo do portfólio">
+        <article class="overview-item"><strong id="stat-total">—</strong><span>projetos</span></article>
+        <article class="overview-item"><strong id="stat-categorias">—</strong><span>categorias</span></article>
+        <article class="overview-item"><strong id="stat-codigo">—</strong><span>repositórios</span></article>
       </div>
     </section>
 
     <section class="portfolio-explorer" aria-labelledby="titulo-todos-projetos">
-      <div class="portfolio-section-title">
+      <div class="projects-heading">
         <div>
-          <span class="section-overline">PROJETOS</span>
-          <h2 id="titulo-todos-projetos">Conheça meus <span>trabalhos</span></h2>
+          <span class="section-overline">TRABALHOS SELECIONADOS</span>
+          <h2 id="titulo-todos-projetos">Projetos <span>desenvolvidos</span></h2>
         </div>
-        <p>Explore os projetos e encontre soluções desenvolvidas em diferentes áreas.</p>
+        <span id="contador-resultados" class="results-count" aria-live="polite">Carregando projetos...</span>
       </div>
 
-      <div class="portfolio-mode-area">
-        <h3>Como você quer ver os projetos?</h3>
-        <div class="portfolio-mode-switch" role="group" aria-label="Escolher apresentação dos projetos">
-          <button type="button" class="mode-button active" data-mode="client" aria-pressed="true">
-            <i data-lucide="briefcase-business" aria-hidden="true"></i>
-            <span>Tenho um negócio</span>
-          </button>
-          <button type="button" class="mode-button" data-mode="technical" aria-pressed="false">
-            <i data-lucide="code-2" aria-hidden="true"></i>
-            <span>Vim avaliar o dev</span>
-          </button>
+      <div class="projects-toolbar">
+        <div class="search-box">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <input id="pesquisa-projetos" type="search" placeholder="Buscar por nome, descrição ou categoria..." aria-label="Pesquisar projetos">
         </div>
-        <p id="mode-description" class="mode-description">Veja o propósito e a descrição de cada projeto.</p>
-      </div>
-
-      <section class="portfolio-featured-section" aria-labelledby="titulo-destaques">
-        <div class="portfolio-subheading">
-          <div><span class="section-overline">SELEÇÃO</span><h2 id="titulo-destaques">Projetos em destaque</h2></div>
-          <span class="subheading-note">Selecionados no cadastro</span>
+        <div class="portfolio-mode-switch" role="group" aria-label="Perspectiva de apresentação">
+          <button type="button" class="mode-button active" data-mode="client" aria-pressed="true">Visão geral</button>
+          <button type="button" class="mode-button" data-mode="technical" aria-pressed="false">Visão técnica</button>
         </div>
-        <p id="estado-destaques" class="portfolio-status" role="status" aria-live="polite">Carregando destaques...</p>
-        <ul id="grade-destaques" class="portfolio-grid portfolio-grid-featured" aria-label="Projetos em destaque"></ul>
-      </section>
-
-      <div class="portfolio-search-heading">
-        <label for="pesquisa-projetos">Buscar projeto</label>
-        <span id="contador-resultados" aria-live="polite">Carregando projetos...</span>
       </div>
-      <div class="portfolio-search">
-        <i data-lucide="search" aria-hidden="true"></i>
-        <input id="pesquisa-projetos" type="search" placeholder="Pesquisar projetos..." aria-label="Pesquisar projetos por nome, descrição ou categoria">
-      </div>
+      <p id="mode-description" class="mode-description">Conheça a proposta e a descrição de cada projeto.</p>
 
       <div class="portfolio-filters-wrap">
-        <span class="filters-label">Categorias</span>
+        <span class="filters-label">Filtrar por categoria</span>
         <div id="filtros-projetos" class="portfolio-filters" role="group" aria-label="Filtrar projetos por categoria">
-          <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true">Todos</button>
+          <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true">Todas</button>
         </div>
       </div>
 
       <p id="estado" class="portfolio-status" role="status" aria-live="polite">Carregando projetos...</p>
-      <ul id="grade-projetos" class="portfolio-grid" aria-label="Todos os projetos"></ul>
+      <ul id="grade-projetos" class="portfolio-grid" aria-label="Projetos do portfólio"></ul>
       <div id="sem-resultados" class="portfolio-empty" hidden>
         <span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span>
         <h3>Nenhum projeto encontrado</h3>
         <p>Tente outra palavra ou selecione outra categoria.</p>
-        <button type="button" id="limpar-filtros" class="portfolio-reset">Mostrar todos os projetos</button>
+        <button type="button" id="limpar-filtros" class="portfolio-reset">Limpar busca e filtros</button>
       </div>
     </section>
 
     <section class="portfolio-closing">
       <span class="closing-mark" aria-hidden="true">AV</span>
       <div><span class="section-overline">EM CONSTANTE EVOLUÇÃO</span>
-        <p>Cada projeto representa uma nova ideia, uma experiência e mais um passo na minha evolução.</p>
+        <p>Cada projeto é uma oportunidade de transformar conhecimento em algo real.</p>
       </div>
       <a href="contato.html" class="closing-link">Vamos conversar <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
     </section>
@@ -123,7 +94,6 @@
   </dialog>
 
   <footer class="portfolio-footer"><p>© <span id="ano-atual"></span> Anne Vitória. Desenvolvendo ideias com tecnologia.</p></footer>
-
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="config.js"></script>
