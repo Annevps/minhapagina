@@ -1,19 +1,23 @@
 /* =========================================================
-   PORTFÓLIO PÚBLICO — PROJETOS DO SUPABASE
-   Os projetos em destaque são escolhidos no painel administrativo.
+   PORTFÓLIO PÚBLICO — DADOS REAIS DO SUPABASE
+   Compatível com a tabela atual: projetos.
+   Não depende de campos de tecnologia que ainda não existem.
    ========================================================= */
-
 const gradeDestaques = document.getElementById("grade-destaques");
 const estadoDestaques = document.getElementById("estado-destaques");
 const gradeProjetos = document.getElementById("grade-projetos");
 const estadoProjetos = document.getElementById("estado");
 const areaFiltros = document.getElementById("filtros-projetos");
-let botoesFiltro = [];
+const campoPesquisa = document.getElementById("pesquisa-projetos");
+const contadorResultados = document.getElementById("contador-resultados");
+const mensagemVazia = document.getElementById("sem-resultados");
+const secaoDestaques = document.querySelector(".portfolio-featured-section");
 
 let projetosPublicos = [];
 let filtroAtual = "Todos";
-
-const secaoDestaques = document.querySelector(".portfolio-destaques");
+let termoPesquisa = "";
+let modoVisualizacao = "grid";
+let botoesFiltro = [];
 
 const observadorRevelacao = "IntersectionObserver" in window
   ? new IntersectionObserver((entradas, observador) => {
@@ -23,19 +27,14 @@ const observadorRevelacao = "IntersectionObserver" in window
           observador.unobserve(entrada.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" })
+    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" })
   : null;
 
 function animarEntrada(elemento) {
-  if (!elemento) return;
   elemento.classList.add("portfolio-reveal");
-  if (observadorRevelacao) {
-    observadorRevelacao.observe(elemento);
-  } else {
-    elemento.classList.add("visivel");
-  }
+  if (observadorRevelacao) observadorRevelacao.observe(elemento);
+  else elemento.classList.add("visivel");
 }
-
 
 function criarElemento(tag, classe, texto) {
   const elemento = document.createElement(tag);
@@ -53,104 +52,116 @@ function urlHttpValida(valor) {
   }
 }
 
+function atualizarIndicadores() {
+  const categorias = new Set(projetosPublicos.map(p => (p.categoria || "Outros").trim()).filter(Boolean));
+  document.getElementById("stat-total").textContent = projetosPublicos.length;
+  document.getElementById("stat-categorias").textContent = categorias.size;
+  document.getElementById("stat-codigo").textContent = projetosPublicos.filter(p => urlHttpValida(p.github_url)).length;
+}
+
 function criarCardProjeto(projeto, destaque = false) {
-  const card = criarElemento("li", destaque ? "portfolio-card portfolio-card-destaque" : "portfolio-card");
-
-  const imagemLink = criarElemento("a", "portfolio-card-imagem");
+  const card = criarElemento("li", "portfolio-card" + (destaque ? " portfolio-card-featured" : ""));
   const linkProjeto = urlHttpValida(projeto.link);
-  if (linkProjeto) {
-    imagemLink.href = linkProjeto;
-    imagemLink.target = "_blank";
-    imagemLink.rel = "noopener noreferrer";
-    imagemLink.setAttribute("aria-label", "Abrir projeto " + (projeto.titulo || ""));
-  }
-
   const imagem = criarElemento("img");
-  imagem.src = urlImagem(projeto.imagem_path);
-  imagem.alt = "Imagem de apresentação do projeto " + (projeto.titulo || "");
+  const caminhoImagem = urlImagem(projeto.imagem_path);
+  if (caminhoImagem) imagem.src = caminhoImagem;
+  imagem.alt = "Capa do projeto " + (projeto.titulo || "");
   imagem.loading = "lazy";
   imagem.decoding = "async";
-  imagemLink.appendChild(imagem);
 
-  const numero = criarElemento("span", "portfolio-card-numero", destaque ? "EM DESTAQUE" : (projeto.categoria || "PROJETO"));
-  imagemLink.appendChild(numero);
+  const areaImagem = criarElemento(linkProjeto ? "a" : "div", "portfolio-card-cover");
+  if (linkProjeto) {
+    areaImagem.href = linkProjeto;
+    areaImagem.target = "_blank";
+    areaImagem.rel = "noopener noreferrer";
+    areaImagem.setAttribute("aria-label", "Abrir projeto " + (projeto.titulo || ""));
+  }
+  areaImagem.appendChild(imagem);
 
-  const conteudo = criarElemento("div", "portfolio-card-conteudo");
-  const meta = criarElemento("div", "portfolio-card-meta");
-  meta.appendChild(criarElemento("span", "portfolio-card-categoria", projeto.categoria || "Outros"));
-  if (destaque) meta.appendChild(criarElemento("span", "portfolio-card-selo", "Projeto selecionado"));
+  const categoria = criarElemento("span", "portfolio-card-category", projeto.categoria || "Outros");
+  areaImagem.appendChild(categoria);
+  if (destaque) areaImagem.appendChild(criarElemento("span", "portfolio-card-featured-label", "EM DESTAQUE"));
+
+  const corpo = criarElemento("div", "portfolio-card-body");
+  const topo = criarElemento("div", "portfolio-card-meta");
+  topo.appendChild(criarElemento("span", "portfolio-card-type", destaque ? "Projeto selecionado" : "Projeto"));
+  topo.appendChild(criarElemento("span", "portfolio-card-dot", "•"));
+  topo.appendChild(criarElemento("span", "portfolio-card-category-text", projeto.categoria || "Outros"));
 
   const titulo = criarElemento("h3", "", projeto.titulo || "Projeto sem título");
-  const descricao = criarElemento("p", "", projeto.descricao || "Projeto desenvolvido durante minha jornada de aprendizado.");
+  const descricao = criarElemento("p", "portfolio-card-description", projeto.descricao || "Descrição não informada.");
 
-  const rodape = criarElemento("div", "portfolio-card-rodape");
-  const acoes = criarElemento("div", "portfolio-card-acoes");
-
+  const acoes = criarElemento("div", "portfolio-card-actions");
   if (linkProjeto) {
-    const acessar = criarElemento("a", "portfolio-link-principal", "Conhecer projeto");
+    const acessar = criarElemento("a", "portfolio-button portfolio-button-primary", "Visualizar projeto");
     acessar.href = linkProjeto;
     acessar.target = "_blank";
     acessar.rel = "noopener noreferrer";
-    const icone = criarElemento("i");
-    icone.setAttribute("data-lucide", "arrow-up-right");
-    acessar.appendChild(icone);
+    const icon = criarElemento("i");
+    icon.setAttribute("data-lucide", "arrow-up-right");
+    acessar.appendChild(icon);
     acoes.appendChild(acessar);
+  } else {
+    acoes.appendChild(criarElemento("span", "portfolio-link-unavailable", "Link de visualização indisponível"));
   }
 
   const github = urlHttpValida(projeto.github_url);
   if (github) {
-    const codigo = criarElemento("a", "portfolio-link-codigo", "Código-fonte");
+    const codigo = criarElemento("a", "portfolio-button portfolio-button-secondary", "Código");
     codigo.href = github;
     codigo.target = "_blank";
     codigo.rel = "noopener noreferrer";
-    const icone = criarElemento("i");
-    icone.setAttribute("data-lucide", "github");
-    codigo.prepend(icone);
+    const icon = criarElemento("i");
+    icon.setAttribute("data-lucide", "github");
+    codigo.prepend(icon);
     acoes.appendChild(codigo);
   }
 
-  rodape.appendChild(acoes);
-  conteudo.append(meta, titulo, descricao, rodape);
-  card.append(imagemLink, conteudo);
+  corpo.append(topo, titulo, descricao, acoes);
+  card.append(areaImagem, corpo);
   animarEntrada(card);
   return card;
 }
 
-function projetosDoFiltro() {
-  return filtroAtual === "Todos"
-    ? projetosPublicos
-    : projetosPublicos.filter(projeto => (projeto.categoria || "Outros") === filtroAtual);
+function correspondePesquisa(projeto) {
+  if (!termoPesquisa) return true;
+  const texto = [projeto.titulo, projeto.descricao, projeto.categoria]
+    .filter(Boolean).join(" ").toLocaleLowerCase("pt-BR");
+  return texto.includes(termoPesquisa);
+}
+
+function projetosFiltrados() {
+  return projetosPublicos.filter(projeto => {
+    const categoria = (projeto.categoria || "Outros").trim();
+    const categoriaOk = filtroAtual === "Todos" || categoria === filtroAtual;
+    return categoriaOk && correspondePesquisa(projeto);
+  });
 }
 
 function renderizarProjetos() {
-  const filtrados = projetosDoFiltro();
-  const destaques = filtrados.filter(projeto => projeto.destaque === true);
-  const demais = filtrados.filter(projeto => projeto.destaque !== true);
+  const filtrados = projetosFiltrados();
+  const destaques = filtrados.filter(p => p.destaque === true);
+  const demais = filtrados.filter(p => p.destaque !== true);
 
-  if (secaoDestaques) secaoDestaques.hidden = destaques.length === 0 && filtroAtual === "Todos";
-
+  secaoDestaques.hidden = destaques.length === 0;
   gradeDestaques.replaceChildren();
   gradeProjetos.replaceChildren();
 
-  if (destaques.length) {
-    estadoDestaques.hidden = true;
-    destaques.forEach(projeto => gradeDestaques.appendChild(criarCardProjeto(projeto, true)));
-    if (destaques.length === 1) gradeDestaques.firstElementChild.classList.add("portfolio-card-destaque-unico");
-  } else {
-    estadoDestaques.textContent = filtroAtual === "Todos"
-      ? "Ainda não há projetos selecionados para destaque."
-      : "Nenhum projeto em destaque nesta categoria.";
-    estadoDestaques.hidden = false;
-  }
+  destaques.forEach(projeto => gradeDestaques.appendChild(criarCardProjeto(projeto, true)));
+  demais.forEach(projeto => gradeProjetos.appendChild(criarCardProjeto(projeto)));
 
-  if (demais.length) {
-    estadoProjetos.hidden = true;
-    demais.forEach(projeto => gradeProjetos.appendChild(criarCardProjeto(projeto)));
-  } else {
-    estadoProjetos.textContent = filtrados.length
-      ? "Todos os projetos desta categoria estão na seleção de destaque."
-      : (projetosPublicos.length ? "Nenhum projeto encontrado nesta categoria." : "Nenhum projeto cadastrado no momento.");
+  estadoDestaques.hidden = true;
+  estadoProjetos.hidden = true;
+  mensagemVazia.hidden = filtrados.length !== 0 || projetosPublicos.length === 0;
+  gradeProjetos.hidden = filtrados.length === 0;
+  contadorResultados.textContent = filtrados.length + (filtrados.length === 1 ? " projeto encontrado" : " projetos encontrados");
+
+  if (projetosPublicos.length === 0) {
+    estadoProjetos.textContent = "Ainda não há projetos cadastrados. Volte em breve para conhecer meus trabalhos.";
     estadoProjetos.hidden = false;
+    gradeProjetos.hidden = true;
+    mensagemVazia.hidden = true;
+    contadorResultados.textContent = "Nenhum projeto cadastrado";
   }
 
   if (window.lucide) window.lucide.createIcons();
@@ -158,7 +169,7 @@ function renderizarProjetos() {
 
 function criarFiltrosCategorias() {
   const categorias = [...new Set(
-    projetosPublicos.map(projeto => (projeto.categoria || "Outros").trim()).filter(Boolean)
+    projetosPublicos.map(p => (p.categoria || "Outros").trim()).filter(Boolean)
   )].sort((a, b) => a.localeCompare(b, "pt-BR"));
 
   areaFiltros.replaceChildren();
@@ -169,11 +180,7 @@ function criarFiltrosCategorias() {
     botao.setAttribute("aria-pressed", String(indice === 0));
     botao.addEventListener("click", () => {
       filtroAtual = categoria;
-      botoesFiltro.forEach(item => {
-        const ativo = item === botao;
-        item.classList.toggle("ativo", ativo);
-        item.setAttribute("aria-pressed", String(ativo));
-      });
+      atualizarEstadoFiltros(botao);
       renderizarProjetos();
     });
     areaFiltros.appendChild(botao);
@@ -181,29 +188,63 @@ function criarFiltrosCategorias() {
   botoesFiltro = [...areaFiltros.querySelectorAll(".filtro-projeto")];
 }
 
-async function carregarProjetosPublicos() {
-  estadoDestaques.textContent = "Carregando projetos em destaque...";
-  estadoProjetos.textContent = "Carregando projetos...";
-  estadoDestaques.hidden = false;
-  estadoProjetos.hidden = false;
+function atualizarEstadoFiltros(botaoAtivo) {
+  botoesFiltro.forEach(botao => {
+    const ativo = botao === botaoAtivo;
+    botao.classList.toggle("ativo", ativo);
+    botao.setAttribute("aria-pressed", String(ativo));
+  });
+}
 
+function configurarExploracao() {
+  campoPesquisa.addEventListener("input", () => {
+    termoPesquisa = campoPesquisa.value.trim().toLocaleLowerCase("pt-BR");
+    renderizarProjetos();
+  });
+
+  document.querySelectorAll(".view-button").forEach(botao => {
+    botao.addEventListener("click", () => {
+      modoVisualizacao = botao.dataset.view;
+      document.querySelectorAll(".view-button").forEach(item => {
+        const ativo = item === botao;
+        item.classList.toggle("active", ativo);
+        item.setAttribute("aria-pressed", String(ativo));
+      });
+      gradeProjetos.classList.toggle("is-list-view", modoVisualizacao === "list");
+      gradeDestaques.classList.toggle("is-list-view", modoVisualizacao === "list");
+    });
+  });
+
+  document.getElementById("limpar-filtros").addEventListener("click", () => {
+    filtroAtual = "Todos";
+    termoPesquisa = "";
+    campoPesquisa.value = "";
+    atualizarEstadoFiltros(botoesFiltro[0]);
+    renderizarProjetos();
+    campoPesquisa.focus();
+  });
+}
+
+async function carregarProjetosPublicos() {
+  estadoProjetos.textContent = "Carregando projetos...";
+  estadoProjetos.hidden = false;
   try {
     const { data, error } = await db
       .from("projetos")
       .select("id,titulo,descricao,link,imagem_path,categoria,github_url,destaque,criado_em")
       .order("criado_em", { ascending: false });
-
     if (error) throw error;
 
     projetosPublicos = data || [];
+    atualizarIndicadores();
     criarFiltrosCategorias();
+    configurarExploracao();
     renderizarProjetos();
   } catch (erro) {
     console.error("Erro ao carregar projetos:", erro);
-    estadoDestaques.textContent = "Não foi possível carregar os projetos.";
-    estadoProjetos.textContent = "Verifique a conexão com o banco de dados e tente novamente.";
-    estadoDestaques.hidden = false;
+    estadoProjetos.textContent = "Não foi possível carregar os projetos. Verifique a conexão e tente novamente.";
     estadoProjetos.hidden = false;
+    contadorResultados.textContent = "Falha ao carregar";
   }
 }
 
