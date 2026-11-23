@@ -141,13 +141,12 @@
     const titulo = elemento("h3", "", projeto.titulo || "Projeto sem título");
     const descricaoTexto = modo === "client"
       ? (projeto.descricao || "Descrição não informada no cadastro.")
-      : (urlSegura(projeto.github_url) ? "Repositório de código disponível para consulta." : "O cadastro não possui link de repositório para este projeto.");
+      : (urlSegura(projeto.github_url) ? "O link do repositório está disponível para consulta." : "O cadastro não possui link de repositório para este projeto.");
     const descricao = elemento("p", "portfolio-card-description", descricaoTexto);
 
     const tags = elemento("div", "portfolio-card-tags");
-    tags.appendChild(elemento("span", "project-tag", projeto.categoria || "Outros"));
     if (modo === "technical") {
-      tags.appendChild(elemento("span", "project-tag", urlSegura(projeto.github_url) ? "GitHub disponível" : "GitHub não informado"));
+      tags.appendChild(elemento("span", "project-tag", urlSegura(projeto.github_url) ? "Repositório GitHub disponível" : "Repositório não informado"));
     }
 
     const acoes = elemento("div", "portfolio-card-actions");
@@ -160,7 +159,9 @@
     const github = criarLink("Código", urlSegura(projeto.github_url), "portfolio-button portfolio-button-quiet", "github");
     if (github) acoes.appendChild(github);
 
-    corpo.append(meta, titulo, descricao, tags, acoes);
+    corpo.append(meta, titulo, descricao);
+    if (tags.childElementCount) corpo.appendChild(tags);
+    corpo.appendChild(acoes);
     card.append(capa, corpo);
     return card;
   }
