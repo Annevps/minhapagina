@@ -64,11 +64,12 @@
     .about-page .skills-heading p { margin:0; color:var(--about-muted); font-size:13px; }
     .about-page .skills-count { color:#91a1ab; font-family:"Space Grotesk",sans-serif; font-size:11px; letter-spacing:1px; white-space:nowrap; }
     .about-page .skills-panel { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:12px; padding:22px; border:1px solid var(--about-border); border-radius:15px; background:#f9fbfc; box-shadow:0 12px 35px rgba(35,64,82,.045); }
-    .about-page .skill-item { min-height:104px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:11px; padding:12px 6px; border:1px solid transparent; border-radius:11px; color:#52636f; font-size:11px; font-weight:700; text-align:center; transition:background .2s ease,border-color .2s ease,transform .2s ease; }
-    .about-page .skill-item:hover { transform:translateY(-3px); border-color:var(--about-border); background:#fff; }
-    .about-page .skill-icon { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:var(--about-pale); color:var(--about-blue); }
-    .about-page .skill-icon svg { width:21px; height:21px; }
-    .about-page .skill-icon .skill-letter { font-family:"Space Grotesk",sans-serif; font-size:13px; font-weight:700; }
+    .about-page .skill-item { position:relative; min-height:92px; display:grid; place-items:center; padding:14px; border:1px solid transparent; border-radius:12px; background:transparent; cursor:default; transition:background .22s ease,border-color .22s ease,transform .22s ease,box-shadow .22s ease; }
+    .about-page .skill-item:hover { transform:translateY(-4px); border-color:#dce8ef; background:#fff; box-shadow:0 10px 24px rgba(35,64,82,.07); }
+    .about-page .skill-logo { display:block; width:43px; height:43px; object-fit:contain; transition:transform .22s ease; }
+    .about-page .skill-item:hover .skill-logo { transform:scale(1.09); }
+    .about-page .skill-item::after { content:attr(data-tooltip); position:absolute; z-index:5; left:50%; bottom:calc(100% - 2px); padding:6px 9px; border:1px solid #dce6ec; border-radius:6px; background:#fff; color:#244252; font:600 10px "DM Sans",sans-serif; white-space:nowrap; opacity:0; pointer-events:none; transform:translate(-50%,4px); transition:opacity .18s ease,transform .18s ease; box-shadow:0 6px 16px rgba(25,55,73,.08); }
+    .about-page .skill-item:hover::after,.about-page .skill-item:focus-visible::after { opacity:1; transform:translate(-50%,0); }
     .about-page .about-footer { padding:22px 24px; border-top:1px solid var(--about-border); background:#fff; color:#8796a0; text-align:center; font-size:11px; }
     .about-page .about-footer p { margin:0; }
     @media(max-width:1050px) {
@@ -96,8 +97,9 @@
       .about-page .visual-caption { bottom:7px; width:86%; font-size:8px; }
       .about-page .skills-section { padding:52px 0 60px; }
       .about-page .skills-heading { align-items:flex-start; flex-direction:column; gap:9px; }
-      .about-page .skills-panel { grid-template-columns:repeat(2,minmax(0,1fr)); padding:12px; gap:5px; }
-      .about-page .skill-item { min-height:92px; }
+      .about-page .skills-panel { grid-template-columns:repeat(4,minmax(0,1fr)); padding:12px; gap:5px; }
+      .about-page .skill-item { min-height:68px; padding:8px; }
+      .about-page .skill-logo { width:32px; height:32px; }
     }
     @media(prefers-reduced-motion:reduce) {
       .about-page *, .about-page *::before, .about-page *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
@@ -176,16 +178,15 @@
         </div>
 
         <div class="skills-panel" aria-label="Habilidades e ferramentas">
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="code-2" aria-hidden="true"></i></span><span>HTML</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="palette" aria-hidden="true"></i></span><span>CSS</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="braces" aria-hidden="true"></i></span><span>JavaScript</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="file-text" aria-hidden="true"></i></span><span>Word</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="table-2" aria-hidden="true"></i></span><span>Excel</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span><span>Claude</span></div>
-          <div class="skill-item"><span class="skill-icon"><span class="skill-letter">GPT</span></span><span>GPT</span></div>
-          <div class="skill-item"><span class="skill-icon"><i data-lucide="github" aria-hidden="true"></i></span><span>GitHub</span></div>
-        </div>
-      </div>
+          <div class="skill-item" data-tooltip="HTML" role="img" aria-label="HTML" title="HTML"><img class="skill-logo" src="https://cdn.simpleicons.org/html5/E34F26" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="CSS" role="img" aria-label="CSS" title="CSS"><img class="skill-logo" src="https://cdn.simpleicons.org/css3/1572B6" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="JavaScript" role="img" aria-label="JavaScript" title="JavaScript"><img class="skill-logo" src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="Word" role="img" aria-label="Word" title="Word"><img class="skill-logo" src="https://cdn.simpleicons.org/microsoftword/2B579A" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="Excel" role="img" aria-label="Excel" title="Excel"><img class="skill-logo" src="https://cdn.simpleicons.org/microsoftexcel/217346" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="Claude" role="img" aria-label="Claude" title="Claude"><img class="skill-logo" src="https://cdn.simpleicons.org/claude/D97757" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="GPT" role="img" aria-label="GPT" title="GPT"><img class="skill-logo" src="https://cdn.simpleicons.org/openai/412991" alt="" loading="lazy"></div>
+          <div class="skill-item" data-tooltip="GitHub" role="img" aria-label="GitHub" title="GitHub"><img class="skill-logo" src="https://cdn.simpleicons.org/github/181717" alt="" loading="lazy"></div>
+        </div>     </div>
     </section>
   </main>
 
