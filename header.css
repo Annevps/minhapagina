@@ -27,3 +27,55 @@
  .site-menu a[aria-current=page]::after{right:auto;bottom:9px;left:14px;width:3px;height:25px}
 }
 @media(prefers-reduced-motion:reduce){.site-header *{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+.site-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.site-theme-toggle{width:40px;height:40px;display:grid;place-items:center;border:1px solid #e1e8ee;border-radius:12px;background:#fff;color:#627683;cursor:pointer;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease}
+.site-theme-toggle:hover{color:#00527c;border-color:#b9d1df;background:#f1f7fa;transform:translateY(-1px)}
+.site-theme-toggle svg{width:17px;height:17px;stroke-width:1.8}
+.site-theme-toggle:focus-visible{outline:3px solid rgba(22,133,181,.35);outline-offset:3px}
+@media(max-width:760px){.site-actions{gap:6px}.site-theme-toggle{width:38px;height:38px;flex-basis:38px}}
+/* Tema escuro compartilhado */
+body[data-theme="dark"]{background:#101923!important;color:#e3edf3}
+body[data-theme="dark"] .site-header{background:rgba(16,25,35,.96);border-color:#263746;box-shadow:0 5px 22px rgba(0,0,0,.16)}
+body[data-theme="dark"] .site-brand-name{color:#e8f0f5}
+body[data-theme="dark"] .site-brand-mark{background:linear-gradient(145deg,#1b3444,#152532);border-color:#35566b;color:#8bc8e6}
+body[data-theme="dark"] .site-menu a{color:#a8bac6}
+body[data-theme="dark"] .site-menu a:hover,body[data-theme="dark"] .site-menu a[aria-current=page]{color:#a8ddf5;background:#1b3444;border-color:#35566b}
+body[data-theme="dark"] .site-menu a[aria-current=page]::after{background:#64b9e2}
+body[data-theme="dark"] .site-admin,body[data-theme="dark"] .site-theme-toggle,body[data-theme="dark"] .site-menu-toggle{background:#172633;border-color:#314756;color:#b8d7e7}
+body[data-theme="dark"] .site-admin:hover,body[data-theme="dark"] .site-theme-toggle:hover,body[data-theme="dark"] .site-menu-toggle:hover{background:#20394a;border-color:#4d748b;color:#d9f1fc}
+@media(max-width:760px){body[data-theme="dark"] .site-menu{background:rgba(16,25,35,.99);border-color:#263746}}
+body.home-page[data-theme="dark"]{--background:#101923;--surface:#172633;--surface-soft:#1b2c39;--text:#e3edf3;--muted:#a6b8c4;--border:#2a3d4b}
+body.home-page[data-theme="dark"] .home-hero{background:radial-gradient(ellipse at 78% 35%,rgba(22,133,181,.18),transparent 43%),linear-gradient(110deg,#111e29 0%,#142431 65%,#192f3e 100%)}
+body.home-page[data-theme="dark"] .hero-content h1,body.home-page[data-theme="dark"] .section-heading h2,body.home-page[data-theme="dark"] .skills-preview-heading h2{color:#edf4f8}
+body.home-page[data-theme="dark"] .hero-title,body.home-page[data-theme="dark"] .hero-description,body.home-page[data-theme="dark"] .section-heading p,body.home-page[data-theme="dark"] .skills-preview-heading p{color:#a9bbc6}
+body.home-page[data-theme="dark"] .hero-note,body.home-page[data-theme="dark"] .interest-strip,body.home-page[data-theme="dark"] .interest-card,body.home-page[data-theme="dark"] .news-card,body.home-page[data-theme="dark"] .news-highlight,body.home-page[data-theme="dark"] .footer-container,body.home-page[data-theme="dark"] .home-footer{background:#172633;border-color:#2b414f}
+body.home-page[data-theme="dark"] .interest-item,body.home-page[data-theme="dark"] .interest-card h3,body.home-page[data-theme="dark"] .news-content h3,body.home-page[data-theme="dark"] .news-highlight p{color:#e0eaf0}
+body.home-page[data-theme="dark"] .interest-card p,body.home-page[data-theme="dark"] .news-excerpt,body.home-page[data-theme="dark"] .news-full-text,body.home-page[data-theme="dark"] .footer-brand p{color:#a6b8c4}
+body.home-page[data-theme="dark"] .featured-interest,body.home-page[data-theme="dark"] .skills-preview,body.home-page[data-theme="dark"] .contact-banner{background:linear-gradient(145deg,#172b39,#1a3140);border-color:#2b4658}
+body.home-page[data-theme="dark"] .skills-logo-item{background:#172633;border-color:#2c414f}
+body.home-page[data-theme="dark"] .skills-logo-item::after{background:#203644;border-color:#38586b;color:#e5f0f5}
+body.home-page[data-theme="dark"] .contact-banner-text h2,body.home-page[data-theme="dark"] .contact-banner-text p{color:#e1ebf1}
+body.home-page[data-theme="dark"] .footer-logo span:not(.footer-brand-mark),body.home-page[data-theme="dark"] .footer-navigation a,body.home-page[data-theme="dark"] .footer-social a,body.home-page[data-theme="dark"] .footer-bottom{color:#b0c1cb}
+body.about-page[data-theme="dark"] .about-hero{background:radial-gradient(ellipse at 84% 22%,rgba(22,133,181,.16),transparent 35%),linear-gradient(115deg,#111e29 0%,#142431 62%,#192f3e 100%)}
+body.about-page[data-theme="dark"] .about-title,body.about-page[data-theme="dark"] .about-card h2,body.about-page[data-theme="dark"] .skills-heading h2{color:#edf4f8}
+body.about-page[data-theme="dark"] .about-intro,body.about-page[data-theme="dark"] .about-card p,body.about-page[data-theme="dark"] .skills-heading p{color:#a9bbc6}
+body.about-page[data-theme="dark"] .about-card,body.about-page[data-theme="dark"] .skills-panel,body.about-page[data-theme="dark"] .photo-placeholder,body.about-page[data-theme="dark"] .visual-chip{background:#172633;border-color:#2c414f}
+body.about-page[data-theme="dark"] .about-quote{background:#1a3040;color:#c5d5de}
+body.about-page[data-theme="dark"] .about-footer,body.about-page[data-theme="dark"] .skills-section{background:#111e29;border-color:#2a3d4b;color:#a6b8c4}
+body.about-page[data-theme="dark"] .photo-placeholder strong,body.about-page[data-theme="dark"] .visual-chip{color:#d7e5ed}
+body.about-page[data-theme="dark"] .skill-item:hover{background:#203644;border-color:#3b5a6b}
+body.about-page[data-theme="dark"] .skill-item::after{background:#203644;border-color:#38586b;color:#e5f0f5}
+body.pagina-projetos[data-theme="dark"]{background:#101923;color:#e3edf3}
+body.pagina-projetos[data-theme="dark"] .portfolio-projetos-hero,body.pagina-projetos[data-theme="dark"] .portfolio-destaques,body.pagina-projetos[data-theme="dark"] .portfolio-todos{background:#101923;border-color:#2a3d4b}
+body.pagina-projetos[data-theme="dark"] .portfolio-projetos-hero h1,body.pagina-projetos[data-theme="dark"] .portfolio-section-heading h2,body.pagina-projetos[data-theme="dark"] .portfolio-card-conteudo h3,body.pagina-projetos[data-theme="dark"] .portfolio-projetos-cta h2{color:#e6eff4}
+body.pagina-projetos[data-theme="dark"] .portfolio-projetos-hero-texto>p,body.pagina-projetos[data-theme="dark"] .portfolio-section-heading p,body.pagina-projetos[data-theme="dark"] .portfolio-card-conteudo>p,body.pagina-projetos[data-theme="dark"] .portfolio-projetos-cta p{color:#a8bac6}
+body.pagina-projetos[data-theme="dark"] .portfolio-card,body.pagina-projetos[data-theme="dark"] .portfolio-projetos-cta{background:#172633;border-color:#2b414f}
+body.pagina-projetos[data-theme="dark"] .portfolio-card-selo{background:#203644;color:#b8d3e0}
+body:not(.home-page):not(.about-page):not(.pagina-projetos)[data-theme="dark"]{background:#101923;color:#e3edf3}
+body[data-theme="dark"] .contato-topo h1,body[data-theme="dark"] .login-caixa h1{color:#e6eff4}
+body[data-theme="dark"] .contato-topo p,body[data-theme="dark"] .login-aviso{color:#a8bac6}
+body[data-theme="dark"] .contato-formulario,body[data-theme="dark"] .login-caixa{background:#172633;border-color:#2b414f}
+body[data-theme="dark"] .contato-formulario label,body[data-theme="dark"] .login-caixa label{color:#d5e2e9}
+body[data-theme="dark"] .contato-formulario input,body[data-theme="dark"] .contato-formulario textarea,body[data-theme="dark"] .login-caixa input{background:#101923;border-color:#344b5a;color:#e3edf3}
+body[data-theme="dark"] .contato-formulario .campo-dica{color:#a6b8c4}
