@@ -293,8 +293,8 @@
           item.setAttribute("aria-pressed", String(ativo));
         });
         $("mode-description").textContent = modo === "client"
-          ? "Veja o propósito e a descrição de cada projeto."
-          : "Consulte a categoria e a disponibilidade de links de código cadastrados.";
+          ? "Entenda o que cada projeto apresenta, com base nas descrições cadastradas."
+          : "Consulte as categorias e os repositórios de código disponíveis.";
         renderizar();
       });
     });
