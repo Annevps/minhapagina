@@ -1,8 +1,10 @@
 /* Portfólio público — mantém os campos e a integração existentes do Supabase. */
 (() => {
   const $ = (id) => document.getElementById(id);
+  const gradeDestaques = $("grade-destaques");
   const gradeProjetos = $("grade-projetos");
   const estado = $("estado");
+  const estadoDestaques = $("estado-destaques");
   const filtros = $("filtros-projetos");
   const pesquisa = $("pesquisa-projetos");
   const contador = $("contador-resultados");
@@ -14,22 +16,6 @@
   let termo = "";
   let modo = "client";
   let botoesFiltro = [];
-  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function contarAte(elemento, valor) {
-    if (!elemento) return;
-    const alvo = Number(valor) || 0;
-    if (reduceMotion) { elemento.textContent = alvo; return; }
-    const inicio = performance.now();
-    const duracao = 850;
-    const animar = (agora) => {
-      const progresso = Math.min((agora - inicio) / duracao, 1);
-      const suavizado = 1 - Math.pow(1 - progresso, 3);
-      elemento.textContent = Math.round(alvo * suavizado);
-      if (progresso < 1) requestAnimationFrame(animar);
-    };
-    requestAnimationFrame(animar);
-  }
 
   const normalizar = (valor) => String(valor || "")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
@@ -89,9 +75,9 @@
 
   function atualizarIndicadores() {
     const categorias = new Set(projetos.map(p => (p.categoria || "Outros").trim()).filter(Boolean));
-    contarAte($("stat-total"), projetos.length);
-    contarAte($("stat-categorias"), categorias.size);
-    contarAte($("stat-codigo"), projetos.filter(p => urlSegura(p.github_url)).length);
+    $("stat-total").textContent = projetos.length;
+    $("stat-categorias").textContent = categorias.size;
+    $("stat-codigo").textContent = projetos.filter(p => urlSegura(p.github_url)).length;
   }
 
   function abrirDetalhes(projeto) {
@@ -136,17 +122,18 @@
 
     const corpo = elemento("div", "portfolio-card-body");
     const meta = elemento("div", "portfolio-card-meta");
-    meta.append(elemento("span", "portfolio-card-dot", "AV"), elemento("span", "portfolio-card-type", modo === "client" ? "PROJETO" : "INFORMAÇÕES DO CADASTRO"));
+    meta.append(elemento("span", "portfolio-card-dot", "AV"), elemento("span", "portfolio-card-type", modo === "client" ? "PROJETO" : "DADOS DO CADASTRO"));
 
     const titulo = elemento("h3", "", projeto.titulo || "Projeto sem título");
     const descricaoTexto = modo === "client"
       ? (projeto.descricao || "Descrição não informada no cadastro.")
-      : (urlSegura(projeto.github_url) ? "O link do repositório está disponível para consulta." : "O cadastro não possui link de repositório para este projeto.");
+      : (urlSegura(projeto.github_url) ? "Este projeto possui um repositório de código cadastrado." : "Não há repositório de código cadastrado para este projeto.");
     const descricao = elemento("p", "portfolio-card-description", descricaoTexto);
 
     const tags = elemento("div", "portfolio-card-tags");
+    tags.appendChild(elemento("span", "project-tag", projeto.categoria || "Outros"));
     if (modo === "technical") {
-      tags.appendChild(elemento("span", "project-tag", urlSegura(projeto.github_url) ? "Repositório GitHub disponível" : "Repositório não informado"));
+      tags.appendChild(elemento("span", "project-tag", urlSegura(projeto.github_url) ? "GitHub disponível" : "GitHub não informado"));
     }
 
     const acoes = elemento("div", "portfolio-card-actions");
@@ -159,9 +146,7 @@
     const github = criarLink("Código", urlSegura(projeto.github_url), "portfolio-button portfolio-button-quiet", "github");
     if (github) acoes.appendChild(github);
 
-    corpo.append(meta, titulo, descricao);
-    if (tags.childElementCount) corpo.appendChild(tags);
-    corpo.appendChild(acoes);
+    corpo.append(meta, titulo, descricao, tags, acoes);
     card.append(capa, corpo);
     return card;
   }
@@ -179,20 +164,20 @@
     });
   }
 
+  function renderizarDestaques(lista) {
+    const destaques = lista.filter(p => p.destaque === true).slice(0, 3);
+    gradeDestaques.replaceChildren();
+    estadoDestaques.hidden = destaques.length > 0;
+    estadoDestaques.textContent = destaques.length ? "" : "Os projetos selecionados como destaque aparecerão aqui.";
+    destaques.forEach((projeto, indice) => { const card = criarCard(projeto, true); card.classList.add("reveal-card"); card.style.animationDelay = Math.min(indice * 90, 270) + "ms"; gradeDestaques.appendChild(card); });
+    gradeDestaques.closest(".portfolio-featured-section").hidden = destaques.length === 0;
+  }
+
   function renderizar() {
     const lista = listaFiltrada();
+    renderizarDestaques(lista);
     gradeProjetos.replaceChildren();
-    gradeProjetos.classList.remove("count-1","count-2");
-    if (lista.length === 1) gradeProjetos.classList.add("count-1");
-    if (lista.length === 2) gradeProjetos.classList.add("count-2");
-    lista.forEach((projeto, indice) => {
-      const card = criarCard(projeto, projeto.destaque === true);
-      if (!reduceMotion) {
-        card.classList.add("reveal-card");
-        card.style.animationDelay = Math.min(indice * 65, 260) + "ms";
-      }
-      gradeProjetos.appendChild(card);
-    });
+    lista.forEach((projeto, indice) => { const card = criarCard(projeto); card.classList.add("reveal-card"); card.style.animationDelay = Math.min(indice * 75, 375) + "ms"; gradeProjetos.appendChild(card); });
     const total = lista.length;
     contador.textContent = total + (total === 1 ? " projeto encontrado" : " projetos encontrados");
     estado.hidden = projetos.length > 0;
@@ -228,10 +213,7 @@
     botoesFiltro = [...filtros.querySelectorAll(".filtro-projeto")];
   }
 
-  let interacoesConfiguradas = false;
   function configurarInteracoes() {
-    if (interacoesConfiguradas) return;
-    interacoesConfiguradas = true;
     pesquisa.addEventListener("input", () => {
       termo = pesquisa.value.trim();
       renderizar();
@@ -246,8 +228,8 @@
           item.setAttribute("aria-pressed", String(ativo));
         });
         $("mode-description").textContent = modo === "client"
-          ? "Conheça a proposta e a descrição de cada projeto."
-          : "Consulte as categorias e os links de repositório cadastrados.";
+          ? "Veja o propósito e a descrição de cada projeto."
+          : "Consulte a categoria e a disponibilidade de links de código cadastrados.";
         renderizar();
       });
     });
@@ -274,6 +256,7 @@
   async function carregar() {
     estado.hidden = false;
     estado.textContent = "Carregando projetos...";
+    estadoDestaques.textContent = "Carregando destaques...";
     try {
       const { data, error } = await db.from("projetos")
         .select("id,titulo,descricao,link,imagem_path,categoria,github_url,destaque,criado_em")
@@ -288,6 +271,7 @@
       console.error("Erro ao carregar projetos:", erro);
       estado.textContent = "Não foi possível carregar os projetos. Verifique a conexão e tente novamente.";
       estado.hidden = false;
+      estadoDestaques.hidden = true;
       contador.textContent = "Falha ao carregar os projetos";
     }
   }
