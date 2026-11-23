@@ -170,7 +170,7 @@
     estadoDestaques.hidden = destaques.length > 0;
     estadoDestaques.textContent = destaques.length ? "" : "Os projetos selecionados como destaque aparecerão aqui.";
     destaques.forEach(projeto => gradeDestaques.appendChild(criarCard(projeto, true)));
-    gradeDestaques.closest(".portfolio-featured-section").hidden = projetos.every(p => p.destaque !== true);
+    gradeDestaques.closest(".portfolio-featured-section").hidden = destaques.length === 0;
   }
 
   function renderizar() {
