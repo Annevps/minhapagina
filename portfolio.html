@@ -33,11 +33,11 @@
       </article>
       <article class="overview-item">
         <span class="overview-icon" aria-hidden="true"><i data-lucide="folder"></i></span>
-        <div><strong id="stat-categorias">—</strong><span>Categorias</span></div>
+        <div><strong id="stat-categorias">—</strong><span>Categorias cadastradas</span></div>
       </article>
       <article class="overview-item">
         <span class="overview-icon" aria-hidden="true"><i data-lucide="github"></i></span>
-        <div><strong id="stat-codigo">—</strong><span>Com código público</span></div>
+        <div><strong id="stat-codigo">—</strong><span>Repositórios disponíveis</span></div>
       </article>
     </section>
 
@@ -56,6 +56,10 @@
         <p>Encontre projetos por categoria ou pesquise pelo que deseja conhecer.</p>
       </div>
 
+      <div class="portfolio-mode-switch" role="group" aria-label="Escolher apresentação dos projetos">
+        <button type="button" class="mode-button active" data-mode="client" aria-pressed="true"><i data-lucide="eye" aria-hidden="true"></i><span>Visão para clientes</span></button>
+        <button type="button" class="mode-button" data-mode="technical" aria-pressed="false"><i data-lucide="code-2" aria-hidden="true"></i><span>Visão técnica</span></button>
+      </div>
       <div class="portfolio-tools">
         <div class="portfolio-search">
           <i data-lucide="search" aria-hidden="true"></i>
@@ -83,6 +87,10 @@
       </div>
     </section>
 
+    <section class="portfolio-spotlight" id="projeto-especial" aria-labelledby="titulo-projeto-especial" hidden>
+      <div class="spotlight-copy"><span class="section-overline">UM PROJETO EM EVIDÊNCIA</span><h2 id="titulo-projeto-especial">Conheça um dos meus <span>trabalhos</span></h2><p id="descricao-projeto-especial"></p><div id="meta-projeto-especial" class="spotlight-meta"></div><div id="acoes-projeto-especial" class="portfolio-card-actions"></div></div>
+      <div class="spotlight-image" id="imagem-projeto-especial"></div>
+    </section>
     <section class="portfolio-closing">
       <span class="closing-line"></span>
       <p>Cada projeto representa uma nova <strong>experiência</strong>, uma nova <strong>ideia</strong> e mais um passo na minha evolução.</p>
@@ -90,6 +98,11 @@
     </section>
   </main>
 
+  <dialog class="project-dialog" id="detalhes-projeto" aria-labelledby="detalhe-titulo">
+    <div class="project-dialog-panel"><button type="button" class="dialog-close" id="fechar-detalhes" aria-label="Fechar detalhes"><i data-lucide="x"></i></button>
+      <div id="detalhe-imagem" class="dialog-image"></div><div class="dialog-content"><span id="detalhe-categoria" class="section-overline"></span><h2 id="detalhe-titulo"></h2><p id="detalhe-descricao"></p><div id="detalhe-informacoes" class="dialog-information"></div><div id="detalhe-acoes" class="portfolio-card-actions"></div></div>
+    </div>
+  </dialog>
   <footer class="portfolio-footer"><p>© <span id="ano-atual"></span> Anne Vitória. Desenvolvendo ideias com tecnologia.</p></footer>
 
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
