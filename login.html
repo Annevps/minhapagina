@@ -6,26 +6,11 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Entrar | Anne Vitoris</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo do meu portfólio">
-      </a>
-
-      <ul class="links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="quemsoueu.html">Quem sou eu</a></li>
-        <li><a href="projetos.html">Portfólio</a></li>
-      </ul>
-
-      <a href="login.html" class="login" aria-label="Ir para a página de login">
-        <i data-lucide="lock"></i>
-      </a>
-    </nav>
-  </header>
+  <div id="site-header" data-page="login"></div>
 
   <main class="login-pagina">
     <section class="login-caixa">
@@ -55,5 +40,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="config.js"></script>
   <script src="login.js"></script>
+  <script src="header.js"></script>
 </body>
 </html>
