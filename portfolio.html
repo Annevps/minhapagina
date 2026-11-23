@@ -19,25 +19,25 @@
   <div id="site-header" data-page="portfolio"></div>
 
   <main class="portfolio-page">
-    <section class="portfolio-intro" aria-labelledby="titulo-projetos">
-      <span class="portfolio-eyebrow"><span class="eyebrow-dot"></span> MEU PORTFÓLIO</span>
-      <h1 id="titulo-projetos">Projetos que transformam ideias em soluções.</h1>
-      <p>Conheça alguns dos projetos que desenvolvi durante minha jornada na programação e no desenvolvimento web.</p>
-    </section>
-
-    <section class="portfolio-overview" aria-label="Resumo do portfólio">
-      <article class="overview-item">
-        <span class="overview-icon"><i data-lucide="layers" aria-hidden="true"></i></span>
-        <div><strong id="stat-total">—</strong><span>projetos cadastrados</span></div>
-      </article>
-      <article class="overview-item">
-        <span class="overview-icon"><i data-lucide="folder" aria-hidden="true"></i></span>
-        <div><strong id="stat-categorias">—</strong><span>categorias</span></div>
-      </article>
-      <article class="overview-item">
-        <span class="overview-icon"><i data-lucide="github" aria-hidden="true"></i></span>
-        <div><strong id="stat-codigo">—</strong><span>códigos disponíveis</span></div>
-      </article>
+    <section class="portfolio-hero" aria-labelledby="titulo-projetos">
+      <div class="portfolio-hero-copy">
+        <span class="portfolio-eyebrow hero-reveal"><span class="eyebrow-dot"></span> PORTFÓLIO</span>
+        <h1 id="titulo-projetos"><span class="hero-line">Projetos que</span><span class="hero-line">transformam ideias</span><span class="hero-line hero-line-accent">em soluções reais.</span></h1>
+        <p class="hero-support">Uma seleção de experiências, ideias e soluções desenvolvidas com tecnologia, criatividade e atenção aos detalhes.</p>
+        <a class="hero-cta" href="#titulo-todos-projetos">Explorar projetos <i data-lucide="arrow-down-right" aria-hidden="true"></i></a>
+        <section class="portfolio-overview" aria-label="Resumo do portfólio">
+          <article class="overview-item"><span class="overview-icon"><i data-lucide="layers" aria-hidden="true"></i></span><div><strong id="stat-total">—</strong><span>projetos</span></div></article>
+          <article class="overview-item"><span class="overview-icon"><i data-lucide="folder" aria-hidden="true"></i></span><div><strong id="stat-categorias">—</strong><span>categorias</span></div></article>
+          <article class="overview-item"><span class="overview-icon"><i data-lucide="github" aria-hidden="true"></i></span><div><strong id="stat-codigo">—</strong><span>códigos</span></div></article>
+        </section>
+      </div>
+      <div class="portfolio-hero-visual" id="portfolio-hero-visual" aria-label="Prévia de projetos cadastrados">
+        <div class="hero-visual-glow" aria-hidden="true"></div>
+        <div class="hero-image-stack" id="hero-image-stack">
+          <div class="hero-image-placeholder"><span>AV</span><small>Projetos em construção</small></div>
+        </div>
+        <span class="hero-floating-note"><i data-lucide="sparkles" aria-hidden="true"></i> Ideias em movimento</span>
+      </div>
     </section>
 
     <section class="portfolio-explorer" aria-labelledby="titulo-todos-projetos">
