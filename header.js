@@ -9,8 +9,9 @@
   document.body.dataset.theme = currentTheme;
   const links = [
     { id: "home", label: "Início", href: "index.html" },
-    { id: "about", label: "Quem sou eu", href: "sobre.html" },
-    { id: "portfolio", label: "Portfólio", href: "portfolio.html" },
+    { id: "skills", label: "Habilidades", href: "index.html#habilidades" },
+    { id: "about", label: "Sobre", href: "sobre.html" },
+    { id: "portfolio", label: "Projetos", href: "portfolio.html" },
     { id: "contact", label: "Contato", href: "contato.html" }
   ];
   const header = document.createElement("header");
