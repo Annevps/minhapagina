@@ -3,67 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Conheça os projetos de desenvolvimento web, sistemas e tecnologia desenvolvidos por Anne Vitória.">
-  <meta name="theme-color" content="#00527c">
-  <title>Meus Projetos | Anne Vitória</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="header.css">
+  <title>Projetos | Anne Vitória</title>
+  <!-- Se você já tem um CSS global, mantenha o link dele aqui também -->
+  <link rel="stylesheet" href="portfolio.css">
 </head>
-<body class="pagina-projetos">
-  <div id="site-header" data-page="portfolio"></div>
+<body>
 
-  <main class="projetos-pagina">
-    <section class="projetos-topo" aria-labelledby="titulo-projetos">
-      <span class="projetos-etiqueta"><i data-lucide="code-2"></i> MEU PORTFÓLIO</span>
-      <h1 id="titulo-projetos">Meus <span>projetos</span></h1>
-      <p>Conheça alguns dos projetos que desenvolvi durante minha jornada na programação e no desenvolvimento web.</p>
-      <div class="projetos-divisor" aria-hidden="true"><span></span><i data-lucide="sparkles"></i><span></span></div>
-    </section>
+  <!-- Seu cabeçalho existente entra aqui (mantenha o seu) -->
+  
+  <main class="projects-section">
+    <header class="projects-header">
+      <span class="section-tag">PORTFÓLIO</span>
+      <h1>Projetos que desenvolvi</h1>
+      <p>Uma seleção do que venho construindo na programação e no design de interfaces.</p>
+    </header>
 
-    <section class="projetos-filtros" aria-label="Filtrar projetos">
-      <button class="filtro-projeto ativo" type="button" data-filtro="Todos" aria-pressed="true"><i data-lucide="layout-grid"></i> Todos</button>
-      <button class="filtro-projeto" type="button" data-filtro="Desenvolvimento Web" aria-pressed="false"><i data-lucide="monitor"></i> Sites</button>
-      <button class="filtro-projeto" type="button" data-filtro="Sistemas" aria-pressed="false"><i data-lucide="settings"></i> Sistemas</button>
-      <button class="filtro-projeto" type="button" data-filtro="Interfaces" aria-pressed="false"><i data-lucide="panels-top-left"></i> Interfaces</button>
-      <button class="filtro-projeto" type="button" data-filtro="Outros" aria-pressed="false"><i data-lucide="palette"></i> Outros</button>
-    </section>
+    <div class="projects-grid">
 
-    <section class="projetos-layout" aria-label="Projetos publicados">
-      <div class="projetos-listagem">
-        <p id="estado" class="estado-vazio" role="status" aria-live="polite">Carregando projetos...</p>
-        <ul id="grade-projetos" class="grade-projetos" aria-label="Lista de projetos"></ul>
-      </div>
-
-      <aside class="projetos-visual" aria-label="Tecnologia e desenvolvimento">
-        <div class="visual-orbita orbita-um"></div>
-        <div class="visual-orbita orbita-dois"></div>
-        <div class="visual-icone visual-laptop"><i data-lucide="laptop"></i></div>
-        <div class="visual-tela">
-          <i data-lucide="code-2"></i>
-          <span>CRIANDO O PRÓXIMO PROJETO</span>
-          <div class="visual-linhas"><b></b><b></b><b></b></div>
+      <!-- PROJETO 1 (Se for o primeiro visível, use eager + high) -->
+      <article class="project-card reveal">
+        <div class="project-image-wrapper">
+          <picture>
+            <source srcset="projeto1.webp" type="image/webp">
+            <img 
+              src="projeto1.webp" 
+              alt="Interface do Projeto 1" 
+              width="800" 
+              height="600" 
+              loading="eager" 
+              fetchpriority="high"
+              decoding="async"
+              class="project-thumb"
+            >
+          </picture>
+          <div class="project-overlay"></div>
         </div>
-        <div class="visual-icone visual-engrenagem"><i data-lucide="settings"></i></div>
-        <div class="visual-icone visual-banco"><i data-lucide="database"></i></div>
-        <p class="visual-legenda">Ideias que ganham vida através da tecnologia.</p>
-      </aside>
-    </section>
+        <div class="project-info">
+          <span class="project-category">Desenvolvimento Web</span>
+          <h3 class="project-title">Nome do Projeto 1</h3>
+          <p class="project-description">Uma breve descrição do que o projeto faz e quais tecnologias foram usadas para construí-lo.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
+        </div>
+      </article>
 
-    <p class="projetos-final"><i data-lucide="rocket"></i> Em breve, mais projetos por aqui!</p>
+      <!-- PROJETO 2 (Use lazy para os demais) -->
+      <article class="project-card reveal">
+        <div class="project-image-wrapper">
+          <picture>
+            <source srcset="projeto2.webp" type="image/webp">
+            <img 
+              src="projeto2.webp" 
+              alt="Interface do Projeto 2" 
+              width="800" 
+              height="600" 
+              loading="lazy" 
+              decoding="async"
+              class="project-thumb"
+            >
+          </picture>
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">UI/UX Design</span>
+          <h3 class="project-title">Nome do Projeto 2</h3>
+          <p class="project-description">Descrição breve do segundo projeto, destacando o problema que ele resolve e as ferramentas utilizadas.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
+        </div>
+      </article>
+
+      <!-- PROJETO 3 -->
+      <article class="project-card reveal">
+        <div class="project-image-wrapper">
+          <picture>
+            <source srcset="projeto3.webp" type="image/webp">
+            <img 
+              src="projeto3.webp" 
+              alt="Interface do Projeto 3" 
+              width="800" 
+              height="600" 
+              loading="lazy" 
+              decoding="async"
+              class="project-thumb"
+            >
+          </picture>
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">Experimentação</span>
+          <h3 class="project-title">Nome do Projeto 3</h3>
+          <p class="project-description">Mais um espaço para você descrever um projeto real seu, com links para o código ou demonstração ao vivo.</p>
+          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
+        </div>
+      </article>
+
+    </div>
   </main>
 
-  <footer class="rodape-projetos">
-    <p>© <span id="ano-atual"></span> Anne Vitória · Desenvolvendo ideias com tecnologia.</p>
-  </footer>
+  <!-- Seu rodapé existente entra aqui (mantenha o seu) -->
 
-  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-  <script src="config.js"></script>
   <script src="projetos.js"></script>
-  <script>
-    document.getElementById("ano-atual").textContent = new Date().getFullYear();
-    if (window.lucide) window.lucide.createIcons();
-  </script>
-  <script src="header.js"></script>
 </body>
 </html>
