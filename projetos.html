@@ -3,104 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos | Anne Vitória</title>
-  <!-- Se você já tem um CSS global, mantenha o link dele aqui também -->
+  <title>Projetos | Portfólio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
 
-  <!-- Seu cabeçalho existente entra aqui (mantenha o seu) -->
-  
-  <main class="projects-section">
-    <header class="projects-header">
-      <span class="section-tag">PORTFÓLIO</span>
-      <h1>Projetos que desenvolvi</h1>
-      <p>Uma seleção do que venho construindo na programação e no design de interfaces.</p>
-    </header>
+  <!-- Cabeçalho Flutuante -->
+  <header>
+    <nav class="nav-pill">
+      <div class="nav-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="projetos.html" class="active">Projetos</a>
+      </div>
+      <a href="index.html" class="nav-logo">{AN}</a>
+      <div class="nav-links">
+        <a href="portfolio.html">Portfólio</a>
+        <a href="contato.html">Contato</a>
+      </div>
+    </nav>
+  </header>
 
-    <div class="projects-grid">
+  <main class="projects-page">
+    <div class="container">
+      <div class="page-header">
+        <span>~/projetos</span>
+        <h1>Sistemas e aplicações em destaque</h1>
+        <p>Explore os trabalhos reais desenvolvidos com foco em performance, arquitetura limpa e excelente experiência de usuário.</p>
+      </div>
 
-      <!-- PROJETO 1 (Se for o primeiro visível, use eager + high) -->
-      <article class="project-card reveal">
-        <div class="project-image-wrapper">
-          <picture>
-            <source srcset="projeto1.webp" type="image/webp">
-            <img 
-              src="projeto1.webp" 
-              alt="Interface do Projeto 1" 
-              width="800" 
-              height="600" 
-              loading="eager" 
-              fetchpriority="high"
-              decoding="async"
-              class="project-thumb"
-            >
-          </picture>
-          <div class="project-overlay"></div>
-        </div>
-        <div class="project-info">
-          <span class="project-category">Desenvolvimento Web</span>
-          <h3 class="project-title">Nome do Projeto 1</h3>
-          <p class="project-description">Uma breve descrição do que o projeto faz e quais tecnologias foram usadas para construí-lo.</p>
-          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
-        </div>
-      </article>
+      <div class="projects-grid">
+        <!-- Card de Projeto 1 -->
+        <article class="project-card">
+          <div class="project-preview">
+            <span class="badge">Full Stack</span>
+          </div>
+          <div class="project-info">
+            <h3>Dashboard Administrativo</h3>
+            <p>Sistema web completo para gestão de dados em tempo real, relatórios automatizados e controle de permissões.</p>
+            <div class="tech-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MySQL</span>
+            </div>
+            <a href="#" class="project-link">Ver detalhes do projeto →</a>
+          </div>
+        </article>
 
-      <!-- PROJETO 2 (Use lazy para os demais) -->
-      <article class="project-card reveal">
-        <div class="project-image-wrapper">
-          <picture>
-            <source srcset="projeto2.webp" type="image/webp">
-            <img 
-              src="projeto2.webp" 
-              alt="Interface do Projeto 2" 
-              width="800" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="project-thumb"
-            >
-          </picture>
-          <div class="project-overlay"></div>
-        </div>
-        <div class="project-info">
-          <span class="project-category">UI/UX Design</span>
-          <h3 class="project-title">Nome do Projeto 2</h3>
-          <p class="project-description">Descrição breve do segundo projeto, destacando o problema que ele resolve e as ferramentas utilizadas.</p>
-          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
-        </div>
-      </article>
-
-      <!-- PROJETO 3 -->
-      <article class="project-card reveal">
-        <div class="project-image-wrapper">
-          <picture>
-            <source srcset="projeto3.webp" type="image/webp">
-            <img 
-              src="projeto3.webp" 
-              alt="Interface do Projeto 3" 
-              width="800" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="project-thumb"
-            >
-          </picture>
-          <div class="project-overlay"></div>
-        </div>
-        <div class="project-info">
-          <span class="project-category">Experimentação</span>
-          <h3 class="project-title">Nome do Projeto 3</h3>
-          <p class="project-description">Mais um espaço para você descrever um projeto real seu, com links para o código ou demonstração ao vivo.</p>
-          <a href="#" class="project-link" target="_blank" rel="noopener">Ver Projeto →</a>
-        </div>
-      </article>
-
+        <!-- Card de Projeto 2 -->
+        <article class="project-card">
+          <div class="project-preview">
+            <span class="badge">Web App</span>
+          </div>
+          <div class="project-info">
+            <h3>Plataforma de E-commerce</h3>
+            <p>Loja virtual otimizada para conversão, painel administrativo integrado e gateway de pagamentos seguro.</p>
+            <div class="tech-tags">
+              <span>JavaScript</span>
+              <span>CSS3</span>
+              <span>API Rest</span>
+            </div>
+            <a href="#" class="project-link">Ver detalhes do projeto →</a>
+          </div>
+        </article>
+      </div>
     </div>
   </main>
 
-  <!-- Seu rodapé existente entra aqui (mantenha o seu) -->
-
-  <script src="projetos.js"></script>
 </body>
 </html>
