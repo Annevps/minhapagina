@@ -1,440 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Entre em contato com Anne Vitoria para conversar sobre ideias, projetos e desenvolvimento web.">
-
-  <title>Contato | Anne Vitoria</title>
-
+  <title>Contato | Portfólio</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ---------- Página de contato ---------- */
-
-    .contato-container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .contato-topo {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .contato-topo h1 {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-    }
-
-    .contato-topo p {
-      color: var(--texto-suave);
-      line-height: 1.6;
-    }
-
-    .contato-formulario {
-      background: var(--superficie);
-      border: 1px solid var(--borda);
-      border-radius: 12px;
-      padding: 28px;
-    }
-
-    .contato-formulario .campo {
-      margin-bottom: 20px;
-    }
-
-    .contato-formulario .campo input,
-    .contato-formulario .campo textarea {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 1rem;
-      font-family: inherit;
-      color: var(--texto);
-      background: var(--superficie);
-      border: 1px solid #b9c4cc;
-      border-radius: 8px;
-    }
-
-    .contato-formulario .campo textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .contato-formulario .campo input:focus,
-    .contato-formulario .campo textarea:focus {
-      outline: 3px solid var(--azul-foco);
-      border-color: var(--azul);
-    }
-
-    .contato-formulario .campo-dica {
-      color: var(--texto-suave);
-      font-size: 0.85rem;
-      margin-top: 6px;
-    }
-
-    .contato-formulario button {
-      width: 100%;
-    }
-
-    .campo-protecao {
-      position: absolute;
-      left: -10000px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-
-    @media (max-width: 600px) {
-      .contato-container {
-        padding: 32px 16px;
-      }
-
-      .contato-formulario {
-        padding: 20px;
-      }
-
-      .contato-topo h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="redesign.css">
+  <link rel="stylesheet" href="portfolio.css">
 </head>
-
 <body>
 
-  <!-- CABEÇALHO -->
-  <div id="site-header" data-page="contact"></div>
+  <!-- Cabeçalho Flutuante -->
+  <header>
+    <nav class="nav-pill">
+      <div class="nav-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="projetos.html">Projetos</a>
+      </div>
+      <a href="index.html" class="nav-logo">{AN}</a>
+      <div class="nav-links">
+        <a href="portfolio.html">Portfólio</a>
+        <a href="contato.html" class="active">Contato</a>
+      </div>
+    </nav>
+  </header>
 
+  <main class="projects-page">
+    <div class="container">
+      <div class="page-header">
+        <span>~/contato</span>
+        <h1>Vamos construir algo incrível juntos?</h1>
+        <p>Entre em contato para discutir novas oportunidades, parcerias ou projetos sob medida.</p>
+      </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="contato-container">
-
-    <section class="contato-topo">
-
-      <h1>Vamos conversar?</h1>
-
-      <p>
-        Tem uma ideia, um projeto ou deseja entrar em contato?
-        Preencha o formulário abaixo e conte um pouco sobre o que você precisa.
-      </p>
-
-    </section>
-
-
-    <!-- FORMULÁRIO -->
-    <section class="contato-formulario">
-
-      <form id="form-contato" novalidate>
-
-        <div class="campo">
-          <label for="nome">Nome completo *</label>
-
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            placeholder="Digite seu nome completo"
-            maxlength="120"
-            autocomplete="name"
-            required
-          >
+      <div class="project-card" style="padding: 2.5rem; max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem;">
+        <h3>Canais de Atendimento</h3>
+        <p style="color: var(--text-muted);">Estou sempre disponível através do WhatsApp ou e-mail profissional.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://wa.me/" target="_blank" class="btn primary">Falar no WhatsApp</a>
+          <a href="mailto:seu-email@exemplo.com" class="btn secondary">Enviar E-mail</a>
         </div>
-
-
-        <div class="campo">
-          <label for="email">E-mail *</label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="seuemail@exemplo.com"
-            maxlength="254"
-            autocomplete="email"
-            required
-          >
-        </div>
-
-
-        <div class="campo">
-          <label for="zap">WhatsApp</label>
-
-          <input
-            type="tel"
-            id="zap"
-            name="zap"
-            placeholder="(00) 00000-0000"
-            maxlength="25"
-            autocomplete="tel"
-          >
-
-          <p class="campo-dica">
-            Campo opcional.
-          </p>
-        </div>
-
-
-        <div class="campo">
-          <label for="descricao">
-            Descreva um pouco o que você deseja *
-          </label>
-
-          <textarea
-            id="descricao"
-            name="descricao"
-            placeholder="Conte sobre sua ideia, projeto ou motivo do contato..."
-            minlength="5"
-            maxlength="3000"
-            required
-          ></textarea>
-
-          <p class="campo-dica">
-            Escreva entre 5 e 3.000 caracteres.
-          </p>
-        </div>
-
-
-        <!-- CAMPO OCULTO DE PROTEÇÃO -->
-        <div class="campo-protecao" aria-hidden="true">
-          <label for="site">Não preencha este campo</label>
-
-          <input
-            type="text"
-            id="site"
-            name="site"
-            tabindex="-1"
-            autocomplete="off"
-          >
-        </div>
-
-
-        <!-- MENSAGEM DE RETORNO -->
-        <p
-          id="mensagem-formulario"
-          class="estado-vazio"
-          role="status"
-          aria-live="polite"
-          hidden
-        ></p>
-
-
-        <button
-          type="submit"
-          id="botao-enviar"
-          class="botao botao-cheio"
-        >
-          Enviar mensagem
-        </button>
-
-        <p class="campo-dica">
-          * Campos obrigatórios.
-        </p>
-
-      </form>
-
-    </section>
-
+      </div>
+    </div>
   </main>
 
-
-  <!-- BIBLIOTECA DE ÍCONES -->
-  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-
-  <script>
-    lucide.createIcons();
-  </script>
-
-
-  <!-- SUPABASE -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-
-  <script src="config.js"></script>
-
-
-  <!-- FUNCIONAMENTO DO FORMULÁRIO -->
-  <script>
-
-    const formulario = document.getElementById("form-contato");
-
-    const botaoEnviar = document.getElementById("botao-enviar");
-
-    const mensagemFormulario = document.getElementById("mensagem-formulario");
-
-
-    // Exibe mensagens de sucesso ou erro
-    function mostrarMensagem(texto, tipo) {
-
-      mensagemFormulario.textContent = texto;
-
-      mensagemFormulario.className =
-        tipo === "sucesso" ? "mensagem-ok" : "mensagem-erro";
-
-      mensagemFormulario.hidden = false;
-
-    }
-
-
-    // Envia os dados para o Supabase
-    formulario.addEventListener("submit", async function(evento) {
-
-      evento.preventDefault();
-
-      if (botaoEnviar.disabled) {
-        return;
-      }
-
-      mensagemFormulario.hidden = true;
-
-
-      // Captura os valores
-      const nome = document.getElementById("nome").value.trim();
-
-      const email = document.getElementById("email").value.trim();
-
-      const zap = document.getElementById("zap").value.trim();
-
-      const descricao = document.getElementById("descricao").value.trim();
-
-      const campoProtecao = document.getElementById("site").value;
-
-
-      // Proteção contra preenchimento automático de robôs
-      if (campoProtecao !== "") {
-
-        mostrarMensagem(
-          "Não foi possível enviar sua mensagem.",
-          "erro"
-        );
-
-        return;
-      }
-
-
-      // Validação do nome
-      if (nome.length < 2 || nome.length > 120) {
-
-        mostrarMensagem(
-          "Informe um nome válido.",
-          "erro"
-        );
-
-        return;
-      }
-
-
-      // Validação do e-mail
-      const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (
-        email.length < 5 ||
-        email.length > 254 ||
-        !emailValido.test(email)
-      ) {
-
-        mostrarMensagem(
-          "Informe um endereço de e-mail válido.",
-          "erro"
-        );
-
-        return;
-      }
-
-
-      // Validação do WhatsApp
-      if (zap.length > 25) {
-
-        mostrarMensagem(
-          "Confira o número de WhatsApp informado.",
-          "erro"
-        );
-
-        return;
-      }
-
-
-      // Validação da descrição
-      if (descricao.length < 5 || descricao.length > 3000) {
-
-        mostrarMensagem(
-          "A descrição precisa ter entre 5 e 3.000 caracteres.",
-          "erro"
-        );
-
-        return;
-      }
-
-
-      // Bloqueia o botão durante o envio
-      botaoEnviar.disabled = true;
-
-      botaoEnviar.textContent = "Enviando...";
-
-
-      try {
-
-        // Verifica se a conexão com o Supabase existe
-        if (typeof db === "undefined") {
-          throw new Error("A conexão com o Supabase não foi encontrada.");
-        }
-
-
-        // Insere a mensagem na tabela formleads
-        const { error } = await db
-          .from("formleads")
-          .insert([
-            {
-              nome: nome,
-              email: email,
-              zap: zap || null,
-              descricao: descricao
-            }
-          ]);
-
-
-        if (error) {
-          throw error;
-        }
-
-
-        // Confirma o envio
-        mostrarMensagem(
-          "Mensagem enviada com sucesso! Obrigada pelo contato.",
-          "sucesso"
-        );
-
-        formulario.reset();
-
-      }
-
-      catch (erro) {
-
-        console.error("Erro ao enviar mensagem:", erro);
-
-        mostrarMensagem(
-          "Não foi possível enviar sua mensagem. Verifique sua conexão e tente novamente.",
-          "erro"
-        );
-
-      }
-
-      finally {
-
-        botaoEnviar.disabled = false;
-
-        botaoEnviar.textContent = "Enviar mensagem";
-
-      }
-
-    });
-
-  </script>
-
-  <script src="header.js"></script>
 </body>
 </html>
