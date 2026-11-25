@@ -3,46 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato | Portfólio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Entre em contato com Anne Vitória para conversar sobre projetos, ideias e oportunidades na área de tecnologia e desenvolvimento web.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#101112">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contato | Anne Vitória">
+  <meta property="og:description" content="Vamos conversar sobre tecnologia, ideias e projetos.">
+  <title>Contato | Anne Vitória — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="redesign.css">
+  <link rel="stylesheet" href="site-v2.css">
 </head>
-<body>
-
-  <!-- Cabeçalho Flutuante -->
-  <header>
-    <nav class="nav-pill">
-      <div class="nav-links">
-        <a href="sobre.html">Sobre</a>
-        <a href="projetos.html">Projetos</a>
+<body class="av-site contact-page">
+  <div id="site-header" data-page="contact"></div>
+  <main id="conteudo">
+    <section class="av-page-hero" aria-labelledby="titulo-contato">
+      <div class="av-container">
+        <span class="av-kicker">Contato · Vamos conversar</span>
+        <h1 id="titulo-contato">Toda boa ideia começa com <span>uma conversa.</span></h1>
+        <p>Tem uma ideia, quer conhecer melhor meu trabalho ou conversar sobre tecnologia? Será um prazer receber sua mensagem.</p>
       </div>
-      <a href="index.html" class="nav-logo">{AN}</a>
-      <div class="nav-links">
-        <a href="portfolio.html">Portfólio</a>
-        <a href="contato.html" class="active">Contato</a>
+    </section>
+    <section class="av-section" aria-label="Canais de contato">
+      <div class="av-container av-contact-grid">
+        <article class="av-contact-card">
+          <span class="av-kicker">Conexão profissional</span>
+          <h2>Vamos nos conectar?</h2>
+          <p>Você pode conhecer meus códigos, acompanhar meus projetos e entrar em contato pelo meu perfil no GitHub.</p>
+          <a class="av-contact-link" href="https://github.com/Annevps" target="_blank" rel="noopener noreferrer">
+            <span><i data-lucide="github" aria-hidden="true"></i> GitHub · Annevps</span>
+            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <p class="av-contact-note">Os demais canais diretos serão adicionados após a confirmação dos endereços corretos.</p>
+        </article>
+        <article class="av-contact-card">
+          <span class="av-kicker">Antes de conversar</span>
+          <h2>Conheça meu trabalho.</h2>
+          <p>Explore os projetos publicados para conhecer melhor minhas experiências práticas, as propostas de cada trabalho e minha evolução na programação.</p>
+          <a class="av-button av-button-primary" href="portfolio.html" style="margin-top:20px">Acessar projetos <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </article>
       </div>
-    </nav>
-  </header>
-
-  <main class="projects-page">
-    <div class="container">
-      <div class="page-header">
-        <span>~/contato</span>
-        <h1>Vamos construir algo incrível juntos?</h1>
-        <p>Entre em contato para discutir novas oportunidades, parcerias ou projetos sob medida.</p>
-      </div>
-
-      <div class="project-card" style="padding: 2.5rem; max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem;">
-        <h3>Canais de Atendimento</h3>
-        <p style="color: var(--text-muted);">Estou sempre disponível através do WhatsApp ou e-mail profissional.</p>
-        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-          <a href="https://wa.me/" target="_blank" class="btn primary">Falar no WhatsApp</a>
-          <a href="mailto:seu-email@exemplo.com" class="btn secondary">Enviar E-mail</a>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
-
+  <footer class="av-footer">
+    <div class="av-container av-footer-inner">
+      <span class="av-footer-brand">AV · Anne Vitória</span>
+      <span>© <span id="ano-atual"></span> Anne Vitória.</span>
+      <a href="index.html">Voltar ao início ↑</a>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="header.js"></script>
+  <script>document.getElementById("ano-atual").textContent = new Date().getFullYear(); if (window.lucide) window.lucide.createIcons();</script>
 </body>
 </html>
