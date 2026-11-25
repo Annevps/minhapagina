@@ -195,13 +195,13 @@ body[data-theme="light"] .av-about-copy p,body[data-theme="light"] .av-contact-c
 body[data-theme="light"] .av-about-aside{background:linear-gradient(145deg,#fff,#eeece5)}
 body[data-theme="light"] .av-footer{background:#e9e6df;border-top-color:var(--av-line)}
 body[data-theme="light"] .av-footer-inner{color:#686a62}
-body[data-theme="light"] .pagina-projetos .portfolio-intro{background:radial-gradient(ellipse at 80% 20%,rgba(152,114,58,.16),transparent 35%),linear-gradient(120deg,#f0ede6,#e4e2d9)!important}
-body[data-theme="light"] .pagina-projetos .portfolio-intro h1{color:#20211f!important}
-body[data-theme="light"] .pagina-projetos .portfolio-intro p,body[data-theme="light"] .pagina-projetos .portfolio-section-title p,body[data-theme="light"] .pagina-projetos .mode-description{color:#62645d!important}
-body[data-theme="light"] .pagina-projetos .portfolio-overview .overview-item,body[data-theme="light"] .pagina-projetos .portfolio-mode-area,body[data-theme="light"] .pagina-projetos .portfolio-search,body[data-theme="light"] .pagina-projetos .portfolio-grid li,body[data-theme="light"] .pagina-projetos .portfolio-card{background:#fff!important;color:#20211f!important}
-body[data-theme="light"] .pagina-projetos .overview-item strong,body[data-theme="light"] .pagina-projetos .portfolio-card h3,body[data-theme="light"] .pagina-projetos .portfolio-card h2{color:#20211f!important}
-body[data-theme="light"] .pagina-projetos .overview-item span:last-child,body[data-theme="light"] .pagina-projetos .portfolio-card p{color:#686c68!important}
-body[data-theme="light"] .pagina-projetos .portfolio-closing{background:linear-gradient(115deg,#e8e3d8,#e4e8df)!important;color:#20211f!important}
-body[data-theme="light"] .pagina-projetos .portfolio-closing p{color:#55584f!important}
-body[data-theme="light"] .pagina-projetos .portfolio-footer{background:#e9e6df!important;color:#686a62!important}
+body[data-theme="light"].pagina-projetos .portfolio-intro{background:radial-gradient(ellipse at 80% 20%,rgba(152,114,58,.16),transparent 35%),linear-gradient(120deg,#f0ede6,#e4e2d9)!important}
+body[data-theme="light"].pagina-projetos .portfolio-intro h1{color:#20211f!important}
+body[data-theme="light"].pagina-projetos .portfolio-intro p,body[data-theme="light"].pagina-projetos .portfolio-section-title p,body[data-theme="light"].pagina-projetos .mode-description{color:#62645d!important}
+body[data-theme="light"].pagina-projetos .portfolio-overview .overview-item,body[data-theme="light"].pagina-projetos .portfolio-mode-area,body[data-theme="light"].pagina-projetos .portfolio-search,body[data-theme="light"].pagina-projetos .portfolio-grid li,body[data-theme="light"].pagina-projetos .portfolio-card{background:#fff!important;color:#20211f!important}
+body[data-theme="light"].pagina-projetos .overview-item strong,body[data-theme="light"].pagina-projetos .portfolio-card h3,body[data-theme="light"].pagina-projetos .portfolio-card h2{color:#20211f!important}
+body[data-theme="light"].pagina-projetos .overview-item span:last-child,body[data-theme="light"].pagina-projetos .portfolio-card p{color:#686c68!important}
+body[data-theme="light"].pagina-projetos .portfolio-closing{background:linear-gradient(115deg,#e8e3d8,#e4e8df)!important;color:#20211f!important}
+body[data-theme="light"].pagina-projetos .portfolio-closing p{color:#55584f!important}
+body[data-theme="light"].pagina-projetos .portfolio-footer{background:#e9e6df!important;color:#686a62!important}
 @media(max-width:800px){body[data-theme="light"] .site-menu{background:#fff!important}body[data-theme="light"] .site-menu a{color:#30322d!important}}
