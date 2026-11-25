@@ -3,90 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio | Desenvolvedora Full Stack</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Portfólio de Anne Vitória: estudante de TI e desenvolvedora em formação, com projetos de programação web, tecnologia, hardware e software.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#101112">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Anne Vitória | Tecnologia e Desenvolvimento Web">
+  <meta property="og:description" content="Conheça minha trajetória, habilidades e projetos em tecnologia e desenvolvimento web.">
+  <meta name="twitter:card" content="summary">
+  <title>Anne Vitória | Desenvolvimento Web e Tecnologia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="redesign.css">
+  <link rel="stylesheet" href="site-v2.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anne Vitória",
+    "description": "Estudante de TI e desenvolvedora em formação, com interesse em programação web e tecnologia.",
+    "knowsAbout": ["Desenvolvimento web", "HTML", "CSS", "JavaScript", "Hardware", "Software", "Microsoft Excel", "Microsoft Word"],
+    "sameAs": ["https://github.com/Annevps"]
+  }
+  </script>
 </head>
-<body>
+<body class="av-site home-page">
+  <div id="site-header" data-page="home"></div>
 
-  <!-- Cabeçalho Flutuante -->
-  <header>
-    <nav class="nav-pill">
-      <div class="nav-links">
-        <a href="sobre.html">Sobre</a>
-        <a href="projetos.html">Projetos</a>
-      </div>
-      <a href="index.html" class="nav-logo">{AN}</a>
-      <div class="nav-links">
-        <a href="portfolio.html" class="active">Portfólio</a>
-        <a href="contato.html">Contato</a>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Seção Hero Principal -->
-  <main class="hero-section">
-    <div class="container hero-grid">
-      
-      <!-- Coluna da Esquerda: Avatar com moldura orgânica tech -->
-      <div class="hero-avatar-wrapper">
-        <div class="avatar-glow"></div>
-        <div class="organic-shape">
-          <!-- Substitua o src pela sua foto real -->
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Sua Foto de Perfil">
-        </div>
-      </div>
-
-      <!-- Coluna da Direita: Textos de Impacto e CTAs -->
-      <div class="hero-content">
-        <span class="hero-tag">~/index • Desenvolvedora Full Stack</span>
-        <h1>Transformando código em <span class="highlight">soluções reais</span>.</h1>
-        <p>
-          Do banco de dados à interface, construo aplicações web modernas, escaláveis e com acabamento visual impecável. Sistemas que saem do papel e geram valor de verdade.
-        </p>
-
-        <div class="hero-actions">
-          <a href="projetos.html" class="btn primary">Ver Projetos →</a>
-          <a href="contato.html" class="btn secondary">Falar no WhatsApp</a>
-        </div>
-
-        <!-- Métricas / Prova Social -->
-        <div class="hero-metrics">
-          <div>
-            <h3>+15</h3>
-            <p>projetos entregues</p>
+  <main id="conteudo">
+    <section class="av-hero" aria-labelledby="titulo-principal">
+      <div class="av-container av-hero-grid">
+        <div class="av-hero-copy">
+          <span class="av-kicker">Portfólio · Tecnologia & desenvolvimento</span>
+          <h1 id="titulo-principal">Programando ideias. <span>Criando soluções.</span></h1>
+          <p>Olá, sou Anne Vitória. Estudo Tecnologia da Informação e desenvolvo projetos web, unindo programação, criatividade e atenção aos detalhes. Este espaço reúne minha evolução, meus conhecimentos e o que venho construindo.</p>
+          <div class="av-hero-actions">
+            <a class="av-button av-button-primary" href="portfolio.html">Explorar projetos <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+            <a class="av-button av-button-secondary" href="contato.html">Entrar em contato <i data-lucide="message-circle" aria-hidden="true"></i></a>
           </div>
-          <div>
-            <h3>100%</h3>
-            <p>foco em performance</p>
-          </div>
-          <div>
-            <h3>UI/UX</h3>
-            <p>design sofisticado</p>
+          <div class="av-hero-meta" aria-label="Áreas de interesse">
+            <span><i aria-hidden="true"></i> Desenvolvimento web</span>
+            <span><i aria-hidden="true"></i> Hardware e software</span>
           </div>
         </div>
-      </div>
 
-    </div>
+        <div class="av-code-card" aria-label="Painel visual com tecnologias de desenvolvimento">
+          <div class="av-window-top"><i></i><i></i><i></i><span>anne-vitoria.dev</span></div>
+          <div class="av-code-lines" aria-hidden="true">
+            <div class="av-code-line"><em>01</em><strong>const</strong> objetivo = <b>"criar"</b>;</div>
+            <div class="av-code-line"><em>02</em><strong>const</strong> ideias = [</div>
+            <div class="av-code-line"><em>03</em>&nbsp;&nbsp;<b>"design"</b>,</div>
+            <div class="av-code-line"><em>04</em>&nbsp;&nbsp;<b>"código"</b>,</div>
+            <div class="av-code-line"><em>05</em>&nbsp;&nbsp;<b>"experiência"</b></div>
+            <div class="av-code-line"><em>06</em>];</div>
+            <div class="av-code-line"><em>07</em><strong>return</strong> objetivo;</div>
+          </div>
+          <div class="av-code-caption"><span>Aprender · Construir · Evoluir</span><span>01 / 03</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="av-section av-skills" id="habilidades" aria-labelledby="titulo-habilidades">
+      <div class="av-container">
+        <div class="av-skills-head">
+          <div>
+            <span class="av-kicker">Conhecimentos</span>
+            <h2 class="av-heading" id="titulo-habilidades">Tecnologia em <span>construção.</span></h2>
+          </div>
+          <p class="av-lead">Áreas com as quais trabalho e que continuo desenvolvendo por meio dos estudos e da prática.</p>
+        </div>
+        <div class="av-skill-grid">
+          <article class="av-skill-card">
+            <span class="av-skill-icon"><i data-lucide="code-2" aria-hidden="true"></i></span>
+            <h3>Desenvolvimento web</h3>
+            <p>Criação e estruturação de páginas e interfaces para a web.</p>
+            <div class="av-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </article>
+          <article class="av-skill-card">
+            <span class="av-skill-icon"><i data-lucide="cpu" aria-hidden="true"></i></span>
+            <h3>Hardware e software</h3>
+            <p>Interesse em tecnologia por dentro e por fora: componentes, sistemas e funcionamento dos computadores.</p>
+            <div class="av-tags"><span>Hardware</span><span>Software</span><span>TI</span></div>
+          </article>
+          <article class="av-skill-card">
+            <span class="av-skill-icon"><i data-lucide="file-spreadsheet" aria-hidden="true"></i></span>
+            <h3>Ferramentas de produtividade</h3>
+            <p>Utilização de ferramentas de escritório para organização, documentos e planilhas.</p>
+            <div class="av-tags"><span>Excel</span><span>Word</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="av-section av-work" aria-labelledby="titulo-trabalhos">
+      <div class="av-container">
+        <div class="av-work-panel">
+          <div>
+            <span class="av-kicker">Projetos selecionados</span>
+            <h2 id="titulo-trabalhos">Ideias que saem do papel.</h2>
+            <p>Conheça os projetos que desenvolvi, veja suas propostas e explore as soluções que venho criando durante minha jornada na tecnologia.</p>
+          </div>
+          <a class="av-button av-button-primary" href="portfolio.html">Ver portfólio completo <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Seção de Tecnologias / Domínio Técnico -->
-  <section class="tech-section">
-    <div class="container">
-      <h2>Domínio Técnico</h2>
-      <div class="tech-grid">
-        <div class="tech-card">HTML5</div>
-        <div class="tech-card">CSS3</div>
-        <div class="tech-card">JavaScript</div>
-        <div class="tech-card">TypeScript</div>
-        <div class="tech-card">React</div>
-        <div class="tech-card">Node.js</div>
-        <div class="tech-card">Python</div>
-        <div class="tech-card">MySQL</div>
-      </div>
+  <footer class="av-footer">
+    <div class="av-container av-footer-inner">
+      <span class="av-footer-brand">AV · Anne Vitória</span>
+      <span>© <span id="ano-atual"></span> Anne Vitória. Feito com dedicação e tecnologia.</span>
+      <a href="#conteudo">Voltar ao início ↑</a>
     </div>
-  </section>
+  </footer>
 
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="header.js"></script>
+  <script>document.getElementById("ano-atual").textContent = new Date().getFullYear(); if (window.lucide) window.lucide.createIcons();</script>
 </body>
 </html>
