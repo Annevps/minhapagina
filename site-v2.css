@@ -163,3 +163,45 @@ body.av-site.home-page,body.home-page.pagina-projetos{background:var(--av-bg)!im
  html.av-js .av-reveal.is-visible,html.av-js .scroll-reveal.is-visible{opacity:1;transform:translateY(0)}
 }
 @media(prefers-reduced-motion:reduce){html.av-js .av-reveal,html.av-js .scroll-reveal{opacity:1!important;transform:none!important}}
+
+/* Tema claro opcional: o padrão visual continua sendo o tema escuro */
+body[data-theme="light"]{
+ --av-bg:#f4f2ed;--av-bg-soft:#e9e6df;--av-panel:#fff;--av-panel-2:#f1eee8;
+ --av-text:#20211f;--av-muted:#686c68;--av-line:rgba(32,33,31,.12);
+ --av-gold:#98723a;--av-gold-light:#89652f;--av-green:#8eae63;--av-green-deep:#6f8b49;
+ --av-shadow:0 24px 70px rgba(33,34,29,.10);
+}
+body[data-theme="light"].av-site{background:var(--av-bg);color:var(--av-text)}
+body[data-theme="light"].av-site::before{background:radial-gradient(circle at 82% 8%,rgba(152,114,58,.09),transparent 26%),linear-gradient(rgba(32,33,31,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(32,33,31,.035) 1px,transparent 1px);background-size:auto,54px 54px,54px 54px}
+body[data-theme="light"] .site-header{background:rgba(248,247,243,.88)!important;border-bottom-color:rgba(32,33,31,.12)!important}
+body[data-theme="light"] .site-brand-name{color:#20211f!important}
+body[data-theme="light"] .site-menu a{color:#555650!important}
+body[data-theme="light"] .site-menu a:hover,body[data-theme="light"] .site-menu a[aria-current=page]{color:#785b2c!important;background:rgba(152,114,58,.10)!important}
+body[data-theme="light"] .site-actions button,body[data-theme="light"] .site-actions a,body[data-theme="light"] .site-menu-toggle{color:#333!important;background:rgba(32,33,31,.035)!important;border-color:rgba(32,33,31,.14)!important}
+body[data-theme="light"] .av-hero{background:radial-gradient(ellipse at 83% 42%,rgba(152,114,58,.13),transparent 34%),linear-gradient(120deg,#f2efe8,#e9e5db 55%,#e2e5dc);border-bottom-color:var(--av-line)}
+body[data-theme="light"] .av-hero h1{color:#20211f}
+body[data-theme="light"] .av-hero-copy>p,body[data-theme="light"] .av-hero-meta{color:#66675f}
+body[data-theme="light"] .av-code-card{background:linear-gradient(145deg,#fff,#eeece5);border-color:rgba(152,114,58,.28)}
+body[data-theme="light"] .av-code-lines{color:#30322d}
+body[data-theme="light"] .av-window-top span,body[data-theme="light"] .av-code-caption{color:#777970}
+body[data-theme="light"] .av-skills{background:#ebe8e0}
+body[data-theme="light"] .av-skill-card{background:linear-gradient(145deg,#fff,#f5f3ee);border-color:var(--av-line)}
+body[data-theme="light"] .av-skill-card p,body[data-theme="light"] .av-skill-card h3{color:#272923}
+body[data-theme="light"] .av-tags span{color:#57594f;border-color:rgba(32,33,31,.14)}
+body[data-theme="light"] .av-work-panel{background:linear-gradient(115deg,#fff,#eeece5);border-color:rgba(152,114,58,.25)}
+body[data-theme="light"] .av-page-hero{background:radial-gradient(ellipse at 80% 20%,rgba(152,114,58,.12),transparent 32%),#ebe8e0;border-bottom-color:var(--av-line)}
+body[data-theme="light"] .av-about-copy,body[data-theme="light"] .av-about-aside,body[data-theme="light"] .av-contact-card{background:#fff;border-color:var(--av-line)}
+body[data-theme="light"] .av-about-copy p,body[data-theme="light"] .av-contact-card p{color:#62645d}
+body[data-theme="light"] .av-about-aside{background:linear-gradient(145deg,#fff,#eeece5)}
+body[data-theme="light"] .av-footer{background:#e9e6df;border-top-color:var(--av-line)}
+body[data-theme="light"] .av-footer-inner{color:#686a62}
+body[data-theme="light"] .pagina-projetos .portfolio-intro{background:radial-gradient(ellipse at 80% 20%,rgba(152,114,58,.16),transparent 35%),linear-gradient(120deg,#f0ede6,#e4e2d9)!important}
+body[data-theme="light"] .pagina-projetos .portfolio-intro h1{color:#20211f!important}
+body[data-theme="light"] .pagina-projetos .portfolio-intro p,body[data-theme="light"] .pagina-projetos .portfolio-section-title p,body[data-theme="light"] .pagina-projetos .mode-description{color:#62645d!important}
+body[data-theme="light"] .pagina-projetos .portfolio-overview .overview-item,body[data-theme="light"] .pagina-projetos .portfolio-mode-area,body[data-theme="light"] .pagina-projetos .portfolio-search,body[data-theme="light"] .pagina-projetos .portfolio-grid li,body[data-theme="light"] .pagina-projetos .portfolio-card{background:#fff!important;color:#20211f!important}
+body[data-theme="light"] .pagina-projetos .overview-item strong,body[data-theme="light"] .pagina-projetos .portfolio-card h3,body[data-theme="light"] .pagina-projetos .portfolio-card h2{color:#20211f!important}
+body[data-theme="light"] .pagina-projetos .overview-item span:last-child,body[data-theme="light"] .pagina-projetos .portfolio-card p{color:#686c68!important}
+body[data-theme="light"] .pagina-projetos .portfolio-closing{background:linear-gradient(115deg,#e8e3d8,#e4e8df)!important;color:#20211f!important}
+body[data-theme="light"] .pagina-projetos .portfolio-closing p{color:#55584f!important}
+body[data-theme="light"] .pagina-projetos .portfolio-footer{background:#e9e6df!important;color:#686a62!important}
+@media(max-width:800px){body[data-theme="light"] .site-menu{background:#fff!important}body[data-theme="light"] .site-menu a{color:#30322d!important}}
