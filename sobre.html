@@ -3,46 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre | Portfólio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Conheça Anne Vitória, estudante de Tecnologia da Informação e desenvolvedora em formação, sua trajetória e seus objetivos na área de tecnologia.">
+  <meta name="author" content="Anne Vitória">
+  <meta name="theme-color" content="#101112">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Sobre Anne Vitória | Portfólio">
+  <meta property="og:description" content="Minha trajetória de estudos, projetos e evolução na tecnologia.">
+  <title>Sobre | Anne Vitória — Tecnologia e Desenvolvimento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="redesign.css">
+  <link rel="stylesheet" href="site-v2.css">
 </head>
-<body>
+<body class="av-site about-page">
+  <div id="site-header" data-page="about"></div>
+  <main id="conteudo">
+    <section class="av-page-hero" aria-labelledby="titulo-sobre">
+      <div class="av-container">
+        <span class="av-kicker">Um pouco sobre mim</span>
+        <h1 id="titulo-sobre">Curiosidade que se transforma em <span>conhecimento.</span></h1>
+        <p>Sou Anne Vitória, estudante de Tecnologia da Informação e apaixonada pelo universo da programação e da tecnologia. Gosto de aprender na prática, experimentar ideias e entender como cada parte de um projeto funciona.</p>
+      </div>
+    </section>
 
-  <!-- Cabeçalho Flutuante -->
-  <header>
-    <nav class="nav-pill">
-      <div class="nav-links">
-        <a href="sobre.html" class="active">Sobre</a>
-        <a href="projetos.html">Projetos</a>
-      </div>
-      <a href="index.html" class="nav-logo">{AN}</a>
-      <div class="nav-links">
-        <a href="portfolio.html">Portfólio</a>
-        <a href="contato.html">Contato</a>
-      </div>
-    </nav>
-  </header>
+    <section class="av-section" aria-label="Minha trajetória">
+      <div class="av-container av-about-layout">
+        <article class="av-about-copy">
+          <span class="av-kicker">Minha trajetória</span>
+          <h2 class="av-heading">Aprender, experimentar e <span>evoluir.</span></h2>
+          <p>Minha jornada na tecnologia vem sendo construída por meio dos estudos, da prática e dos projetos que desenvolvo. Na formação em TI, tenho contato com diferentes áreas da computação e venho direcionando meu interesse principalmente para a programação e o desenvolvimento web.</p>
+          <p>Também gosto de explorar hardware e software, compreender como os computadores funcionam e encontrar maneiras de transformar ideias em soluções úteis. Cada projeto é uma oportunidade de aprender algo novo, melhorar minhas habilidades e desenvolver um olhar mais cuidadoso para a experiência de quem utiliza o que crio.</p>
+          <p>Meu objetivo é continuar crescendo na área, construir projetos cada vez mais completos e transformar conhecimento em experiências digitais bem pensadas.</p>
+        </article>
 
-  <main class="projects-page">
-    <div class="container">
-      <div class="page-header">
-        <span>~/sobre-mim</span>
-        <h1>Desenvolvimento com propósito e paixão por tecnologia.</h1>
-        <p>Sou especialista em transformar problemas complexos em interfaces limpas, intuitivas e sistemas altamente funcionais.</p>
+        <aside class="av-about-aside" aria-labelledby="titulo-jornada">
+          <h2 id="titulo-jornada">O que guia minha jornada</h2>
+          <div class="av-about-point"><strong>Formação em TI</strong><span>Aprendizado contínuo e construção de uma base técnica.</span></div>
+          <div class="av-about-point"><strong>Prática com projetos</strong><span>Aplicar o que estudo, testar ideias e aprender com cada etapa.</span></div>
+          <div class="av-about-point"><strong>Foco no futuro</strong><span>Evoluir como profissional e desenvolver soluções digitais de qualidade.</span></div>
+          <a class="av-button av-button-primary" href="portfolio.html" style="margin-top:22px">Conhecer meus projetos <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </aside>
       </div>
-
-      <div class="project-card" style="padding: 2.5rem; max-width: 800px;">
-        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-          Minha trajetória na tecnologia é guiada pela busca constante de excelência técnica e usabilidade refinada. Acredito que um bom código não é apenas aquele que funciona, mas aquele que é sustentável, escalável e proporciona uma experiência fantástica para quem utiliza.
-        </p>
-        <p style="color: var(--text-muted); line-height: 1.8;">
-          Atuo em todas as camadas do desenvolvimento (Full Stack), garantindo que desde a arquitetura de banco de dados até os detalhes finais da interface estejam perfeitamente alinhados aos objetivos do projeto.
-        </p>
-      </div>
-    </div>
+    </section>
   </main>
-
+  <footer class="av-footer">
+    <div class="av-container av-footer-inner">
+      <span class="av-footer-brand">AV · Anne Vitória</span>
+      <span>© <span id="ano-atual"></span> Anne Vitória.</span>
+      <a href="index.html">Voltar ao início ↑</a>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="header.js"></script>
+  <script>document.getElementById("ano-atual").textContent = new Date().getFullYear(); if (window.lucide) window.lucide.createIcons();</script>
 </body>
 </html>
