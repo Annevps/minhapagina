@@ -3,8 +3,8 @@
   const mount = document.getElementById("site-header");
   if (!mount) return;
   const activePage = mount.dataset.page || "";
-  let currentTheme = "light";
-  try { currentTheme = localStorage.getItem("av-theme") === "dark" ? "dark" : "light"; } catch (_) {}
+  let currentTheme = "dark";
+  try { currentTheme = localStorage.getItem("av-theme") === "light" ? "light" : "dark"; } catch (_) {}
   document.documentElement.dataset.theme = currentTheme;
   document.body.dataset.theme = currentTheme;
   const links = [
